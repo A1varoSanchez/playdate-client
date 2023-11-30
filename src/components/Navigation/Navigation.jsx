@@ -5,14 +5,11 @@ import { useContext } from 'react'
 import logo from './../../assets/playdate-logo.png'
 
 const Navigation = () => {
-
     const { loggedUser, logout } = useContext(AuthContext)
-
     return (
-
         <Navbar bg="dark" data-bs-theme="dark" className='mb-5' expand="lg">
 
-            <Navbar.Brand href="/">
+            <Navbar.Brand href="#home">
                 <img
                     src={logo}
                     height="30"
@@ -28,8 +25,7 @@ const Navigation = () => {
 
                     <Link to={'/eventos'} className='nav-link'>Eventos</Link>
                     <Link to={'/mapa'} className='nav-link'>Mapa</Link>
-                    <Link to={'/crear-evento'} className='nav-link'>Crear evento</Link>
-                    <Link to={'/usuarios'} className='nav-link'>usuarios</Link>
+
                     {
                         loggedUser
                             ?
@@ -39,6 +35,7 @@ const Navigation = () => {
                             </>
                             :
                             <>
+                                <Link to={'/crear-evento'} className='nav-link'>Crear evento</Link>
                                 <Link to={'/inicio-sesion'} className='nav-link'>Inicio sesión</Link>
                                 <Link to={'/registro'} className='nav-link'>Registro</Link>
                             </>
@@ -49,9 +46,10 @@ const Navigation = () => {
                     {loggedUser && <Navbar.Text>Bienvenido {loggedUser.username}</Navbar.Text>}
                 </Navbar.Text>
             </Navbar.Collapse>
+
         </Navbar>
+
     )
 }
-
 
 export default Navigation

@@ -19,24 +19,15 @@ class EventService {
 
     }
 
-    getEvents() {
-        return this.api.get("/getAllEvents")
-    }
 
-    getEventDetails(event_id) {
-        return this.api.get(`/getOneEvent/${event_id}`)
+    getEvents() {
+        return this.api.get('/getAllEvents')
     }
 
     createEvent(eventData) {
-        return this.api.post("/create", eventData)
-
-    }
-
-    joinEvent(loggedId, eventId) {
-        return this.api.post("/joinEvent", { loggedId, eventId })
+        return this.api.post(`/create`, eventData)
     }
 }
-
 
 const eventServices = new EventService()
 

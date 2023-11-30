@@ -42,5 +42,4 @@ function AuthProviderWrapper(props) {
     )
 }
 
-
 export { AuthContext, AuthProviderWrapper }

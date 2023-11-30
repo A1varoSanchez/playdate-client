@@ -6,7 +6,7 @@ const PrivateRoute = () => {
 
     const { loggedUser, isLoading } = useContext(AuthContext)
 
-    if (isLoading) {
+    if (isLoading){
         return <h1>Cargando...</h1>
     }
 
@@ -16,6 +16,5 @@ const PrivateRoute = () => {
 
     return <Outlet />
 }
-
 
 export default PrivateRoute
