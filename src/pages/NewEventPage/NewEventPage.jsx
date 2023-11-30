@@ -4,6 +4,7 @@ import { Container } from 'react-bootstrap'
 const NewEventPage = () => {
 
     return (
+
         <Container>
             <h1>Nuevo evento</h1>
 
@@ -11,5 +12,6 @@ const NewEventPage = () => {
         </Container>
     )
 }
+
 
 export default NewEventPage

@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../contexts/auth.context"
 
 
-
 const LoginForm = () => {
 
     const [loginData, setLoginData] = useState({
@@ -15,7 +14,7 @@ const LoginForm = () => {
 
     const navigate = useNavigate()
 
-    const {authenticateUser} = useContext(AuthContext)
+    const { authenticateUser } = useContext(AuthContext)
 
     const handleInputChange = e => {
         const { value, name } = e.target
@@ -38,6 +37,7 @@ const LoginForm = () => {
     }
 
     return (
+
         <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Email</Form.Label>

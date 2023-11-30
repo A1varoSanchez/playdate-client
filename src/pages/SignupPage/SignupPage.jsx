@@ -4,6 +4,7 @@ import SignupForm from '../../components/SignupForm/SignupForm.jsx'
 const SignupPage = () => {
 
     return (
+
         <Container>
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
@@ -15,5 +16,6 @@ const SignupPage = () => {
         </Container>
     )
 }
+
 
 export default SignupPage

@@ -31,10 +31,6 @@ class AuthService {
             { headers: { Authorization: `Bearer ${authToken}` } }
         )
     }
-
-    findUser(_id) {
-        return this.api.get(`/perfil/${_id}`)
-    }
 }
 
 

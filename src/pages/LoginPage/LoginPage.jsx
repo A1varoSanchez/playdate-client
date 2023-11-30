@@ -4,6 +4,7 @@ import LoginForm from '../../components/LoginForm/LoginForm.jsx'
 const LoginPage = () => {
 
     return (
+
         <Container>
             <Row>
                 <Col md={{ offset: 3, span: 6 }}>
@@ -15,5 +16,6 @@ const LoginPage = () => {
         </Container>
     )
 }
+
 
 export default LoginPage

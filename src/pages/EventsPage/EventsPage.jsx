@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import eventServices from '../../services/event.services'
 import { Container } from 'react-bootstrap'
+import EventsList from '../../components/EventsList/EventsList.jsx'
 
 
 const EventsPage = () => {
@@ -15,29 +16,17 @@ const EventsPage = () => {
         eventServices
             .getEvents()
             .then(({ data }) => setEvents(data))
-
             .catch(err => console.log(err))
     }
 
     return (
-        !events ?
-
-            <h1>holaaaa</h1>
-            :
-
-
+        <div>
             <Container>
                 <h1>Eventos</h1>
                 <hr />
-                {
-                    events.map((elm, i) => {
-                        return (
-                            <p key={i}>{elm.name}</p>
-                        )
-                    })
-                }
+                <EventsList events={events} />
             </Container>
-
+        </div>
     )
 }
 

@@ -18,10 +18,31 @@ class UserService {
         })
     }
 
-    addChild() {
-        return this.api.post(`/addchild`,)
+    findUser() {
+        return this.api.get(`/perfil`)
     }
+
+    addChild(children) {
+        return this.api.post("/addchild", children)
+    }
+
+    getAllUser() {
+        return this.api.get('/getAllUser')
+    }
+
+    addFriend(friends) {
+        return this.api.post('/addFriend', { friends })
+    }
+
+    deletedFriend(friendId) {
+        return this.api.post('/deletFriend', { friendId })
+    }
+    // body objet 
+    //query : req.query
+    // : req.params
+
 }
+
 
 const userservices = new UserService()
 
