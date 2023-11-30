@@ -9,10 +9,10 @@ const UsersPage = () => {
     const { loggedUser } = useContext(AuthContext)
     const [user, setUser] = useState()
 
-    const [addFriend, setAddFriend] = useState({
-        friends: [],
-    })
 
+    const [petition, setPetition] = useState({
+        friendAdd: [],
+    })
     const [deletedFriend, setdeletedFriend] = useState({
         friends: [],
     })
@@ -30,15 +30,7 @@ const UsersPage = () => {
             .catch(err => console.log(err))
     }
 
-    const handleFriendSubmit = (idFriend) => {
-        userservices
-            .addFriend(idFriend)
-            .then(({ data }) => {
-                setAddFriend(data)
-                loadUser()
-            })
-            .catch(err => console.log(err))
-    }
+
 
     const handledeleteSubmit = (friendId) => {
         userservices
@@ -50,6 +42,15 @@ const UsersPage = () => {
             .catch(err => console.log(err))
     }
 
+    const handlePetitionSubmit = (friendId) => {
+        userservices
+            .petitionFriend(friendId)
+            .then(({ data }) => {
+                setPetition(data)
+                loadUser()
+            })
+            .catch(err => console.log(err))
+    }
     return (
 
         !user ?
@@ -69,7 +70,7 @@ const UsersPage = () => {
                                         ?
                                         <Button onClick={() => handledeleteSubmit(elm._id)}> DELETE FRIEND </Button>
                                         :
-                                        <Button onClick={() => handleFriendSubmit(elm._id)}> ADD FRIEND </Button>
+                                        <Button onClick={() => handlePetitionSubmit(elm._id)}> ADD FRIEND </Button>
                                 }
                             </div>
                         )

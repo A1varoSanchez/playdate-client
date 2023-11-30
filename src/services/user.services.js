@@ -19,7 +19,7 @@ class UserService {
     }
 
     findUser() {
-        return this.api.get(`/perfil`)
+        return this.api.get(`/perfil`,)
     }
 
     addChild(children) {
@@ -28,6 +28,11 @@ class UserService {
 
     getAllUser() {
         return this.api.get('/getAllUser')
+    }
+
+    petitionFriend(friendId) {
+        console.log('............................................', { friendId })
+        return this.api.post('/petitionFriend', { friendId })
     }
 
     addFriend(friends) {

@@ -4,10 +4,8 @@ import { Button, Form } from "react-bootstrap"
 
 
 const AddChildForm = ({ setShowModal, refreshProfile }) => {
-    const { loggedUser } = useContext(AuthContext)
-    const { _id } = useParams()
 
-    const [addChild, setAddChild] = useState({
+    const [childInfo, setChildInfo] = useState({
         children: [{
             gender: '',
             birth: ''
@@ -55,3 +53,4 @@ const AddChildForm = ({ setShowModal, refreshProfile }) => {
 }
 
 export default AddChildForm
+
