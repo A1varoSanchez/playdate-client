@@ -1,4 +1,4 @@
-import { Navbar, Nav, Container } from 'react-bootstrap'
+import { Navbar, Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { AuthContext } from './../../contexts/auth.context'
 import { useContext } from 'react'
@@ -10,7 +10,7 @@ const Navigation = () => {
 
     return (
 
-        <Navbar bg="dark" data-bs-theme="dark" className='mb-5' expand="lg">
+        <Navbar bg="dark" data-bs-theme="dark" expand="lg">
 
             <Navbar.Brand href="/">
                 <img
@@ -34,7 +34,7 @@ const Navigation = () => {
                         loggedUser
                             ?
                             <>
-                                <Link to={`/perfil/${loggedUser._id}`} className='nav-link'>Mi perfil</Link>
+                                <Link to={`/perfil`} className='nav-link'>Mi perfil</Link>
                                 <span className='nav-link' onClick={logout}>Cerrar sesión</span>
                             </>
                             :

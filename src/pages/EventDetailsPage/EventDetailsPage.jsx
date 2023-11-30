@@ -28,12 +28,6 @@ const EventDetailsPage = () => {
             .catch(err => console.log(err))
     }
 
-<<<<<<< HEAD
-=======
-    const [joinEvent, setJoinEvent] = useState({
-        participants: []
-    })
->>>>>>> alvaro
     const handleJoinEvent = (event_id) => {
         eventServices
             .joinEvent(loggedUser._id, event_id)
