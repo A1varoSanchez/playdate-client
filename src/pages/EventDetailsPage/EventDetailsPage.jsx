@@ -20,7 +20,15 @@ const EventDetailsPage = () => {
             .then(({ data }) => setEvent(data))
             .catch(err => console.log(err))
     }
-    console.log("eventitooooooooooooo de maripili", event)
+
+    const handleJoinEvent = (event_id) => {
+        eventServices
+            .joinEvent(loggedUser._id, event_id)
+            .then(({ data }) => {
+                setJoinEvent(data)
+            })
+            .catch(err => console.log(err))
+    }
 
     return (
 
