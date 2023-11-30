@@ -15,7 +15,9 @@ const EventsPage = () => {
     const loadEvents = () => {
         eventServices
             .getEvents()
-            .then(({ data }) => setEvents(data))
+            .then(({ data }) => {
+                setEvents(data)
+            })
             .catch(err => console.log(err))
     }
 
@@ -24,7 +26,7 @@ const EventsPage = () => {
             <Container>
                 <h1>Eventos</h1>
                 <hr />
-                <EventsList events={events} />
+                <EventsList events={events} refreshEvents={loadEvents} />
             </Container>
         </div>
     )

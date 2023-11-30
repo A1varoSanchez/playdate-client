@@ -32,8 +32,12 @@ class EventService {
 
     }
 
-    joinEvent(loggedId, eventId) {
-        return this.api.post("/joinEvent", { loggedId, eventId })
+    joinEvent(eventId) {
+        return this.api.post("/joinEvent", { eventId })
+    }
+
+    deletedJoin(eventId) {
+        return this.api.post('/deleteJoin', { eventId })
     }
 }
 
