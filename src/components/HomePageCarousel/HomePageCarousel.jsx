@@ -13,6 +13,8 @@ import parque from '../../assets/parque.jpg'
 import pintura from '../../assets/pintura.jpg'
 import teatro from '../../assets/teatro.jpg'
 
+import './HomePageCarousel.css'
+
 function HomeCarousel() {
 
     const carouselItemStyle = {
@@ -24,18 +26,20 @@ function HomeCarousel() {
         width: '100%',
         height: '100%',
         objectFit: 'cover',
+        filter: 'brightness(60%)'
     }
 
     const captionStyle = {
-        textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+        textShadow: '2px 2px 4px rgba(0, 0, 0, 0.9)',
 
     }
+
 
     return (
         <Carousel>
             <CarouselItem style={carouselItemStyle}>
                 <img src={parque} alt="outdoors" style={imageStyle} />
-                <CarouselCaption style={captionStyle}>
+                <CarouselCaption style={captionStyle} className='Carousel'>
                     <h1>Amistades para toda la vida</h1>
                     <h6>Forjando lazos duraderos a través del juego y la exploración.</h6>
                 </CarouselCaption>
