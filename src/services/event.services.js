@@ -39,6 +39,10 @@ class EventService {
     deletedJoin(eventId) {
         return this.api.post('/deleteJoin', { eventId })
     }
+
+    searchByType(searchType) {
+        return this.api.get(`/searchType?type=${searchType}`)
+    }
 }
 
 

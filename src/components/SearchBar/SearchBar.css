@@ -1,0 +1,26 @@
+.search-bar {
+    display: flex;
+    align-items: center;
+    width: 500px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    outline: none;
+    background-color: #ff7b4d;
+}
+
+.small-image {
+    max-width: 100px;
+    height: auto;
+}
+
+
+button:hover {
+    background-color: #0056b3;
+}
