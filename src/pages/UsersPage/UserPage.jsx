@@ -9,10 +9,6 @@ const UsersPage = () => {
     const { loggedUser } = useContext(AuthContext)
     const [user, setUser] = useState()
 
-
-    const [petition, setPetition] = useState({
-        friendAdd: [],
-    })
     const [deletedFriend, setdeletedFriend] = useState({
         friends: [],
     })
