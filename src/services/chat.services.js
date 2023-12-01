@@ -23,7 +23,7 @@ class ChatService {
     }
 
     getChat() {
-        return this.api.post('/getChat',)
+        return this.api.get('/getChat',)
     }
 
 }

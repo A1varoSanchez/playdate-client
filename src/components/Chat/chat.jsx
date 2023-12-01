@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react"
-import { AuthContext } from "../../../../contexts/auth.context"
-import chatService from "../../../../services/chat.services"
+
 import { Button, Form } from "react-bootstrap"
+import { AuthContext } from "../../contexts/auth.context"
+import chatService from "../../services/chat.services"
 
 
 const Chat = ({ profile }) => {
@@ -40,6 +41,7 @@ const Chat = ({ profile }) => {
         chatService
             .getChat()
             .then(({ data }) => {
+                console.log(data)
                 setChat(data)
             })
             .catch(err => console.log(err))
@@ -76,4 +78,3 @@ const Chat = ({ profile }) => {
 }
 
 export default Chat
-
