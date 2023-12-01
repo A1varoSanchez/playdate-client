@@ -7,10 +7,6 @@ import userservices from '../../services/user.services'
 const Profile = () => {
 
     const [showModal, setShowModal] = useState(false)
-<<<<<<< HEAD
-=======
-    const { loggedUser } = useContext(AuthContext)
->>>>>>> 432cd36b1f42d4bb4f57f1ecee7e51206758fe4a
 
     const [profile, setProfile] = useState(null)
 
@@ -18,9 +14,11 @@ const Profile = () => {
         friends: [],
     })
 
+
     useEffect(() => {
+        setAddFriend()
         loadUser()
-    }, [profile])
+    }, [])
 
     const loadUser = () => {
         userservices
@@ -48,6 +46,7 @@ const Profile = () => {
             ?
             <h1>Cargando...</h1>
             :
+
             <Container>
                 <Row>
                     <Col md={{ span: 6, offset: 3 }}>
@@ -55,28 +54,17 @@ const Profile = () => {
                         <hr />
                         <p><b>Dirección de email: </b>{profile.email}</p>
                         <p><b>Conoce a mi familia: </b>{profile.aboutUs}</p>
+                        <p>peticiones de amistad</p>
                         <ul>
-                            <p>peticiones de amistad</p>
                             {
-                                profile.friendAdd.lentgh === 0
-                                    ?
-
-                                    <h1>no tienes amigos</h1>
-                                    :
-
-
-                                    profile.friendAdd.map(elm => {
-                                        return (
-
-
-                                            <>
-                                                <p>{elm.username}</p>
-                                                <Button onClick={() => handleFriendSubmit(elm._id)}> ADD FRIEND </Button>
-                                            </>
-
-                                        )
-                                    })
-
+                                profile.friendAdd.map(elm => {
+                                    return (
+                                        <>
+                                            <p>{elm.username}</p>
+                                            <Button onClick={() => handleFriendSubmit(elm._id)}> ADD FRIEND </Button>
+                                        </>
+                                    )
+                                })
                             }
                         </ul>
                         <p><b>Peques: </b> </p>
