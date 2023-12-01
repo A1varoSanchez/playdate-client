@@ -1,13 +1,14 @@
 import { Container, Row, Col, Modal, Button } from 'react-bootstrap'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import AddChildForm from '../../components/AddChildForm/AddChildForm'
 import calculateAge from '../../utils/calculateAge'
 import userservices from '../../services/user.services'
+import { AuthContext } from '../../contexts/auth.context.jsx'
 
 const Profile = () => {
 
     const [showModal, setShowModal] = useState(false)
-    const { SloggedUser } = useContext(AuthContext)
+    const { loggedUser } = useContext(AuthContext)
 
     const [profile, setProfile] = useState(null)
 
