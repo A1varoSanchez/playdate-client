@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom"
 
 const SignupForm = () => {
 
+    const [errors, setErrors] = useState([])
+
     const [signupData, setSignupData] = useState({
         username: '',
         email: '',
@@ -31,7 +33,7 @@ const SignupForm = () => {
         authService
             .signup(signupData)
             .then(() => navigate('/'))
-            .catch(err => console.log(err))
+            .catch(err => { setErrors(err.response.data.errorMessages) })
     }
 
     return (
@@ -65,6 +67,7 @@ const SignupForm = () => {
             </Form.Group>
 
             <div className="d-grid">
+                {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
                 <Button variant="dark" type="submit">Crear usuario</Button>
             </div>
 

@@ -1,20 +1,23 @@
-import { Container, Row, Col, Modal, Button } from 'react-bootstrap'
+import { Container, Row, Col, Modal, Button, Form } from 'react-bootstrap'
 import { useContext, useEffect, useState } from 'react'
 import AddChildForm from '../../components/AddChildForm/AddChildForm'
 import calculateAge from '../../utils/calculateAge'
 import userservices from '../../services/user.services'
 import { AuthContext } from '../../contexts/auth.context.jsx'
+//import chatService from '../../services/chat.services.js'
+import Chat from '../../components/Chat/ChatInit/ChatInit/ChatInit.jsx'
 
 const Profile = () => {
 
     const [showModal, setShowModal] = useState(false)
     const { loggedUser } = useContext(AuthContext)
-
     const [profile, setProfile] = useState(null)
-
     const [addFriend, setAddFriend] = useState({
         friends: [],
     })
+    // const [chatInit, setChatInit] = useState({
+    //     participantTwo: '',
+    // })
 
 
     useEffect(() => {
@@ -41,6 +44,23 @@ const Profile = () => {
             .catch(err => console.log(err))
     }
 
+    // const handleInputChat = e => {
+    //     const { value, name } = e.target
+    //     setChatInit({ ...chatInit, [name]: value })
+    // }
+
+    // const handleChatSubmit = (e, friendId) => {
+    //     e.preventDefault()
+
+    //     chatService
+    //         .chatInit(friendId)
+    //         .then(({ data }) => {
+    //             setChatInit(data)
+    //             //  loadUser()
+    //         })
+    //         .catch(err => console.log(err))
+    // }
+
 
     return (
 
@@ -64,6 +84,7 @@ const Profile = () => {
                                         <>
                                             <p>{elm.username}</p>
                                             <Button onClick={() => handleFriendSubmit(elm._id)}> ADD FRIEND </Button>
+
                                         </>
                                     )
                                 })
@@ -84,11 +105,25 @@ const Profile = () => {
                                 })
                             }
                             <h3>Amigos</h3>
-                            {
+                            {/* {
                                 profile.friends.map(elm => {
-                                    return (<p>{elm.username}</p>)
+                                    return (
+                                        <>
+                                            <p>{elm.username}</p>
+                                    
+
+                                                <Form onSubmit={(e) => handleChatSubmit(e, elm._id)}>
+                                                    <Form.Group className="mb-3" controlId='participantTwo'>
+                                                        <Form.Label>Name</Form.Label>
+                                                        <Button type="submit">Iniciar Chat</Button>
+                                                    </Form.Group>
+                                                </Form>
+                                            
+                                        </>
+                                    )
                                 })
-                            }
+                            } */}
+                            <Chat profile={profile} />
                         </ul>
                         <Button variant="secondary" size="sm" onClick={() => setShowModal(true)}>
                             Añadir hijo/a

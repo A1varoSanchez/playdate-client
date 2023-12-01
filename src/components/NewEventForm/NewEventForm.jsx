@@ -4,12 +4,14 @@ import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../contexts/auth.context'
 import { useNavigate } from 'react-router-dom'
 import { AGE_GROUP, EVENT_TYPE } from './../../consts/event-consts'
+import FormError from '../Error-handling/ErrorHandling'
 
-// TODO: MOVER A CONSTS LAS LISTAS DE OPCIONES
 
 const NewEventForm = () => {
 
     const { loggedUser } = useContext(AuthContext)
+
+    const [errors, setErrors] = useState([])
 
     const [newData, setEventData] = useState({
         name: '',
@@ -41,8 +43,9 @@ const NewEventForm = () => {
         eventServices
             .createEvent(newData)
             .then(() => navigate('/eventos'))
-            .catch(err => console.error(err))
+            .catch(err => { setErrors(err.response.data.errorMessages) })
     }
+
 
     return (
 
@@ -90,8 +93,8 @@ const NewEventForm = () => {
                     </Col>
 
                 </Row>
-
                 <div className="d-grid">
+                    {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
                     <Button variant="dark" type="submit">Crear nuevo evento</Button>
                 </div>
             </Form>
