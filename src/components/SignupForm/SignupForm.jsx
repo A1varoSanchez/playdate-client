@@ -2,6 +2,9 @@ import { useState } from "react"
 import { Form, Button } from "react-bootstrap"
 import authService from "../../services/auth.services"
 import { useNavigate } from "react-router-dom"
+import uploadServices from "../../services/upload.services"
+
+import avatar from "./../../assets/avatar.png"
 
 const SignupForm = () => {
 
@@ -14,9 +17,11 @@ const SignupForm = () => {
             birth: { type: Date }
         }],
         aboutUs: '',
-        photo: '',
+        photo: avatar,
         friends: []
     })
+
+    const [loadingImage, setLoadingImage] = useState(false)
 
     const handleInputChange = e => {
         const { value, name } = e.target
@@ -30,8 +35,27 @@ const SignupForm = () => {
 
         authService
             .signup(signupData)
-            .then(() => navigate('/'))
+            .then(() => navigate('/inicio-sesion'))
             .catch(err => console.log(err))
+    }
+
+    const handleFileUpload = e => {
+
+        setLoadingImage(true)
+
+        const formData = new FormData()
+        formData.append('imageData', e.target.files[0])
+
+        uploadServices
+            .uploadimage(formData)
+            .then(res => {
+                setSignupData({ ...signupData, photo: res.data.cloudinary_url })
+                setLoadingImage(false)
+            })
+            .catch(err => {
+                console.log(err)
+                setLoadingImage(false)
+            })
     }
 
     return (
@@ -53,6 +77,12 @@ const SignupForm = () => {
                 <Form.Control type="password" value={signupData.password} onChange={handleInputChange} name="password" />
             </Form.Group>
 
+            <Form.Group className="mb-3" controlId="photo">
+                <Form.Label>Foto de perfil</Form.Label>
+                <Form.Control type="file" onChange={handleFileUpload} />
+            </Form.Group>
+
+
             <Form.Group className="mb-3" controlId="aboutUs">
                 <Form.Label>Bio</Form.Label>
                 <Form.Control
@@ -65,7 +95,7 @@ const SignupForm = () => {
             </Form.Group>
 
             <div className="d-grid">
-                <Button variant="dark" type="submit">Crear usuario</Button>
+                <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? "Cargando..." : "Crear usuario"}</Button>
             </div>
 
         </Form>

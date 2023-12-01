@@ -43,6 +43,14 @@ class EventService {
     searchByType(searchType) {
         return this.api.get(`/searchType?type=${searchType}`)
     }
+    getMyEvents() {
+        return this.api.get('/getMyEvents')
+    }
+
+    getJoinedEvents() {
+        return this.api.get('/getJoinedEvents')
+    }
+
 }
 
 

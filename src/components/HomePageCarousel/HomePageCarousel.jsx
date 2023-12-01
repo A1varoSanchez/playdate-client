@@ -18,7 +18,7 @@ import './HomePageCarousel.css'
 function HomeCarousel() {
 
     const carouselItemStyle = {
-        height: '91vh',
+        height: '100vh',
         overflow: 'hidden',
     };
 
@@ -36,7 +36,7 @@ function HomeCarousel() {
 
 
     return (
-        <Carousel>
+        <Carousel className='myCarousel'>
             <CarouselItem style={carouselItemStyle}>
                 <img src={parque} alt="outdoors" style={imageStyle} />
                 <CarouselCaption style={captionStyle} className='Carousel'>
