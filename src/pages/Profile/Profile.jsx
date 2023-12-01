@@ -7,10 +7,6 @@ import userservices from '../../services/user.services'
 const Profile = () => {
 
     const [showModal, setShowModal] = useState(false)
-<<<<<<< HEAD
-=======
-    const { loggedUser } = useContext(AuthContext)
->>>>>>> 432cd36b1f42d4bb4f57f1ecee7e51206758fe4a
 
     const [profile, setProfile] = useState(null)
 
