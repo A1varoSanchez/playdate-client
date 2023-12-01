@@ -1,6 +1,8 @@
 import Footer from './components/Footer/Footer'
 import Navigation from './components/Navigation/Navigation'
 
+import "./App.css"
+
 import AppRoutes from './routes/AppRoutes'
 
 

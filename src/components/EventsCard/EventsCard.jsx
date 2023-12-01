@@ -67,8 +67,7 @@ const EventsCard = ({ event, refreshEvents }) => {
                                         )
                                     })
                                 }
-                                {/* <Button onClick={() => handleJoinSubmit(event._id)}> join  </Button>
-                                <Button onClick={() => handleDeleteSubmit(event._id)}> DELETE  </Button> */}
+
                                 {
                                     event.participants.find((participant) => participant._id === loggedUser._id)
 

@@ -39,6 +39,15 @@ class EventService {
     deletedJoin(eventId) {
         return this.api.post('/deleteJoin', { eventId })
     }
+
+    getMyEvents() {
+        return this.api.get('/getMyEvents')
+    }
+
+    getJoinedEvents() {
+        return this.api.get('/getJoinedEvents')
+    }
+
 }
 
 
