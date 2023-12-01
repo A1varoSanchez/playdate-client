@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { AuthContext } from './../../contexts/auth.context'
 import { useContext } from 'react'
 import logo from './../../assets/playdate-logo.png'
+import "./Navigation.css"
 
 const Navigation = () => {
 
@@ -10,7 +11,7 @@ const Navigation = () => {
 
     return (
 
-        <Navbar bg="dark" data-bs-theme="dark" className='mb-5' expand="lg">
+        <Navbar data-bs-theme="dark" expand="lg" style={{ background: 'rgba(0, 0, 0, 0)' }}>
 
             <Navbar.Brand href="/">
                 <img
@@ -24,28 +25,28 @@ const Navigation = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
-                    <Link to={'/'} className='nav-link'>Inicio</Link>
+                    <Link to={'/'} className='nav-link my-navlink'>Inicio</Link>
 
-                    <Link to={'/eventos'} className='nav-link'>Eventos</Link>
-                    <Link to={'/mapa'} className='nav-link'>Mapa</Link>
-                    <Link to={'/crear-evento'} className='nav-link'>Crear evento</Link>
-                    <Link to={'/usuarios'} className='nav-link'>usuarios</Link>
+                    <Link to={'/eventos'} className='nav-link my-navlink'>Eventos</Link>
+                    <Link to={'/mapa'} className='nav-link my-navlink'>Mapa</Link>
+                    <Link to={'/crear-evento'} className='nav-link my-navlink'>Crear evento</Link>
+                    <Link to={'/usuarios'} className='nav-link my-navlink'>usuarios</Link>
                     {
                         loggedUser
                             ?
                             <>
-                                <Link to={`/perfil`} className='nav-link'>Mi perfil</Link>
-                                <span className='nav-link' onClick={logout}>Cerrar sesión</span>
+                                <Link to={`/perfil`} className='nav-link my-navlink'>Mi perfil</Link>
+                                <span className='nav-link my-navlink' onClick={logout}>Cerrar sesión</span>
                             </>
                             :
                             <>
-                                <Link to={'/inicio-sesion'} className='nav-link'>Inicio sesión</Link>
-                                <Link to={'/registro'} className='nav-link'>Registro</Link>
+                                <Link to={'/inicio-sesion'} className='nav-link my-navlink'>Inicio sesión</Link>
+                                <Link to={'/registro'} className='nav-link my-navlink'>Registro</Link>
                             </>
                     }
 
                 </Nav>
-                <Navbar.Text className='justify-content-end'>
+                <Navbar.Text className='justify-content-end my-link'>
                     {loggedUser && <Navbar.Text>Bienvenido {loggedUser.username}</Navbar.Text>}
                 </Navbar.Text>
             </Navbar.Collapse>

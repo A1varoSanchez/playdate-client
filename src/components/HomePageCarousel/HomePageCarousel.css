@@ -1,3 +1,10 @@
 .Carousel {
-    font-family: 'Playpen Sans';
+    font-family: 'Raleway', sans-serif;
+}
+
+.myCarousel {
+    position: absolute !important;
+    top: 0 !important;
+    z-index: -100 !important;
+    width: 100vw;
 }

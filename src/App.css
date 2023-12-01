@@ -1,0 +1,12 @@
+.App {
+    background-image: url("assets/Webpage.png");
+    background-size: cover;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-position-y: bottom;
+    color: black;
+
+    font-family: 'Raleway', sans-serif;
+
+}

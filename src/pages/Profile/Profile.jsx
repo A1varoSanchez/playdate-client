@@ -69,13 +69,19 @@ const Profile = () => {
             <h1>Cargando...</h1>
             :
 
-            <Container>
+            <Container className='mt-5'>
                 <Row>
-                    <Col md={{ span: 6, offset: 3 }}>
-                        <h1>El perfil de {profile.username}</h1>
-                        <hr />
+
+                    <h1>El perfil de {profile.username}</h1>
+                    <hr />
+
+                    <Col md={{ span: 2 }}>
+                        <img src={profile.photo} alt="photo" style={{ width: "100px", height: "auto" }} />
+                    </Col>
+                    <Col>
                         <p><b>Dirección de email: </b>{profile.email}</p>
                         <p><b>Conoce a mi familia: </b>{profile.aboutUs}</p>
+<<<<<<< HEAD
                         <p>peticiones de amistad</p>
                         <ul>
                             {
@@ -90,6 +96,9 @@ const Profile = () => {
                                 })
                             }
                         </ul>
+=======
+
+>>>>>>> 256a22e0a9f834e53d8522f03bd6f778bb29e66e
                         <p><b>Peques: </b> </p>
                         <ul>
                             {
@@ -104,6 +113,7 @@ const Profile = () => {
                                     )
                                 })
                             }
+<<<<<<< HEAD
                             <h3>Amigos</h3>
                             {/* {
                                 profile.friends.map(elm => {
@@ -119,24 +129,45 @@ const Profile = () => {
                                                     </Form.Group>
                                                 </Form>
                                             
+=======
+                            <Button variant="secondary" size="sm" onClick={() => setShowModal(true)}>
+                                Añadir hijo/a
+                            </Button>
+
+                            <Modal show={showModal} onHide={() => setShowModal(false)}>
+                                <Modal.Header closeButton>
+                                    <Modal.Title>Datos del peque</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    <AddChildForm refreshProfile={loadUser} setShowModal={setShowModal} />
+                                </Modal.Body>
+                            </Modal>
+                        </ul>
+
+
+                        <p><b>Amigos:</b></p>
+                        {
+                            profile.friends.map(elm => {
+                                return (<p>{elm.username}</p>)
+                            })
+                        }
+                        <p><b>Peticiones de amistad:</b></p>
+                        <ul>
+                            {
+                                profile.friendAdd.map(elm => {
+                                    return (
+                                        <>
+                                            <p>{elm.username}</p>
+                                            <Button onClick={() => handleFriendSubmit(elm._id)}> Aceptar </Button>
+>>>>>>> 256a22e0a9f834e53d8522f03bd6f778bb29e66e
                                         </>
                                     )
                                 })
                             } */}
                             <Chat profile={profile} />
                         </ul>
-                        <Button variant="secondary" size="sm" onClick={() => setShowModal(true)}>
-                            Añadir hijo/a
-                        </Button>
 
-                        <Modal show={showModal} onHide={() => setShowModal(false)}>
-                            <Modal.Header closeButton>
-                                <Modal.Title>Datos del peque</Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>
-                                <AddChildForm refreshProfile={loadUser} setShowModal={setShowModal} />
-                            </Modal.Body>
-                        </Modal>
+
                     </Col>
                 </Row>
             </Container>

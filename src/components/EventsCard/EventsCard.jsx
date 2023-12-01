@@ -7,8 +7,6 @@ import eventServices from '../../services/event.services.js'
 
 
 const EventsCard = ({ event, refreshEvents }) => {
-    console.log('----------------Event', event)
-    console.log('----------------refresh', refreshEvents)
 
     const { loggedUser } = useContext(AuthContext)
 
@@ -40,10 +38,6 @@ const EventsCard = ({ event, refreshEvents }) => {
             .catch(err => console.log(err))
     }
 
-
-    if (event.type == "Deportes") {
-        console.warn(event)
-    }
     return (
         !event ?
             <h1>casfa</h1>
@@ -67,8 +61,6 @@ const EventsCard = ({ event, refreshEvents }) => {
                                         )
                                     })
                                 }
-                                {/* <Button onClick={() => handleJoinSubmit(event._id)}> join  </Button>
-                                <Button onClick={() => handleDeleteSubmit(event._id)}> DELETE  </Button> */}
                                 {
                                     event.participants.find((participant) => participant._id === loggedUser._id)
 
