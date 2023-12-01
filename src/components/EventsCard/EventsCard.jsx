@@ -57,7 +57,6 @@ const EventsCard = ({ event, refreshEvents }) => {
                             <Card.Title>Tipo de Evento: {event.type}</Card.Title>
                             <Card.Text>Edad recomendada de {event.ageGroup} años</Card.Text>
                             <Link to={`/eventos/${event._id}`} className="btn btn-warning btn-sm">ver detalles</Link>
-                            {/* <h1>{event.participants[0]?.username}</h1> */}
                             {
                                 event.participants.map((elm, i) => {
                                     return (
@@ -67,14 +66,12 @@ const EventsCard = ({ event, refreshEvents }) => {
                                     )
                                 })
                             }
-
-
                             {
                                 event.participants.includes(loggedUser._id)
                                     ?
-                                    <Button onClick={() => handleDeleteSubmit(event._id)}> Delete </Button>
+                                    <span className='btn btn-primary' onClick={() => handleDeleteSubmit()}> Delete </span>
                                     :
-                                    <Button onClick={() => handleJoinSubmit(event._id)}> Join </Button>
+                                    <span className='btn btn-primary' onClick={() => handleJoinSubmit()}> Join </span>
                             }
                         </Card.Body>
                     </Card >
