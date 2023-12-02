@@ -91,22 +91,6 @@ const Profile = () => {
                             })
                         }
                     </ul>
-                    <h3>Amigos</h3>
-                    {
-                        profile.friends.map(elm => {
-                            return (
-                                <>
-                                    <p>{elm.username}</p>
-
-                                    <Chat profile={profile} />
-                                </>
-                            )
-                        })
-                    }
-
-
-
-
                     <Button variant="secondary" size="sm" onClick={() => setShowModal(true)}>
                         Añadir hijo/a
                     </Button>
@@ -119,34 +103,56 @@ const Profile = () => {
                             <AddChildForm refreshProfile={loadUser} setShowModal={setShowModal} />
                         </Modal.Body>
                     </Modal>
+                    {/* <h3>Amigos</h3>
+                    {
+                        profile.friends.map(elm => {
+                            return (
+                                <>
+                                    <p>{elm.username}</p>
+
+                                    <Chat profile={profile} />
+                                </>
+                            )
+                        })
+                    } */}
+
+
+
+
 
 
 
                     <p><b>Amigos:</b></p>
                     {
                         profile.friends.map(elm => {
-                            return (<p>{elm.username}</p>)
+                            return (
+                                <>
+                                    <p>{elm.username}</p>
+                                    <Chat profile={profile} />
+                                </>
+                            )
                         })
                     }
-                    <p><b>Peticiones de amistad:</b></p>
+                    {/* <p><b>Peticiones de amistad:</b></p>
                     <ul>
                         {
                             profile.friendAdd.map(elm => {
                                 return (
                                     <>
                                         <p>{elm.username}</p>
-                                        <Button onClick={() => handleFriendSubmit(elm._id)}> Aceptar </Button>
+                                        <Button onClick={() => handleFriendSubmit(elm._id)}> ADD FRIEND </Button>
+
                                     </>
                                 )
                             })
                         }
                         <Chat profile={profile} />
-                    </ul>
+                    </ul> */}
 
 
 
                 </Row >
-            </Container>
+            </Container >
     )
 }
 

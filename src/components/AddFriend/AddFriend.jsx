@@ -1,45 +1,38 @@
-// import { useContext, useState } from "react"
-// import { AuthContext } from "../../contexts/auth.context"
-// import { useParams } from "react-router-dom"
-// import userservices from "../../services/user.services"
-// import { Button } from "react-bootstrap"
+// import { useState } from 'react';
+// import Button from 'react-bootstrap/Button';
+// import Offcanvas from 'react-bootstrap/Offcanvas';
+
+// function OffCanvasExample({ name, ...props }) {
+//     const [show, setShow] = useState(false);
+
+//     const handleClose = () => setShow(false);
+//     const handleShow = () => setShow(true);
+
+//     return (
+//         <>
+//             <Button variant="primary" onClick={handleShow} className="me-2">
+//                 {name}
+//             </Button>
+//             <Offcanvas show={show} onHide={handleClose} {...props}>
+//                 <Offcanvas.Header closeButton>
+//                     <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+//                 </Offcanvas.Header>
+//                 <Offcanvas.Body>
+//                     Some text as placeholder. Insdcfadcfasdfdccccccfcfssssssssssssssssssssssssssssssssssssssssssssssssssss real life you can have the elements you
+//                     have chosen. Like, text, images, lists, etc.
+//                 </Offcanvas.Body>
+//             </Offcanvas>
+//         </>
+//     );
+// }
 
 
-// // const AddFriendsForm = () => {
-
-// //     const { loggedUser } = useContext(AuthContext)
-// //     const { _id } = useParams()
-
-// //     const [addFriend, setAddFriend] = useState({
-// //         friends: [{}],
-// //     })
-
-
-// //     const handleInputChange = e => {
-// //         const { value, name } = e.currentTarget
-// //         setAddFriend({ ...addFriend, [name]: value })
-// //     }
-
-// //     const handleEventSubmit = e => {
-
-// //         e.preventDefault()
-
-// //         if (loggedUser._id === _id) {
-// //             userservices
-// //                 .addFriend(addFriend)
-// //                 .then(({ data }) => {
-// //                     setAddFriend(data)
-// //                 })
-// //                 .catch(err => console.log(err))
-// //         }
-// //     }
-
-// return (
-
-//     <Button>b</Button>
-
-
-// )
-// //}
-
-// export default AddFriendsForm
+// function Example() {
+//     return (
+//         <>
+//             {['start', 'end', 'top', 'bottom'].map((placement, idx) => (
+//                 <OffCanvasExample key={idx} placement={placement} name={placement} />
+//             ))}
+//         </>
+//     );
+// }
