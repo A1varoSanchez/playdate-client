@@ -5,7 +5,7 @@ import calculateAge from '../../utils/calculateAge'
 import userservices from '../../services/user.services'
 import { AuthContext } from '../../contexts/auth.context.jsx'
 //import chatService from '../../services/chat.services.js'
-import Chat from '../../components/Chat/chat.jsx'
+import Chat from '../../components/Chat/Chat.jsx'
 
 const Profile = () => {
 
@@ -51,7 +51,6 @@ const Profile = () => {
 
             <Container className='mt-5'>
                 <Row>
-
                     <h1>El perfil de {profile.username}</h1>
                     <hr />
 
@@ -103,25 +102,6 @@ const Profile = () => {
                             <AddChildForm refreshProfile={loadUser} setShowModal={setShowModal} />
                         </Modal.Body>
                     </Modal>
-                    {/* <h3>Amigos</h3>
-                    {
-                        profile.friends.map(elm => {
-                            return (
-                                <>
-                                    <p>{elm.username}</p>
-
-                                    <Chat profile={profile} />
-                                </>
-                            )
-                        })
-                    } */}
-
-
-
-
-
-
-
                     <p><b>Amigos:</b></p>
                     {
                         profile.friends.map(elm => {
@@ -133,24 +113,6 @@ const Profile = () => {
                             )
                         })
                     }
-                    {/* <p><b>Peticiones de amistad:</b></p>
-                    <ul>
-                        {
-                            profile.friendAdd.map(elm => {
-                                return (
-                                    <>
-                                        <p>{elm.username}</p>
-                                        <Button onClick={() => handleFriendSubmit(elm._id)}> ADD FRIEND </Button>
-
-                                    </>
-                                )
-                            })
-                        }
-                        <Chat profile={profile} />
-                    </ul> */}
-
-
-
                 </Row >
             </Container >
     )

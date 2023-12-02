@@ -26,10 +26,14 @@ class ChatService {
         return this.api.get('/getChat',)
     }
 
-    sendChat(chat, msn) {
-        console.log('--------------------------------------------------------------------SERVIVICIOCHATMENSAJECONTENIDO', chat, msn)
-        return this.api.post('/send', { chat, msn })
+    sendChat(chatId, msn) {
+        return this.api.post('/send', { chatId, msn })
     }
+
+    // getOneChats(chatId) {
+    //     console.log('----------------------servicio', chatId, 'ggggggggggggggggggggggggggggggggggg')
+    //     return this.api.get('/getOneChat', { chatId })
+    // }
 
 }
 

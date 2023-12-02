@@ -1,0 +1,4 @@
+.custom-toast button.btn-close {
+    display: none;
+    background-color: rgb(27, 69, 69);
+}
