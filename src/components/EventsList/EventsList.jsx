@@ -11,13 +11,11 @@ const EventsList = ({ events, refreshEvents, handleFilteredEvents }) => {
             <h1>Cargando...</h1>
             :
             <>
-                <SearchBar refreshEvents={refreshEvents} handleFilteredEvents={handleFilteredEvents} />
                 <Row>
                     {
-                        events.map(elm => <EventsCard key={elm._id} event={elm} refreshEvents={refreshEvents} />)
+                        events.map(elm => <EventsCard key={elm._id} event={elm} refreshEvents={refreshEvents} handleFilteredEvents={handleFilteredEvents} />)
                     }
                 </Row>
-
             </>
     )
 }
