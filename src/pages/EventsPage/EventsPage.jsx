@@ -11,7 +11,6 @@ const EventsPage = () => {
 
 
     useEffect(() => {
-        console.log(events)
         loadEvents()
     }, [])
 

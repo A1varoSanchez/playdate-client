@@ -40,7 +40,7 @@ const EventsCard = ({ event, refreshEvents }) => {
 
     return (
         !event ?
-            <h1>casfa</h1>
+            <h1>Cargando...</h1>
             :
             <>
                 <Col lg={{ span: 3 }} md={{ span: 6 }}>

@@ -2,7 +2,7 @@ import { Navbar, Nav, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { AuthContext } from './../../contexts/auth.context'
 import { useContext } from 'react'
-import logo from './../../assets/playdate-logo.png'
+import logo from './../../assets/playdate-logo2.png'
 import "./Navigation.css"
 
 const Navigation = () => {
@@ -16,7 +16,7 @@ const Navigation = () => {
             <Navbar.Brand href="/">
                 <img
                     src={logo}
-                    height="30"
+                    height="35"
                     className="d-inline-block align-top"
                     alt="Company Logo"
                     style={{ marginLeft: '15px' }}
