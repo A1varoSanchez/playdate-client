@@ -31,7 +31,6 @@ const SearchBar = ({ refreshEvents, handleFilteredEvents }) => {
     return (
         <div className="search-bar">
             <input type="text" placeholder="Buscar..." value={searchValue} onChange={handleInputChange} />
-            <img src={logo} alt="" className="small-image" />
         </div>
 
     )

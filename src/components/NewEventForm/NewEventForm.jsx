@@ -7,7 +7,7 @@ import { AGE_GROUP, EVENT_TYPE } from './../../consts/event-consts'
 import FormError from '../Error-handling/ErrorHandling'
 
 
-const NewEventForm = () => {
+const NewEventForm = ({ setShowModal, refreshEvents }) => {
 
     const { loggedUser } = useContext(AuthContext)
 
@@ -42,7 +42,11 @@ const NewEventForm = () => {
         e.preventDefault()
         eventServices
             .createEvent(newData)
-            .then(() => navigate('/eventos'))
+            .then(() => {
+                setShowModal(false)
+                refreshEvents()
+                navigate('/eventos')
+            })
             .catch(err => { setErrors(err.response.data.errorMessages) })
     }
 
