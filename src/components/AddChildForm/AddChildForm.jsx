@@ -3,7 +3,7 @@ import userservices from "../../services/user.services"
 import { Button, Form } from "react-bootstrap"
 
 
-const AddChildForm = ({ setShowModal, refreshProfile }) => {
+const AddChildForm = ({ setShowModal, loadUser }) => {
 
     const [childInfo, setChildInfo] = useState({
         children: [{
@@ -26,7 +26,7 @@ const AddChildForm = ({ setShowModal, refreshProfile }) => {
             .then(({ data }) => {
                 setChildInfo(data)
                 setShowModal(false)
-                refreshProfile()
+                loadUser()
             })
             .catch(err => console.log(err))
     }

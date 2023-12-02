@@ -9,7 +9,7 @@ const EventsCard = ({ event }) => {
 
     return (
         !event ?
-            <h1>casfa</h1>
+            <h1>Cargando...</h1>
             :
             <Col className='mb-5' lg={{ span: 3 }} md={{ span: 6 }}>
                 <article className="h-100 d-flex flex-column">
