@@ -64,7 +64,7 @@ const NewEventForm = ({ setShowModal, refreshEvents }) => {
                     <Form.Label>Tipo de Evento</Form.Label>
                     <Form.Select type="text" name="type" value={newData.type} onChange={handleInputChange} className="mb-3" aria-label="Default select example">
                         {
-                            EVENT_TYPE.map(elm => <option value={elm} key={elm}>{elm}</option>)
+                            EVENT_TYPE?.map(elm => <option value={elm} key={elm}>{elm}</option>)
                         }
                     </Form.Select>
                 </Form.Group>
@@ -79,7 +79,7 @@ const NewEventForm = ({ setShowModal, refreshEvents }) => {
                         <Form.Label>Edad Recomendadad</Form.Label>
                         <Form.Select type="text" name="ageGroup" value={newData.ageGroup} onChange={handleInputChange} className="mb-3" aria-label="Default select example">
                             {
-                                AGE_GROUP.map(elm => <option value={elm} key={elm}>{elm}</option>)
+                                AGE_GROUP?.map(elm => <option value={elm} key={elm}>{elm}</option>)
                             }
                         </Form.Select>
                     </Form.Group>
