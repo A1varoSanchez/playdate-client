@@ -1,43 +1,40 @@
 import { useState } from "react"
 import { Form, Button } from "react-bootstrap"
-import authService from "../../services/auth.services"
-import { useNavigate } from "react-router-dom"
+import userServices from "../../services/user.services"
 import uploadServices from "../../services/upload.services"
 
 import avatar from "./../../assets/avatar.png"
 
-const SignupForm = () => {
+const EditProfileForm = (userData) => {
 
     const [errors, setErrors] = useState([])
 
-    const [signupData, setSignupData] = useState({
+    const [profileData, setProfileData] = useState({
         username: '',
         email: '',
-        password: '',
         children: [{
             gender: '',
             birth: { type: Date }
         }],
         aboutUs: '',
-        photo: avatar,
-        friends: []
+        photo: avatar
     })
 
     const [loadingImage, setLoadingImage] = useState(false)
 
     const handleInputChange = e => {
         const { value, name } = e.target
-        setSignupData({ ...signupData, [name]: value })
+        setProfileData({ ...profileData, [name]: value })
     }
-
-    const navigate = useNavigate()
 
     const handleFormSubmit = e => {
         e.preventDefault()
 
-        authService
-            .signup(signupData)
-            .then(() => navigate('/inicio-sesion'))
+        userServices
+            .editUser(userData)
+            .then(({ data }) => {
+                setProfile(data)
+            })
             .catch(err => { setErrors(err.response.data.errorMessages) })
     }
 
@@ -51,7 +48,7 @@ const SignupForm = () => {
         uploadServices
             .uploadimage(formData)
             .then(res => {
-                setSignupData({ ...signupData, photo: res.data.cloudinary_url })
+                setProfileData({ ...profileData, photo: res.data.cloudinary_url })
                 setLoadingImage(false)
             })
             .catch(err => {
@@ -66,17 +63,12 @@ const SignupForm = () => {
 
             <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Email*</Form.Label>
-                <Form.Control type="email" value={signupData.email} onChange={handleInputChange} name="email" />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="password">
-                <Form.Label>Contraseña*</Form.Label>
-                <Form.Control type="password" value={signupData.password} onChange={handleInputChange} name="password" />
+                <Form.Control type="email" value={profileData.email} onChange={handleInputChange} name="email" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="username">
                 <Form.Label>Nombre de usuario*</Form.Label>
-                <Form.Control type="text" value={signupData.username} onChange={handleInputChange} name="username" />
+                <Form.Control type="text" value={profileData.username} onChange={handleInputChange} name="username" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="photo">
@@ -89,7 +81,7 @@ const SignupForm = () => {
                 <Form.Control
                     as="textarea"
                     rows={3}
-                    value={signupData.aboutUs}
+                    value={profileData.aboutUs}
                     onChange={handleInputChange}
                     name="aboutUs"
                     placeholder="Cuéntanos un poco sobre tu familia :)" />
@@ -97,7 +89,7 @@ const SignupForm = () => {
 
             <div className="d-grid">
                 {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
-                <Button variant="dark" type="submit">Crear usuario</Button>
+                <Button variant="dark" type="submit">Editar usuario</Button>
             </div>
 
         </Form>
@@ -105,4 +97,4 @@ const SignupForm = () => {
 }
 
 
-export default SignupForm   
+export default EditProfileForm   

@@ -1,11 +1,9 @@
 import { Card, Col } from 'react-bootstrap'
 import logo from './../../assets/playdate-logo.png'
 import { Link } from 'react-router-dom'
-import { useContext } from 'react'
-import { AuthContext } from '../../contexts/auth.context.jsx'
 
 
-const EventsCard = ({ event }) => {
+const EventsCard = ({ event, refreshEvents }) => {
 
     return (
         !event ?
@@ -19,7 +17,7 @@ const EventsCard = ({ event }) => {
                         <Card.Body className="d-flex flex-column">
                             <Card.Title>{event.name} </Card.Title>
                             <Card.Text>Edad recomendada de {event.ageGroup} años</Card.Text>
-                            <Link to={`/eventos/${event._id}`} className="btn btn-warning btn-sm" >ver detalles</Link>
+                            <Link to={`/eventos/${event._id}`} className="btn btn-warning btn-sm" refreshEvents={refreshEvents}>ver detalles</Link>
                         </Card.Body>
                     </Card >
                 </article>

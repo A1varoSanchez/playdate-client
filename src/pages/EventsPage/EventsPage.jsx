@@ -41,6 +41,7 @@ const EventsPage = () => {
                     </div>
                 </div>
                 <hr />
+
                 <EventsList events={events} refreshEvents={loadEvents} handleFilteredEvents={handleFilteredEvents} />
             </Container>
 

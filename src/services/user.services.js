@@ -19,19 +19,22 @@ class UserService {
     }
 
     findUser() {
-        return this.api.get(`/perfil`,)
+        return this.api.get('/profile',)
+    }
+
+    editUser(userData) {
+        return this.api.post('/editUser', { userData })
     }
 
     addChild(children) {
-        return this.api.post("/addchild", children)
+        return this.api.post('/addChild', children)
     }
 
     getAllUser() {
-        return this.api.get('/getAllUser')
+        return this.api.get('/getAllUsers')
     }
 
     petitionFriend(friendId) {
-        console.log('............................................', { friendId })
         return this.api.post('/petitionFriend', { friendId })
     }
 
