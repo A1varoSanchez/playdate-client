@@ -26,7 +26,7 @@ const MapPage = () => {
 
     return (
         <Wrapper apiKey={"AIzaSyB39i6Kh0SoXQxEFnpM81DFNfY6QWfvfE4"} render={render}>
-            {/* Otros componentes o contenido aquí */}
+            <div ref={mapRef} style={{ width: '100%', height: '400px' }} />
         </Wrapper>
     );
 };
