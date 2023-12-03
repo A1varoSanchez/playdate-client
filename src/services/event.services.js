@@ -36,6 +36,11 @@ class EventService {
         return this.api.post("/joinEvent", { eventId })
     }
 
+    editEvent(eventId, eventInfo) {
+        console.log('-------------------------------->', eventInfo, 'Blablablablalaallalalalla')
+        return this.api.post(`/edit/${eventId}`, eventInfo)
+    }
+
     deletedJoin(eventId) {
         return this.api.post('/deleteJoin', { eventId })
     }

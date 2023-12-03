@@ -9,7 +9,6 @@ import EventsPage from './../pages/EventsPage/EventsPage.jsx'
 import EventDetailsPage from './../pages/EventDetailsPage/EventDetailsPage.jsx'
 import HomePage from './../pages/HomePage/HomePage.jsx'
 import UsersPage from '../pages/UsersPage/UserPage.jsx'
-import MapPage from './../pages/Map/Map.jsx'
 
 const AppRoutes = () => {
 
@@ -23,7 +22,6 @@ const AppRoutes = () => {
 
             <Route path={'/eventos'} element={<EventsPage />} />
             <Route path={'/eventos/:event_id'} element={<EventDetailsPage />} />
-            <Route path={'/mapa'} element={<MapPage />} />
 
             <Route element={<PrivateRoute />}>
                 <Route path={'/usuarios'} element={<UsersPage />} />

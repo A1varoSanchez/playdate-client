@@ -1,22 +1,20 @@
-import { Form, Button, Row, Col } from 'react-bootstrap'
-import eventServices from '../../services/event.services'
-import { useContext, useEffect, useState } from 'react'
-import { AuthContext } from '../../contexts/auth.context'
-import { useNavigate } from 'react-router-dom'
+import { useContext, useState } from "react"
+import { Button, Col, Form, Row } from "react-bootstrap"
+import { AuthContext } from "../../contexts/auth.context"
+import { useNavigate, useParams } from "react-router-dom"
 import { AGE_GROUP, EVENT_TYPE } from './../../consts/event-consts'
-import FormError from '../Error-handling/ErrorHandling'
+import eventServices from "../../services/event.services"
+import FormError from "../Error-handling/ErrorHandling"
 
-
-const NewEventForm = ({ setShowModal, refreshEvents }) => {
-
+const EditEventForm = ({ event, refreshEvents, setShowModal }) => {
     const { loggedUser } = useContext(AuthContext)
 
     const [errors, setErrors] = useState([])
 
     const [newData, setEventData] = useState({
-        name: '',
+        name: event.name,
         type: 'Otros',
-        description: '',
+        description: event.description,
         location: {
             type: {
                 type: String
@@ -25,14 +23,13 @@ const NewEventForm = ({ setShowModal, refreshEvents }) => {
                 type: [Number]
             }
         },
-        ageGroup: 'all',
+        ageGroup: event.description,
 
     })
 
-
     const handleInputChange = e => {
         const { value, name } = e.currentTarget
-        setEventData({ ...newData, [name]: value })
+        setEventData({ ...event, [name]: value })
     }
 
     const navigate = useNavigate()
@@ -41,7 +38,7 @@ const NewEventForm = ({ setShowModal, refreshEvents }) => {
 
         e.preventDefault()
         eventServices
-            .createEvent(newData)
+            .editEvent(event._id, newData)
             .then(() => {
                 setShowModal(false)
                 refreshEvents()
@@ -49,15 +46,12 @@ const NewEventForm = ({ setShowModal, refreshEvents }) => {
             })
             .catch(err => { setErrors(err.response.data.errorMessages) })
     }
-
-
     return (
-
         <div >
             <Form onSubmit={handleEventSubmit}>
                 <Form.Group className="mb-3" controlId='name'>
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" name="name" value={newData.name} onChange={handleInputChange} />
+                    <Form.Control type="text" name="name" value={newData.name} onChange={handleInputChange}></Form.Control>
                 </Form.Group>
 
                 <Form.Group>
@@ -98,13 +92,12 @@ const NewEventForm = ({ setShowModal, refreshEvents }) => {
 
                 </Row>
                 <div className="d-grid">
-                    {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
-                    <Button variant="dark" type="submit">Crear nuevo evento</Button>
+                    {errors.length > 0 && <FormError>{errors.map((elm, i) => <p key={i}>{elm}</p>)}</FormError>}
+                    <Button variant="dark" type="submit">Editar evento</Button>
                 </div>
             </Form>
         </div>
     )
 }
 
-
-export default NewEventForm
+export default EditEventForm
