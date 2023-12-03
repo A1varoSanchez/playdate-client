@@ -2,11 +2,21 @@
     background-image: url("assets/Webpage.png");
     background-size: cover;
     position: absolute;
+    overflow-y: auto;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background-position-y: bottom;
     color: black;
 
     font-family: 'Raleway', sans-serif;
+}
 
+.nav-link {
+    background-color: transparent !important;
+    color: black !important;
+}
+
+.nav-link.active {
+    color: black !important;
+    background-color: rgba(255, 181, 74, 0.5) !important;
 }

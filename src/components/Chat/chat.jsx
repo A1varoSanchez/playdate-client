@@ -12,7 +12,9 @@ const Chat = ({ profile }) => {
         participantTwo: '',
     })
     const [chat, setChat] = useState([])
-    const [loadchat, setLoadchat] = useState(null)
+
+    const [loadMyChat, setLoadChatMyChat] = useState(null)
+
     const [show, setShow] = useState(false)
 
     const [chatInfo, setChatInfo] = useState({
@@ -28,6 +30,7 @@ const Chat = ({ profile }) => {
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
 
+
     const handleInputChat = e => {
         const { value, name } = e.target
         setChatInit({ ...chatInit, [name]: value })
@@ -38,14 +41,18 @@ const Chat = ({ profile }) => {
 
         chatService
             .chatInit(friendId,)
-            .then(({ data }) => { setChatInit(data) })
+            .then(({ data }) => {
+                setChatInit(data)
+            })
             .catch(err => console.log(err))
     }
 
     const loadChat = () => {
         chatService
             .getChat()
-            .then(({ data }) => { setChat(data) })
+            .then(({ data }) => {
+                setChat(data)
+            })
             .catch(err => console.log(err))
     }
 
@@ -76,11 +83,27 @@ const Chat = ({ profile }) => {
                         content: '',
                     },
                 })
+                setLoadChatMyChat()
                 loadChat()
+
             })
             .catch(err => console.log(err))
     }
 
+    const loadChatDetails = (e, chatId) => {
+        e.preventDefault()
+
+        chatService
+            .getOneChats(chatId)
+            .then(({ data }) => {
+                console.log(data)
+                setLoadChatMyChat(data)
+
+
+
+            })
+            .catch(err => console.log(err))
+    }
 
     return (
         <>
@@ -96,14 +119,15 @@ const Chat = ({ profile }) => {
                         <div key={elm._id}>
                             {myChat ? (
                                 <>
-                                    <Button variant="primary" onClick={(e) => { handleShow, loadChatDetails(e, myChat._id) }} className="me-2">iniciar</Button>
+
+                                    <Button variant="primary" onClick={(e) => { handleShow(), loadChatDetails(e, myChat._id) }} className="me-2">iniciar</Button>
                                     <Offcanvas show={show} onHide={handleClose} placement="end" >
                                         <Offcanvas.Header closeButton>
                                             <Offcanvas.Title>{loggedUser.username} y {elm.username}</Offcanvas.Title>
                                         </Offcanvas.Header>
                                         <Offcanvas.Body >
                                             {
-                                                myChat.messages.slice().reverse().map((elm, i) => (
+                                                loadMyChat?.messages.slice().reverse().map((elm, i) => (
                                                     <Toast key={i} className="custom-toast">
                                                         <Toast.Header>
                                                             <strong className="me-auto">{elm.owner}</strong>
@@ -113,8 +137,9 @@ const Chat = ({ profile }) => {
                                                 ))
                                             }
                                         </Offcanvas.Body>
-                                        <Form onSubmit={(e) => handleChatSubmit(e, myChat._id)}>
+                                        <Form onSubmit={(e) => handleChatSubmit(e, loadMyChat._id)}>
                                             <Form.Group className="mb-3" controlId="content">
+                                                <p>{loadMyChat?._id}</p>
                                                 <Form.Control
                                                     as="textarea"
                                                     rows={3}
