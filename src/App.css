@@ -1,7 +1,7 @@
 .App {
     background-image: url("assets/Webpage.png");
     background-size: cover;
-    position: fixed;
+    position: absolute;
     overflow-y: auto;
     width: 100vw;
     min-height: 100vh;

@@ -1,9 +1,9 @@
 import AddChildForm from '../../components/AddChildForm/AddChildForm'
 import calculateAge from '../../utils/calculateAge'
 import { Container, Col, Modal, Button, Row } from 'react-bootstrap'
-import userservices from '../../services/user.services'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import loveheart from '../../assets/lovehearts.png'
+import EditProfileForm from '../EditProfileForm/EditProfileForm'
 
 const ProfileInfoTab1 = ({ profile, loadUser }) => {
 
@@ -73,12 +73,38 @@ const ProfileInfoTab1 = ({ profile, loadUser }) => {
                         </Modal.Body>
                     </Modal>
                 </Col>
+
+                <Col>
+                    <Button
+                        variant="link"
+                        size="sm"
+                        style={{
+                            textDecoration: 'underline',
+                            color: '#60BFB2',
+                            cursor: 'pointer',
+                            border: 'none',
+                            padding: '0',
+                            marginLeft: '5px',
+                        }}
+                        onClick={() => setShowModal(true)}
+                    >
+                        Editar perfil
+                    </Button>
+                    <Modal show={showModal} onHide={() => setShowModal(false)}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Editar perfil</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <EditProfileForm loadUser={loadUser} setShowModal={setShowModal} />
+                        </Modal.Body>
+                    </Modal>
+
+                </Col>
             </Row>
 
         </Container >
     )
-
-
 }
+
 
 export default ProfileInfoTab1

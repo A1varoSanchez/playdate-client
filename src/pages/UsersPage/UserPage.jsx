@@ -42,8 +42,7 @@ const UsersPage = () => {
         userservices
             .petitionFriend(friendId)
             .then(({ data }) => {
-                setPetition(data)
-                loadUser()
+                loadUser(data)
             })
             .catch(err => console.log(err))
     }
