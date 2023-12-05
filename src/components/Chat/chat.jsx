@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import './Chat.css'
+
 import { Button, Form, Offcanvas, Toast } from "react-bootstrap"
 import { AuthContext } from "../../contexts/auth.context"
 import chatService from "../../services/chat.services"
@@ -23,6 +23,7 @@ const Chat = ({ profile }) => {
         }
     })
     useEffect(() => {
+
         loadChat()
 
     }, [])
@@ -83,9 +84,8 @@ const Chat = ({ profile }) => {
                         content: '',
                     },
                 })
-                setLoadChatMyChat()
+                setLoadChatMyChat(data)
                 loadChat()
-
             })
             .catch(err => console.log(err))
     }
@@ -99,11 +99,11 @@ const Chat = ({ profile }) => {
                 console.log(data)
                 setLoadChatMyChat(data)
 
-
-
             })
             .catch(err => console.log(err))
     }
+
+
 
     return (
         <>
@@ -119,11 +119,16 @@ const Chat = ({ profile }) => {
                         <div key={elm._id}>
                             {myChat ? (
                                 <>
-
-                                    <Button variant="primary" onClick={(e) => { handleShow(), loadChatDetails(e, myChat._id) }} className="me-2">iniciar</Button>
+                                    < Button variant="primary" onClick={(e) => { handleShow(), loadChatDetails(e, myChat._id) }} className="me-2">iniciar</Button >
                                     <Offcanvas show={show} onHide={handleClose} placement="end" >
                                         <Offcanvas.Header closeButton>
-                                            <Offcanvas.Title>{loggedUser.username} y {elm.username}</Offcanvas.Title>
+                                            <Offcanvas.Title>
+                                                {loggedUser.username === loadMyChat?.participantTwo.username
+                                                    ? loadMyChat?.participantOne.username :
+                                                    loggedUser.username} y {loggedUser.username === loadMyChat?.participantOne.username
+                                                        ? loadMyChat?.participantTwo.username :
+                                                        loggedUser.username}
+                                            </Offcanvas.Title>
                                         </Offcanvas.Header>
                                         <Offcanvas.Body >
                                             {
@@ -167,6 +172,16 @@ const Chat = ({ profile }) => {
                 })}
         </>
     )
+
 }
 
+
 export default Chat
+
+
+
+
+
+
+
+

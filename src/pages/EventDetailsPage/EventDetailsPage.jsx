@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react"
 import eventServices from "../../services/event.services"
 import { Link, useParams } from "react-router-dom"
-import { Col, Container, Row, Button } from "react-bootstrap"
+import { Col, Container, Row, Button, Modal } from "react-bootstrap"
 import logo from './../../assets/playdate-logo.png'
 import { AuthContext } from "../../contexts/auth.context"
+import EditEventForm from "../../components/EditEventForm/EditEventForm"
 
 const EventDetailsPage = () => {
 
@@ -30,6 +31,8 @@ const EventDetailsPage = () => {
     const [deleteEvent, setDeleteEvent] = useState({
         participants: [],
     })
+
+    const [showModal, setShowModal] = useState(false)
 
     const handleJoinSubmit = () => {
         eventServices
@@ -67,13 +70,22 @@ const EventDetailsPage = () => {
                         <h4><strong>Tipo de evento: </strong> {event.type}</h4>
                         <h4><strong>Edad recomendada: </strong> {event.ageGroup} años</h4>
                         <h4><strong>Plan: </strong> {event.description}</h4>
+                        <Button variant='warning' onClick={() => setShowModal(true)}> Editar Tu Propio Evento</Button>
+                        <Modal show={showModal} onHide={() => setShowModal(false)}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>Editar Evento</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <EditEventForm event={event} setShowModal={setShowModal} refreshEvents={loadEventDetails} />
+                            </Modal.Body>
+                        </Modal>
                         {
                             event.participants?.find((participant) => participant._id === loggedUser._id)
 
                                 ?
-                                <span className='btn btn-primary' onClick={() => handleDeleteSubmit()}> Delete </span>
+                                <span className='btn btn-primary' onClick={() => handleDeleteSubmit()}> Abandonar evento </span>
                                 :
-                                <span className='btn btn-primary' onClick={() => handleJoinSubmit()}> Join </span>
+                                <span className='btn btn-primary' onClick={() => handleJoinSubmit()}> Apuntarme al evento </span>
                         }
                         <hr />
                         <Link to="/eventos" className="btn btn-dark">Volver a los eventos</Link>
