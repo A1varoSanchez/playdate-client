@@ -22,12 +22,16 @@ class UserService {
         return this.api.get('/profile',)
     }
 
-    editUser(userData) {
-        return this.api.post('/editUser', { userData })
+    editProfile(profileData) {
+        return this.api.post('/editProfile', profileData)
     }
 
     addChild(children) {
         return this.api.post('/addChild', children)
+    }
+
+    removeChild(child) {
+        return this.api.post('/removeChild', child)
     }
 
     getAllUser() {

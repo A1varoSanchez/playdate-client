@@ -1,7 +1,10 @@
 import { Container, Row, Col, Tabs, Tab } from 'react-bootstrap'
+
 import { useContext, useEffect, useState } from 'react'
-import userservices from '../../services/user.services'
 import { AuthContext } from '../../contexts/auth.context.jsx'
+
+import userservices from '../../services/user.services'
+
 import ProfileInfoTab1 from '../../components/ProfileInfoTab1/ProfileInfoTab1'
 import ProfileEventsTab2 from '../../components/ProfileEventsTab2/ProfileEventsTab2'
 import ProfileEventsTab3 from '../../components/ProfileEventsTab3/ProfileEventsTab3'

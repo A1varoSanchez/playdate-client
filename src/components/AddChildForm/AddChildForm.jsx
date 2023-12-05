@@ -3,7 +3,7 @@ import userservices from "../../services/user.services"
 import { Button, Form } from "react-bootstrap"
 
 
-const AddChildForm = ({ setShowModal, loadUser }) => {
+const AddChildForm = ({ setShowModal1, loadUser }) => {
 
     const [childInfo, setChildInfo] = useState({
         children: [{
@@ -25,7 +25,7 @@ const AddChildForm = ({ setShowModal, loadUser }) => {
             .addChild(childInfo)
             .then(({ data }) => {
                 setChildInfo(data)
-                setShowModal(false)
+                setShowModal1(false)
                 loadUser()
             })
             .catch(err => console.log(err))
