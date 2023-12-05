@@ -3,7 +3,7 @@ import logo from './../../assets/playdate-logo.png'
 import { Link } from 'react-router-dom'
 
 
-const EventsCard = ({ event, refreshEvents }) => {
+const EventsCard = ({ event }) => {
 
     return (
         !event ?
@@ -16,7 +16,7 @@ const EventsCard = ({ event, refreshEvents }) => {
                         <Card.Img variant="top" src={logo} />
                         <Card.Body className="d-flex flex-column">
                             <Card.Title>{event.name} </Card.Title>
-                            <Card.Text>Edad recomendada de {event.ageGroup} años</Card.Text>
+                            <Card.Text>Edad recomendada: {event.ageGroup}</Card.Text>
                             <Link to={`/eventos/${event._id}`} className="btn btn-warning btn-sm" >ver detalles</Link>
                         </Card.Body>
                     </Card >

@@ -7,7 +7,8 @@ import EditProfileForm from '../EditProfileForm/EditProfileForm'
 
 const ProfileInfoTab1 = ({ profile, loadUser }) => {
 
-    const [showModal, setShowModal] = useState(false)
+    const [showModal1, setShowModal1] = useState(false)
+    const [showModal2, setShowModal2] = useState(false)
 
 
     return (
@@ -58,23 +59,23 @@ const ProfileInfoTab1 = ({ profile, loadUser }) => {
                             padding: '0',
                             marginLeft: '5px',
                         }}
-                        onClick={() => setShowModal(true)}
+                        onClick={() => setShowModal1(true)}
                     >
                         Añadir hijo/a
                     </Button>
 
 
-                    <Modal show={showModal} onHide={() => setShowModal(false)}>
+                    <Modal show={showModal1} onHide={() => setShowModal1(false)}>
                         <Modal.Header closeButton>
                             <Modal.Title>Datos del peque</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <AddChildForm loadUser={loadUser} setShowModal={setShowModal} />
+                            <AddChildForm loadUser={loadUser} setShowModal1={setShowModal1} />
                         </Modal.Body>
                     </Modal>
                 </Col>
 
-                <Col>
+                <Col className='text-end'>
                     <Button
                         variant="link"
                         size="sm"
@@ -86,16 +87,16 @@ const ProfileInfoTab1 = ({ profile, loadUser }) => {
                             padding: '0',
                             marginLeft: '5px',
                         }}
-                        onClick={() => setShowModal(true)}
+                        onClick={() => setShowModal2(true)}
                     >
                         Editar perfil
                     </Button>
-                    <Modal show={showModal} onHide={() => setShowModal(false)}>
+                    <Modal show={showModal2} onHide={() => setShowModal2(false)}>
                         <Modal.Header closeButton>
                             <Modal.Title>Editar perfil</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <EditProfileForm loadUser={loadUser} setShowModal={setShowModal} />
+                            <EditProfileForm profile={profile} loadUser={loadUser} setShowModal2={setShowModal2} />
                         </Modal.Body>
                     </Modal>
 
