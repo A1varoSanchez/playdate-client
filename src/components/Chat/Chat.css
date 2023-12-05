@@ -1,0 +1,14 @@
+.offcanvas {
+    left: unset !important;
+    right: 0 !important;
+    background-color: rgba(0, 0, 0, 0.1) !important;
+
+}
+
+.offcanvas-backdrop {
+    background-color: transparent !important;
+}
+
+.custom-toast .btn-close {
+    display: none
+}

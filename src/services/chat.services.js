@@ -27,11 +27,11 @@ class ChatService {
     }
 
     sendChat(chatId, msn) {
+        console.log('----------------------servicio', chatId, msn, 'ggggggggggggggggggggggggggggggggggg')
         return this.api.post('/send', { chatId, msn })
     }
 
     getOneChats(chatId) {
-        console.log('----------------------servicio', chatId, 'ggggggggggggggggggggggggggggggggggg')
         return this.api.get(`/getOneChat/${chatId}`,)
     }
 

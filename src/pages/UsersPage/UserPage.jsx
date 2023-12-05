@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react'
-import { Button, Container, Form } from 'react-bootstrap'
+import { Button, Container, Form, Col, Card, Row } from 'react-bootstrap'
 import userservices from '../../services/user.services'
 import { AuthContext } from '../../contexts/auth.context'
-
+import './UserPage.css'
 
 const UsersPage = () => {
 
@@ -49,28 +49,38 @@ const UsersPage = () => {
     return (
 
         !user ?
-            <h1>holaaaa</h1>
+            <h1>Cargando...</h1>
             :
 
             <Container>
                 <h1>usuarios</h1>
                 <hr />
-                {
-                    user.map((elm, i) => {
-                        return (
-                            <div key={elm._id}>
-                                <p>{elm.username}</p>
-                                {
-                                    elm.friends.includes(loggedUser._id)
-                                        ?
-                                        <Button onClick={() => handledeleteSubmit(elm._id)}> DELETE FRIEND </Button>
-                                        :
-                                        <Button onClick={() => handlePetitionSubmit(elm._id)}> ADD FRIEND </Button>
-                                }
-                            </div>
-                        )
-                    })
-                }
+                <Row >
+                    {user.map((elm) => (
+                        <Col key={elm._id}>
+                            <Card style={{ width: '14rem', backgroundColor: 'rgba(255, 255, 255, 0.3)', marginBottom: '10px', minHeight: '300px' }}>
+                                <Card.Img variant="top" src={elm.photo} />
+                                <Card.Body>
+                                    <Card.Title>{elm.username}</Card.Title>
+                                    <p>{elm.aboutUs}</p>
+                                    {elm.friends.includes(loggedUser._id) ? (
+                                        <Button
+                                            onClick={() => handledeleteSubmit(elm._id)}
+                                            className="button-deleted"
+                                        >Borrar amigo</Button>
+                                    ) : elm.friendAdd.includes(loggedUser._id) ? (
+                                        <div></div>
+                                    ) : (
+                                        <Button
+                                            onClick={() => handlePetitionSubmit(elm._id)}
+                                            className="boton-add"
+                                        > ADD FRIEND </Button>
+                                    )}
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    ))}
+                </Row>
             </Container>
     )
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { APIProvider, Map, Marker, useMarkerRef } from '@vis.gl/react-google-maps'
 import { useNavigate } from 'react-router-dom'
 import eventServices from '../../services/event.services'
