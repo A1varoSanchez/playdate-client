@@ -58,7 +58,8 @@ class EventService {
     }
 
     sendComments(eventId, msn) {
-        return this.api.post(`/sendComments/`, { eventId, msn })
+        console.log('------------------------------>ServiciosFront', eventId, msn)
+        return this.api.post(`/sendComments`, { eventId, msn })
     }
 
 }
