@@ -44,9 +44,7 @@ const ProfileFriendsTab4 = ({ profile, loadUser }) => {
 
     return (
 
-
-
-        <Container className='mt-5'>
+        <Container >
 
             {profile.friendAdd.length === 0 ? (
                 <div></div>

@@ -209,13 +209,15 @@ const EventDetailsPage = () => {
                     </Col>
                     <Col md={{ span: 4 }}>
                         <img src={logo} style={{ width: '100%' }} />
+
                         <div className="particpants mt-5">
+
                             <h2>Participantes:</h2>
                             {
                                 event.participants?.map((elm, i) => {
                                     return (
                                         <div key={i}>
-                                            <p >{elm.username}</p>
+                                            <Link to={`/perfil/${elm._id}`} >{elm.username}</Link>
                                         </div>
                                     )
                                 })
