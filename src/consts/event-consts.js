@@ -17,5 +17,5 @@ export const AGE_GROUP = [
     '5-8',
     '8-11',
     '10-13',
-    'all'
+    'todas las edades'
 ]

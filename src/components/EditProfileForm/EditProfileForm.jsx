@@ -1,41 +1,42 @@
 import { useState } from "react"
-import { Form, Button } from "react-bootstrap"
+import { Form, Button, Col, Row } from "react-bootstrap"
 import userServices from "../../services/user.services"
 import uploadServices from "../../services/upload.services"
 
 import avatar from "./../../assets/avatar.png"
 
-const EditProfileForm = (userData) => {
+const EditProfileForm = ({ profile, child, setShowModal2, loadUser }) => {
 
-    const [errors, setErrors] = useState([])
+    // const [errors, setErrors] = useState([])
 
-    const [profileData, setProfileData] = useState({
-        username: '',
-        email: '',
-        children: [{
-            gender: '',
-            birth: { type: Date }
-        }],
-        aboutUs: '',
-        photo: avatar
+    const [user, setUser] = useState({
+        username: profile.username,
+        email: profile.email,
+        children: profile.children || [{ gender: '', birth: { type: Date } }],
+        aboutUs: profile.aboutUs,
+        photo: profile.photo || avatar
     })
 
     const [loadingImage, setLoadingImage] = useState(false)
 
     const handleInputChange = e => {
         const { value, name } = e.target
-        setProfileData({ ...profileData, [name]: value })
+        setUser({ ...user, [name]: value })
     }
 
     const handleFormSubmit = e => {
         e.preventDefault()
 
+        console.log("Sending data to the backend:", profile);
+
         userServices
-            .editUser(userData)
+            .editProfile(user)
             .then(({ data }) => {
-                setProfile(data)
+                setUser(data)
+                setShowModal2()
+                loadUser()
             })
-            .catch(err => { setErrors(err.response.data.errorMessages) })
+        // .catch(err => { setErrors(err.response.data.errorMessages) })
     }
 
     const handleFileUpload = e => {
@@ -48,7 +49,7 @@ const EditProfileForm = (userData) => {
         uploadServices
             .uploadimage(formData)
             .then(res => {
-                setProfileData({ ...profileData, photo: res.data.cloudinary_url })
+                setUser({ ...user, photo: res.data.cloudinary_url })
                 setLoadingImage(false)
             })
             .catch(err => {
@@ -56,6 +57,18 @@ const EditProfileForm = (userData) => {
                 setLoadingImage(false)
             })
     }
+    const handleDeleteChild = (childId) => {
+        userServices
+            .deleteChild({
+                ...user,
+                children: user.children.filter((child) => child.id !== childId)
+            })
+            .then(() => {
+                loadUser()
+            })
+            .catch((err) => console.log(err))
+    }
+
 
     return (
 
@@ -63,12 +76,27 @@ const EditProfileForm = (userData) => {
 
             <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Email*</Form.Label>
-                <Form.Control type="email" value={profileData.email} onChange={handleInputChange} name="email" />
+                <Form.Control type="email" value={user.email} onChange={handleInputChange} name="email" />
+
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="username">
                 <Form.Label>Nombre de usuario*</Form.Label>
-                <Form.Control type="text" value={profileData.username} onChange={handleInputChange} name="username" />
+                <Form.Control type="text" value={user.username} onChange={handleInputChange} name="username" />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="children">
+                <Form.Label>Hijos</Form.Label>
+                <Row>
+                    {user.children.map((child) => (
+                        <Col key={child.id}>
+                            <p>{child.gender}</p>
+                            <Button variant="danger" onClick={() => handleDeleteChild(child.id)}>
+                                Eliminar
+                            </Button>
+                        </Col>
+                    ))}
+                </Row>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="photo">
@@ -81,14 +109,14 @@ const EditProfileForm = (userData) => {
                 <Form.Control
                     as="textarea"
                     rows={3}
-                    value={profileData.aboutUs}
+                    value={user.aboutUs}
                     onChange={handleInputChange}
                     name="aboutUs"
                     placeholder="Cuéntanos un poco sobre tu familia :)" />
             </Form.Group>
 
             <div className="d-grid">
-                {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
+                {/* {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>} */}
                 <Button variant="dark" type="submit">Editar usuario</Button>
             </div>
 
@@ -97,4 +125,4 @@ const EditProfileForm = (userData) => {
 }
 
 
-export default EditProfileForm   
+export default EditProfileForm
