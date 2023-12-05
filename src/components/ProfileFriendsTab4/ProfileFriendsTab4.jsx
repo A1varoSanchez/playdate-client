@@ -43,11 +43,8 @@ const ProfileFriendsTab4 = ({ profile, loadUser }) => {
 
 
     return (
-<<<<<<< HEAD
 
-
-
-        <Container className='mt-5'>
+        <Container >
 
             {profile.friendAdd.length === 0 ? (
                 <div></div>
@@ -75,12 +72,6 @@ const ProfileFriendsTab4 = ({ profile, loadUser }) => {
             <p><b>Amigos:</b></p>
             <Container>
                 <Row>
-=======
-        <Container className='mt-5'>
-            <Row>
-                <p>peticiones de amistad</p>
-                <ul>
->>>>>>> bddfa609998ce7eeee3ab899eb9f21e040239dee
                     {
                         profile.friends.map(elm => {
                             return (
@@ -105,22 +96,6 @@ const ProfileFriendsTab4 = ({ profile, loadUser }) => {
                 </Row >
             </Container >
 
-<<<<<<< HEAD
-
-=======
-                <p><b>Amigos:</b></p>
-                {
-                    profile.friends.map(elm => {
-                        return (
-                            <>
-                                <p>{elm.username}</p>
-                                <Chat profile={profile} />
-                            </>
-                        )
-                    })
-                }
-            </Row >
->>>>>>> bddfa609998ce7eeee3ab899eb9f21e040239dee
         </Container >
     )
 }

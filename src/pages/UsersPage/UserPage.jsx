@@ -74,7 +74,7 @@ const UsersPage = () => {
                                         <Button
                                             onClick={() => handlePetitionSubmit(elm._id)}
                                             className="boton-add"
-                                        > ADD FRIEND </Button>
+                                        > Agregar amigo </Button>
                                     )}
                                 </Card.Body>
                             </Card>

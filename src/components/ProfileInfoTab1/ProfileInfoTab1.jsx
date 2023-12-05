@@ -1,14 +1,16 @@
-import AddChildForm from '../../components/AddChildForm/AddChildForm'
+import AddChildForm from '../AddChildForm/AddChildForm'
 import calculateAge from '../../utils/calculateAge'
 import { Container, Col, Modal, Button, Row } from 'react-bootstrap'
 import { useState } from 'react'
 import loveheart from '../../assets/lovehearts.png'
 import EditProfileForm from '../EditProfileForm/EditProfileForm'
+import EditChildForm from '../EditChildForm/EditChildForm'
 
 const ProfileInfoTab1 = ({ profile, loadUser }) => {
 
     const [showModal1, setShowModal1] = useState(false)
     const [showModal2, setShowModal2] = useState(false)
+    const [showModal3, setShowModal3] = useState(false)
 
 
     return (
@@ -28,10 +30,6 @@ const ProfileInfoTab1 = ({ profile, loadUser }) => {
                 </Col>
                 <Col>
                     <p>
-                        <b>Dirección de email: </b>
-                        {profile.email}
-                    </p>
-                    <p>
                         <b>Conoce a mi familia: </b>
                         {profile.aboutUs}
                     </p>
@@ -47,25 +45,27 @@ const ProfileInfoTab1 = ({ profile, loadUser }) => {
                             </li>
                         ))}
                     </ul>
+                    {
+                        <Button
+                            variant="link"
+                            size="sm"
+                            style={{
+                                textDecoration: 'underline',
+                                color: '#FF7B4D',
+                                cursor: 'pointer',
+                                border: 'none',
+                                padding: '0',
+                                marginLeft: '5px',
+                            }}
+                            onClick={() => setShowModal1(true)}
+                        >
+                            Añadir hijo/a
+                        </Button>
 
-                    <Button
-                        variant="link"
-                        size="sm"
-                        style={{
-                            textDecoration: 'underline',
-                            color: '#60BFB2',
-                            cursor: 'pointer',
-                            border: 'none',
-                            padding: '0',
-                            marginLeft: '5px',
-                        }}
-                        onClick={() => setShowModal1(true)}
-                    >
-                        Añadir hijo/a
-                    </Button>
+                    }
 
 
-                    <Modal show={showModal1} onHide={() => setShowModal1(false)}>
+                    <Modal show={showModal1} onHide={() => setShowModal1(false)} size="sm" className='my-modal'>
                         <Modal.Header closeButton>
                             <Modal.Title>Datos del peque</Modal.Title>
                         </Modal.Header>
@@ -91,6 +91,8 @@ const ProfileInfoTab1 = ({ profile, loadUser }) => {
                     >
                         Editar perfil
                     </Button>
+
+
                     <Modal show={showModal2} onHide={() => setShowModal2(false)}>
                         <Modal.Header closeButton>
                             <Modal.Title>Editar perfil</Modal.Title>
@@ -101,6 +103,37 @@ const ProfileInfoTab1 = ({ profile, loadUser }) => {
                     </Modal>
 
                 </Col>
+
+                <Col className='text-end'>
+                    <Button
+                        variant="link"
+                        size="sm"
+                        style={{
+                            textDecoration: 'underline',
+                            color: '#60BFB2',
+                            cursor: 'pointer',
+                            border: 'none',
+                            padding: '0',
+                            marginLeft: '5px',
+                        }}
+                        onClick={() => setShowModal3(true)}
+                    >
+                        Editar hijos/as
+                    </Button>
+
+
+                    <Modal show={showModal3} onHide={() => setShowModal3(false)}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Editar hijos/as</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <EditChildForm profile={profile} loadUser={loadUser} setShowModal3={setShowModal3} />
+                        </Modal.Body>
+                    </Modal>
+
+                </Col>
+
+
             </Row>
 
         </Container >
