@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import eventServices from '../../services/event.services'
 import './SearchBar.css'
-import logo from './../../assets/playdate-logo.png'
 
 const SearchBar = ({ refreshEvents, handleFilteredEvents }) => {
     const [searchValue, setSearchValue] = useState('')
@@ -16,7 +15,7 @@ const SearchBar = ({ refreshEvents, handleFilteredEvents }) => {
             refreshEvents()
         } else {
             eventServices
-                .searchByType(value)
+                .searchByType(searchQuery)
                 .then(response => {
                     if (response && response.data) {
                         handleFilteredEvents(response.data)

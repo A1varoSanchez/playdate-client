@@ -17,7 +17,7 @@ const EventsCard = ({ event, refreshEvents }) => {
                         <Card.Body className="d-flex flex-column">
                             <Card.Title>{event.name} </Card.Title>
                             <Card.Text>Edad recomendada de {event.ageGroup} años</Card.Text>
-                            <Link to={`/eventos/${event._id}`} className="btn btn-warning btn-sm" refreshEvents={refreshEvents}>ver detalles</Link>
+                            <Link to={`/eventos/${event._id}`} className="btn btn-warning btn-sm" >ver detalles</Link>
                         </Card.Body>
                     </Card >
                 </article>

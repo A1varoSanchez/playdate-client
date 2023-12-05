@@ -16,8 +16,13 @@ const MapMarker = () => {
     }
 
     const mapStyle = {
-        height: '400px',
-        width: '100%',
+        height: '500px',
+        width: '80%',
+    }
+    const mapContainerStyle = {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 
     const loadEvents = () => {
@@ -31,21 +36,24 @@ const MapMarker = () => {
     }
 
     return (
-        <APIProvider apiKey={'AIzaSyB39i6Kh0SoXQxEFnpM81DFNfY6QWfvfE4'}>
-            <Map zoom={12} center={{ lat: 40.4169177926384, lng: -3.7036169094295338 }} style={mapStyle}>
-                {events.map((event) => (
-                    <Marker
-                        key={event._id}
-                        id={event._id}
-                        position={{
-                            lat: event.location.coordinates[1],
-                            lng: event.location.coordinates[0],
-                        }}
-                        onClick={() => handleMarkerClick(event._id)}
-                    />
-                ))}
-            </Map>
-        </APIProvider>
+        <div style={mapContainerStyle}>
+            <APIProvider apiKey={'AIzaSyB39i6Kh0SoXQxEFnpM81DFNfY6QWfvfE4'}>
+                <Map zoom={12} center={{ lat: 40.4169177926384, lng: -3.7036169094295338 }} style={mapStyle}>
+                    {events.map((event) => (
+                        <Marker
+                            key={event._id}
+                            id={event._id}
+                            position={{
+                                lat: event.location.coordinates[1],
+                                lng: event.location.coordinates[0],
+                            }}
+
+                            onClick={() => handleMarkerClick(event._id)}
+                        />
+                    ))}
+                </Map>
+            </APIProvider>
+        </div>
     )
 }
 

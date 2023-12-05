@@ -2,10 +2,7 @@ import ProfileAttendingEvents from "../ProfileAttendingEvents/ProfileAttendingEv
 
 const ProfileEventsTab3 = () => {
 
-
     return (
-
-
         <ProfileAttendingEvents />
     )
 

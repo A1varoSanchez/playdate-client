@@ -16,7 +16,6 @@ class EventService {
 
             return config
         })
-
     }
 
     getEvents() {
@@ -29,7 +28,6 @@ class EventService {
 
     createEvent(eventData) {
         return this.api.post("/create", eventData)
-
     }
 
     joinEvent(eventId) {
@@ -37,8 +35,11 @@ class EventService {
     }
 
     editEvent(eventId, eventInfo) {
-        console.log('-------------------------------->', eventInfo, 'Blablablablalaallalalalla')
         return this.api.post(`/edit/${eventId}`, eventInfo)
+    }
+
+    deleteEvent(event_id) {
+        return this.api.post(`/delete/${event_id}`)
     }
 
     deletedJoin(eventId) {
@@ -54,6 +55,10 @@ class EventService {
 
     getJoinedEvents() {
         return this.api.get('/getJoinedEvents')
+    }
+
+    sendComments(eventId, msn) {
+        return this.api.post(`/sendComments/`, { eventId, msn })
     }
 
 }

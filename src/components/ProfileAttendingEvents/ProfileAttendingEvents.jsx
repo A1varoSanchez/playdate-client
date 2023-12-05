@@ -22,7 +22,6 @@ const ProfileAttendingEvents = () => {
     }
 
     return (
-
         !events
             ?
             <h1>Cargando...</h1>
@@ -32,7 +31,6 @@ const ProfileAttendingEvents = () => {
                     events.map(event => <EventsCard event={event} />)
                 }
             </Row>
-
     )
 }
 

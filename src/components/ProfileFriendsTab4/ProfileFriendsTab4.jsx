@@ -4,7 +4,6 @@ import Chat from "../Chat/chat"
 import userservices from "../../services/user.services"
 
 
-
 const ProfileFriendsTab4 = ({ profile, loadUser }) => {
 
     const [addFriend, setAddFriend] = useState({
@@ -37,11 +36,8 @@ const ProfileFriendsTab4 = ({ profile, loadUser }) => {
 
 
     return (
-
         <Container className='mt-5'>
             <Row>
-
-
                 <p>peticiones de amistad</p>
                 <ul>
                     {
@@ -57,7 +53,6 @@ const ProfileFriendsTab4 = ({ profile, loadUser }) => {
                     }
                 </ul>
 
-
                 <p><b>Amigos:</b></p>
                 {
                     profile.friends.map(elm => {
@@ -69,10 +64,8 @@ const ProfileFriendsTab4 = ({ profile, loadUser }) => {
                         )
                     })
                 }
-
             </Row >
         </Container >
-
     )
 }
 
