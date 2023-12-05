@@ -7,6 +7,8 @@ import { AuthContext } from "../../contexts/auth.context"
 
 const LoginForm = () => {
 
+    const [errors, setErrors] = useState([])
+
     const [loginData, setLoginData] = useState({
         email: '',
         password: ''
@@ -33,7 +35,7 @@ const LoginForm = () => {
                 navigate('/')
 
             })
-            .catch(err => console.log(err))
+            .catch(err => { setErrors(err.response.data.errorMessages) })
     }
 
     return (
@@ -48,6 +50,7 @@ const LoginForm = () => {
                 <Form.Control type="password" value={loginData.password} onChange={handleInputChange} name="password" />
             </Form.Group>
             <div className="d-grid">
+                {errors?.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
                 <Button variant="dark" type="submit">Acceder</Button>
             </div>
         </Form>
