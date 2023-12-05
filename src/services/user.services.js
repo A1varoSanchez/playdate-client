@@ -22,6 +22,10 @@ class UserService {
         return this.api.get('/profile',)
     }
 
+    findUserById(userId) {
+        return this.api.get(`/profile/${userId}`,)
+    }
+
     editProfile(profileData) {
         return this.api.post('/editProfile', profileData)
     }
@@ -31,7 +35,7 @@ class UserService {
     }
 
     removeChild(child) {
-        return this.api.post('/removeChild', child)
+        return this.api.put('/deleteChild', { child })
     }
 
     getAllUser() {

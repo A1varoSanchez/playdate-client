@@ -44,8 +44,11 @@ const ProfileFriendsTab4 = ({ profile, loadUser }) => {
 
     return (
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 8c8ac5f3f8a9cd03c5f5b594e25bfb9196114953
         <Container >
 
             {profile.friendAdd.length === 0 ? (

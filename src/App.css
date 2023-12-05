@@ -20,3 +20,23 @@
     color: black !important;
     background-color: rgba(255, 181, 74, 0.5) !important;
 }
+
+.modal-content {
+    background-color: #FFE1CC !important;
+}
+
+.modal-content input {
+    border: 1px solid #FF7B4D !important;
+}
+
+.modal-title {
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+
+}
+
+.my-modal-button {
+    background-color: #60BFB2 !important;
+    color: white;
+}

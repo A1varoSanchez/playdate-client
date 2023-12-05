@@ -3,12 +3,12 @@ import { Container, Row, Col, Tabs, Tab } from 'react-bootstrap'
 import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../contexts/auth.context.jsx'
 
-import userservices from '../../services/user.services'
+import userservices from '../../services/user.services.js'
 
-import ProfileInfoTab1 from '../../components/ProfileInfoTab1/ProfileInfoTab1'
-import ProfileEventsTab2 from '../../components/ProfileEventsTab2/ProfileEventsTab2'
-import ProfileEventsTab3 from '../../components/ProfileEventsTab3/ProfileEventsTab3'
-import ProfileFriendsTab4 from '../../components/ProfileFriendsTab4/ProfileFriendsTab4.jsx'
+import ProfileInfoTab1 from '../ProfileInfoTab1/ProfileInfoTab1.jsx'
+import ProfileEventsTab2 from '../ProfileEventsTab2/ProfileEventsTab2.jsx'
+import ProfileEventsTab3 from '../ProfileEventsTab3/ProfileEventsTab3.jsx'
+import ProfileFriendsTab4 from '../ProfileFriendsTab4/ProfileFriendsTab4.jsx'
 
 const Profile = () => {
 

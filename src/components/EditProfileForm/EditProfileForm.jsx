@@ -5,7 +5,7 @@ import uploadServices from "../../services/upload.services"
 
 import avatar from "./../../assets/avatar.png"
 
-const EditProfileForm = ({ profile, child, setShowModal2, loadUser }) => {
+const EditProfileForm = ({ profile, loadUser, setShowModal2 }) => {
 
     // const [errors, setErrors] = useState([])
 
@@ -24,20 +24,21 @@ const EditProfileForm = ({ profile, child, setShowModal2, loadUser }) => {
         setUser({ ...user, [name]: value })
     }
 
-    const handleFormSubmit = e => {
+    const handleFormSubmit = (e) => {
         e.preventDefault()
 
-        console.log("Sending data to the backend:", profile);
-
-        userServices
-            .editProfile(user)
+        userServices.editProfile(user)
             .then(({ data }) => {
                 setUser(data)
                 setShowModal2()
                 loadUser()
             })
-        // .catch(err => { setErrors(err.response.data.errorMessages) })
+            .catch(err => {
+                console.error("Error editing profile:", err)
+            })
     }
+    // .catch(err => { setErrors(err.response.data.errorMessages) })
+
 
     const handleFileUpload = e => {
 
@@ -57,20 +58,10 @@ const EditProfileForm = ({ profile, child, setShowModal2, loadUser }) => {
                 setLoadingImage(false)
             })
     }
-    const handleDeleteChild = (childId) => {
-        userServices
-            .deleteChild({
-                ...user,
-                children: user.children.filter((child) => child.id !== childId)
-            })
-            .then(() => {
-                loadUser()
-            })
-            .catch((err) => console.log(err))
-    }
 
 
     return (
+
 
         <Form onSubmit={handleFormSubmit}>
 
@@ -83,20 +74,6 @@ const EditProfileForm = ({ profile, child, setShowModal2, loadUser }) => {
             <Form.Group className="mb-3" controlId="username">
                 <Form.Label>Nombre de usuario*</Form.Label>
                 <Form.Control type="text" value={user.username} onChange={handleInputChange} name="username" />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="children">
-                <Form.Label>Hijos</Form.Label>
-                <Row>
-                    {user.children.map((child) => (
-                        <Col key={child.id}>
-                            <p>{child.gender}</p>
-                            <Button variant="danger" onClick={() => handleDeleteChild(child.id)}>
-                                Eliminar
-                            </Button>
-                        </Col>
-                    ))}
-                </Row>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="photo">

@@ -3,26 +3,30 @@ import { Container, Row, Col, Tabs, Tab } from 'react-bootstrap'
 import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../contexts/auth.context.jsx'
 
-import userservices from '../../services/user.services'
+import userservices from '../../services/user.services.js'
+import { useParams } from 'react-router-dom'
 
-import ProfileInfoTab1 from '../../components/ProfileInfoTab1/ProfileInfoTab1'
-import ProfileEventsTab2 from '../../components/ProfileEventsTab2/ProfileEventsTab2'
-import ProfileEventsTab3 from '../../components/ProfileEventsTab3/ProfileEventsTab3'
-import ProfileFriendsTab4 from '../../components/ProfileFriendsTab4/ProfileFriendsTab4.jsx'
+import UserInfoTab1 from '../../components/UserInfoTab1/UserInfoTab1.jsx'
+import UserEventsTab2 from '../../components/UserEventsTabs2/UserEventsTabs2.jsx'
+import UserEventsTab3 from '../../components/UserEventsTab3/UserEventsTab3.jsx'
 
-const Profile = () => {
+const UserProfile = () => {
+
+
 
     const { loggedUser } = useContext(AuthContext)
     const [profile, setProfile] = useState(null)
 
+    const { userId } = useParams()
+
 
     useEffect(() => {
-        loadUser()
+        loadUsers()
     }, [])
 
-    const loadUser = () => {
+    const loadUsers = () => {
         userservices
-            .findUser()
+            .findUserById(userId)
             .then(({ data }) => {
                 setProfile(data)
             })
@@ -47,21 +51,18 @@ const Profile = () => {
                                 className="mb-3 justify-content-start"
                             >
 
-                                <Tab eventKey="home" title="Detalles perfil">
-                                    <ProfileInfoTab1 profile={profile} loadUser={loadUser} />
+                                <Tab eventKey="home" title="Detalles usuario">
+                                    <UserInfoTab1 profile={profile} loadUser={loadUsers} />
                                 </Tab>
 
-                                <Tab eventKey="eventos" title="Mis eventos">
-                                    <ProfileEventsTab2 />
+                                <Tab eventKey="eventos" title="Sus eventos">
+                                    <UserEventsTab2 />
                                 </Tab>
 
-                                <Tab eventKey="eventos2" title="Mis planes">
-                                    <ProfileEventsTab3 />
+                                <Tab eventKey="eventos2" title="Sus planes">
+                                    <UserEventsTab3 />
                                 </Tab>
 
-                                <Tab eventKey="amigos" title="Amigos">
-                                    <ProfileFriendsTab4 profile={profile} loadUser={loadUser} />
-                                </Tab>
 
                             </Tabs>
 
@@ -74,4 +75,4 @@ const Profile = () => {
 }
 
 
-export default Profile
+export default UserProfile

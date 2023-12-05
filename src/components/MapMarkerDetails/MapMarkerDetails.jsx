@@ -22,6 +22,7 @@ const MapMarker = () => {
     const mapStyle = {
         height: '500px',
         width: '80%',
+
     }
     const mapContainerStyle = {
         display: 'flex',

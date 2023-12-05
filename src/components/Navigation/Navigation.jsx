@@ -7,7 +7,7 @@ import "./Navigation.css"
 
 const Navigation = () => {
 
-    const { loggedUser, logout } = useContext(AuthContext)
+    const { loggedUser, logout, isAdmin } = useContext(AuthContext)
 
     return (
 
