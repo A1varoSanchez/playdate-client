@@ -27,7 +27,6 @@ class ChatService {
     }
 
     sendChat(chatId, msn) {
-        console.log('----------------------servicio', chatId, msn, 'ggggggggggggggggggggggggggggggggggg')
         return this.api.post('/send', { chatId, msn })
     }
 

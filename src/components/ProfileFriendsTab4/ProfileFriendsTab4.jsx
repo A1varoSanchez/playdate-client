@@ -40,17 +40,10 @@ const ProfileFriendsTab4 = ({ profile, loadUser }) => {
             })
             .catch(err => console.log(err))
     }
-
-
+    console.log(profile)
     return (
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 8c8ac5f3f8a9cd03c5f5b594e25bfb9196114953
         <Container >
-
             {profile.friendAdd.length === 0 ? (
                 <div></div>
             ) : (
@@ -73,7 +66,6 @@ const ProfileFriendsTab4 = ({ profile, loadUser }) => {
                     </ul>
                 </div>
             )}
-
             <p><b>Amigos:</b></p>
             <Container>
                 <Row>
