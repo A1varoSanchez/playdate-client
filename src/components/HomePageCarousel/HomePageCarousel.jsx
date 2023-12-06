@@ -34,7 +34,6 @@ function HomeCarousel() {
 
     }
 
-
     return (
         <Carousel className='myCarousel'>
             <CarouselItem style={carouselItemStyle}>
@@ -118,7 +117,6 @@ function HomeCarousel() {
                     <h5>Fomenta la pasión por la música de los más peques.</h5>
                 </CarouselCaption>
             </CarouselItem>
-
         </Carousel>
     )
 }

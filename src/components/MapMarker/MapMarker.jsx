@@ -48,12 +48,8 @@ const MapMarker = () => {
                                 lat: event.location.coordinates[1],
                                 lng: event.location.coordinates[0],
                             }}
-
                             onClick={() => handleMarkerClick(event._id)}
-                        >
-                            { }
-                            {event.name}
-                        </Marker>
+                        />
                     ))}
                 </Map>
             </APIProvider>

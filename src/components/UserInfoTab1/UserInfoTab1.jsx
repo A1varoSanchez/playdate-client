@@ -24,7 +24,6 @@ const UserInfoTab1 = ({ profile, loadUser }) => {
                         <b>Conoce a mi familia: </b>
                         {profile.aboutUs}
                     </p>
-
                     <p>
                         <b>Peques: </b>{' '}
                     </p>
@@ -38,7 +37,6 @@ const UserInfoTab1 = ({ profile, loadUser }) => {
                     </ul>
                 </Col>
             </Row>
-
         </Container >
     )
 }

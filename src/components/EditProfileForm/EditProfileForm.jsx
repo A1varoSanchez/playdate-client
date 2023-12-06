@@ -4,10 +4,11 @@ import userServices from "../../services/user.services"
 import uploadServices from "../../services/upload.services"
 
 import avatar from "./../../assets/avatar.png"
+import FormError from "../Error-handling/ErrorHandling"
 
 const EditProfileForm = ({ profile, loadUser, setShowModal2 }) => {
 
-    // const [errors, setErrors] = useState([])
+    const [errors, setErrors] = useState([])
 
     const [user, setUser] = useState({
         username: profile.username,
@@ -33,11 +34,8 @@ const EditProfileForm = ({ profile, loadUser, setShowModal2 }) => {
                 setShowModal2()
                 loadUser()
             })
-            .catch(err => {
-                console.error("Error editing profile:", err)
-            })
+            .catch(err => { setErrors(err.response.data.errorMessages) })
     }
-    // .catch(err => { setErrors(err.response.data.errorMessages) })
 
 
     const handleFileUpload = e => {
@@ -59,16 +57,11 @@ const EditProfileForm = ({ profile, loadUser, setShowModal2 }) => {
             })
     }
 
-
     return (
-
-
         <Form onSubmit={handleFormSubmit}>
-
             <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Email*</Form.Label>
                 <Form.Control type="email" value={user.email} onChange={handleInputChange} name="email" />
-
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="username">
@@ -93,7 +86,7 @@ const EditProfileForm = ({ profile, loadUser, setShowModal2 }) => {
             </Form.Group>
 
             <div className="d-grid">
-                {/* {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>} */}
+                {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
                 <Button variant="dark" type="submit">Editar usuario</Button>
             </div>
 

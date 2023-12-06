@@ -20,4 +20,5 @@ const EventsList = ({ events, refreshEvents, handleFilteredEvents }) => {
     )
 }
 
+
 export default EventsList

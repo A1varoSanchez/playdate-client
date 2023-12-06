@@ -124,9 +124,10 @@ const Chat = ({ profile, onlyOne }) => {
                             >
                                 iniciar
                             </Button>
+
                             <Offcanvas show={show} onHide={handleClose} placement="end" closeButton={false}>
-                                <Offcanvas.Header closeButton={false}>
-                                </Offcanvas.Header>
+                                <Offcanvas.Header closeButton={false} />
+
                                 <Offcanvas.Body  >
                                     {loadMyChat?.messages.slice().reverse().map((elm, i) => (
                                         <Toast key={i} className="custom-toast" style={{ marginBottom: '10px' }}>
@@ -137,6 +138,7 @@ const Chat = ({ profile, onlyOne }) => {
                                         </Toast>
                                     ))}
                                 </Offcanvas.Body>
+
                                 <Form onSubmit={(e) => handleChatSubmit(e, loadMyChat._id)}>
                                     <Form.Group className="mb-3" controlId="content">
                                         <Form.Control
@@ -149,15 +151,18 @@ const Chat = ({ profile, onlyOne }) => {
                                         <Button className="button-" type="submit">Enviar</Button>
                                     </Form.Group>
                                 </Form>
+
                             </Offcanvas>
                         </>
                     ) : (
+
                         <Form key={onlyOne._id} onSubmit={(e) => handleInitSubmit(e, onlyOne._id)}>
                             <Form.Group className="mb-3" controlId="participantTwo">
                                 <Form.Label>Name</Form.Label>
                                 <Button className="button-" type="submit">Iniciar Chat</Button>
                             </Form.Group>
                         </Form>
+
                     )
                 }
             </div >
@@ -166,20 +171,4 @@ const Chat = ({ profile, onlyOne }) => {
 }
 
 
-
-
-
 export default Chat
-
-
-
-
-
-
-
-
-
-
-
-
-

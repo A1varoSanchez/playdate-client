@@ -10,7 +10,7 @@ import FormError from "../Error-handling/ErrorHandling"
 const SignupForm = () => {
 
     const [errors, setErrors] = useState([])
-
+    const [loadingImage, setLoadingImage] = useState(false)
     const [signupData, setSignupData] = useState({
         username: '',
         email: '',
@@ -23,15 +23,13 @@ const SignupForm = () => {
         photo: avatar,
         friends: []
     })
-
-    const [loadingImage, setLoadingImage] = useState(false)
+    const navigate = useNavigate()
 
     const handleInputChange = e => {
         const { value, name } = e.target
         setSignupData({ ...signupData, [name]: value })
     }
 
-    const navigate = useNavigate()
 
     const handleFormSubmit = e => {
         e.preventDefault()

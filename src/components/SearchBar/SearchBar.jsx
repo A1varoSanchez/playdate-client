@@ -4,6 +4,7 @@ import './SearchBar.css'
 import lupa from './../../assets/lupa.svg'
 
 const SearchBar = ({ refreshEvents, handleFilteredEvents }) => {
+
     const [searchValue, setSearchValue] = useState('')
 
     const handleInputChange = (event) => {
@@ -33,8 +34,8 @@ const SearchBar = ({ refreshEvents, handleFilteredEvents }) => {
             <img src={lupa} alt="" style={{ with: '20px', height: '20px', paddingLeft: '10px' }} />
             <input type="text" placeholder="Busca tu tematica...ej: Parques" value={searchValue} onChange={handleInputChange} />
         </div>
-
     )
 }
+
 
 export default SearchBar

@@ -10,11 +10,9 @@ const ProfileFriendsTab4 = ({ profile, loadUser }) => {
     const [addFriend, setAddFriend] = useState({
         friends: [],
     })
-
     const [deletedFriend, setdeletedFriend] = useState({
         friends: [],
     })
-
 
     useEffect(() => {
         setAddFriend()
@@ -40,7 +38,7 @@ const ProfileFriendsTab4 = ({ profile, loadUser }) => {
             })
             .catch(err => console.log(err))
     }
-    console.log(profile)
+
     return (
 
         <Container >

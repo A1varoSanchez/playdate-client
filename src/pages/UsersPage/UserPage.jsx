@@ -95,6 +95,7 @@ import { AuthContext } from '../../contexts/auth.context'
 import './UserPage.css'
 import { Link } from 'react-router-dom'
 
+
 const UsersPage = () => {
 
     const { loggedUser } = useContext(AuthContext)
@@ -117,8 +118,6 @@ const UsersPage = () => {
             .catch(err => console.log(err))
     }
 
-
-
     const handledeleteSubmit = (friendId) => {
         userservices
             .deletedFriend(friendId)
@@ -137,6 +136,7 @@ const UsersPage = () => {
             })
             .catch(err => console.log(err))
     }
+
     return (
 
         !user ?

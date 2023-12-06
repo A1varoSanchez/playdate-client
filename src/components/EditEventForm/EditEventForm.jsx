@@ -7,10 +7,9 @@ import eventServices from "../../services/event.services"
 import FormError from "../Error-handling/ErrorHandling"
 
 const EditEventForm = ({ event, setShowModal, refreshEvents }) => {
+
     const { loggedUser } = useContext(AuthContext)
-
     const [errors, setErrors] = useState([])
-
     const [newData, setEventData] = useState({
         name: event.name,
         type: event.type,
@@ -20,20 +19,16 @@ const EditEventForm = ({ event, setShowModal, refreshEvents }) => {
         ageGroup: event.ageGroup,
 
     })
-
-    // console.log('latitude', event.location.coordinates[1])
-    // console.log('longitude', event.location.coordinates[0])
+    const navigate = useNavigate()
 
     const handleInputChange = e => {
         const { value, name } = e.currentTarget
         setEventData({ ...newData, [name]: value })
     }
 
-    const navigate = useNavigate()
-
     const handleEventSubmit = e => {
-
         e.preventDefault()
+
         eventServices
             .editEvent(event._id, newData)
             .then(() => {
@@ -44,6 +39,7 @@ const EditEventForm = ({ event, setShowModal, refreshEvents }) => {
             })
             .catch(err => { setErrors(err.response.data.errorMessages) })
     }
+
     return (
         <div >
             <Form onSubmit={handleEventSubmit}>
@@ -81,12 +77,14 @@ const EditEventForm = ({ event, setShowModal, refreshEvents }) => {
                             <Form.Label>Latitud</Form.Label>
                             <Form.Control type="text" name="latitude" value={newData.latitude} onChange={handleInputChange} />
                         </Form.Group>
+
                         <Form.Group className="mb-3" controlId='longitude'>
                             <Form.Label>Longitude</Form.Label>
                             <Form.Control type="text" name="longitude" value={newData.longitude} onChange={handleInputChange} />
                         </Form.Group>
                     </Col>
                 </Row>
+
                 <div className="d-grid">
                     {errors.length > 0 && <FormError>{errors.map((elm, i) => <p key={i}>{elm}</p>)}</FormError>}
                     <Button variant="dark" type="submit">Editar evento</Button>
@@ -95,5 +93,6 @@ const EditEventForm = ({ event, setShowModal, refreshEvents }) => {
         </div>
     )
 }
+
 
 export default EditEventForm

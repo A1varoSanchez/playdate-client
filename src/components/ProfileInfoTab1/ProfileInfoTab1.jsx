@@ -69,6 +69,7 @@ const ProfileInfoTab1 = ({ profile, loadUser }) => {
                         <Modal.Header closeButton>
                             <Modal.Title>Datos del peque</Modal.Title>
                         </Modal.Header>
+
                         <Modal.Body>
                             <AddChildForm loadUser={loadUser} setShowModal1={setShowModal1} />
                         </Modal.Body>
@@ -97,6 +98,7 @@ const ProfileInfoTab1 = ({ profile, loadUser }) => {
                         <Modal.Header closeButton>
                             <Modal.Title>Editar perfil</Modal.Title>
                         </Modal.Header>
+
                         <Modal.Body>
                             <EditProfileForm profile={profile} loadUser={loadUser} setShowModal2={setShowModal2} />
                         </Modal.Body>
@@ -126,16 +128,13 @@ const ProfileInfoTab1 = ({ profile, loadUser }) => {
                         <Modal.Header closeButton>
                             <Modal.Title>Editar hijos/as</Modal.Title>
                         </Modal.Header>
+
                         <Modal.Body>
                             <EditChildForm profile={profile} loadUser={loadUser} setShowModal3={setShowModal3} />
                         </Modal.Body>
                     </Modal>
-
                 </Col>
-
-
             </Row>
-
         </Container >
     )
 }

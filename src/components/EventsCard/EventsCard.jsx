@@ -37,4 +37,5 @@ const EventsCard = ({ event }) => {
     )
 }
 
+
 export default EventsCard
