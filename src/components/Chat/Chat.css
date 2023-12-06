@@ -12,3 +12,45 @@
 .custom-toast .btn-close {
     display: none
 }
+
+.offcanvas {
+    left: unset !important;
+    right: 0 !important;
+    background-color: rgba(0, 0, 0, 0.1) !important;
+
+}
+
+.offcanvas-backdrop {
+    background-color: transparent !important;
+}
+
+.custom-toast .btn-close {
+    display: none
+}
+
+.button- {
+    background-color: #78ecdc !important;
+    color: #FFFFFF !important;
+    font-family: 'Comic Sans MS', cursive !important;
+    padding: 4px 16px !important;
+    border: none !important;
+    border-radius: 10px !important;
+    cursor: pointer !important;
+    margin-top: 10px !important;
+}
+
+.force-scroll {
+    overflow-y: scroll !important;
+    -ms-overflow-style: none;
+    scrollbar-width: thin;
+}
+
+.force-scroll::-webkit-scrollbar {
+    width: 0 !important;
+    display: none;
+}
+
+.force-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}

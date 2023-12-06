@@ -18,6 +18,7 @@ const MapMarker = () => {
     const mapStyle = {
         height: '500px',
         width: '80%',
+        borderRadius: '40px'
     }
     const mapContainerStyle = {
         display: 'flex',
@@ -49,7 +50,10 @@ const MapMarker = () => {
                             }}
 
                             onClick={() => handleMarkerClick(event._id)}
-                        />
+                        >
+                            { }
+                            {event?.name}xxx
+                        </Marker>
                     ))}
                 </Map>
             </APIProvider>

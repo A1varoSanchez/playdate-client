@@ -12,12 +12,38 @@
 }
 
 .boton-add {
-    background-color: #60BFB2 !important;
-    color: #000000 !important;
+    background-color: #78ecdc !important;
+    color: #FFFFFF !important;
     font-family: 'Comic Sans MS', cursive !important;
     padding: 8px 16px !important;
     border: none !important;
     border-radius: 5px !important;
     cursor: pointer !important;
     margin-top: 10px !important;
+}
+
+.card-container {
+    width: 14rem !important;
+    height: 400px !important;
+    margin-bottom: 10px !important;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    overflow-y: auto !important;
+}
+
+.card-title {
+    margin-bottom: 0.5rem !important;
+}
+
+.card-content {
+    max-height: 200px !important;
+    overflow-y: auto !important;
+}
+
+.card-img {
+    width: 100% !important;
+    height: 180px !important;
+    object-fit: cover;
 }

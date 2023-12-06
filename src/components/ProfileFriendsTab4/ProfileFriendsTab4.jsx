@@ -48,17 +48,19 @@ const ProfileFriendsTab4 = ({ profile, loadUser }) => {
                 <div></div>
             ) : (
                 <div>
-                    <p>peticiones de amistad</p>
+                    <p><b>peticiones de amistad:</b></p>
                     <ul>
                         {
                             profile.friendAdd.map(elm => {
                                 return (
-                                    <div key={elm._id}>
-                                        <p>{elm.username}</p>
+                                    <div key={elm._id} className="rounded-container" style={{ background: `url(${elm.photo}) center/cover no-repeat` }}>
+
                                         <Button
                                             onClick={() => handleFriendSubmit(elm._id)}
                                             className="boton-add"
-                                        > ADD FRIEND </Button>
+
+                                        >{elm.username}
+                                        </Button>
                                     </div>
                                 )
                             })

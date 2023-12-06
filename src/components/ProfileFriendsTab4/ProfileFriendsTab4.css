@@ -12,12 +12,28 @@
 }
 
 .boton-add {
-    background-color: #60BFB2 !important;
-    color: #000000 !important;
+    background-color: #78ecdc !important;
+    color: #FFFFFF !important;
     font-family: 'Comic Sans MS', cursive !important;
     padding: 8px 16px !important;
     border: none !important;
     border-radius: 5px !important;
     cursor: pointer !important;
     margin-top: 10px !important;
+}
+
+.rounded-container {
+    width: 100px;
+    /* Ajusta el ancho según tus necesidades */
+    height: 100px;
+    /* Ajusta la altura según tus necesidades */
+    border-radius: 50%;
+    /* Esto hace que el contenedor sea un círculo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.3);
+    /* Puedes cambiar el color de fondo si es necesario */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }

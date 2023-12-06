@@ -120,7 +120,7 @@ const Chat = ({ profile, onlyOne }) => {
                                         loadChatDetails(e, selectedChat._id)
                                     }
                                 }}
-                                className="me-2"
+                                className="button-"
                             >
                                 iniciar
                             </Button>
@@ -146,7 +146,7 @@ const Chat = ({ profile, onlyOne }) => {
                                             value={chatInfo.messages.content}
                                             onChange={handleInputChange}
                                         />
-                                        <Button type="submit">Enviar</Button>
+                                        <Button className="button-" type="submit">Enviar</Button>
                                     </Form.Group>
                                 </Form>
                             </Offcanvas>
@@ -155,7 +155,7 @@ const Chat = ({ profile, onlyOne }) => {
                         <Form key={onlyOne._id} onSubmit={(e) => handleInitSubmit(e, onlyOne._id)}>
                             <Form.Group className="mb-3" controlId="participantTwo">
                                 <Form.Label>Name</Form.Label>
-                                <Button type="submit">Iniciar Chat</Button>
+                                <Button className="button-" type="submit">Iniciar Chat</Button>
                             </Form.Group>
                         </Form>
                     )
@@ -170,6 +170,8 @@ const Chat = ({ profile, onlyOne }) => {
 
 
 export default Chat
+
+
 
 
 
