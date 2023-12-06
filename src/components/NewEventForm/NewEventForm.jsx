@@ -25,7 +25,7 @@ const NewEventForm = ({ setShowModal, refreshEvents }) => {
                 type: [Number]
             }
         },
-        ageGroup: 'all',
+        ageGroup: 'todas las edades',
 
     })
 

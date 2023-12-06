@@ -13,6 +13,7 @@ const EventsCard = ({ event }) => {
                 <article className="h-100 d-flex flex-column">
                     <Card border="warning" style={{ width: '18rem' }} className="d-flex flex-column h-100">
                         <Card.Header>{event.type}</Card.Header>
+                        { }
                         <Card.Img variant="top" src={logo} />
                         <Card.Body className="d-flex flex-column">
                             <Card.Title>{event.name} </Card.Title>

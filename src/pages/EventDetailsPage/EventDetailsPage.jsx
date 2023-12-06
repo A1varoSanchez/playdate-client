@@ -182,7 +182,7 @@ const EventDetailsPage = () => {
                                 <Modal.Title>Editar Evento</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
-                                <EditEventForm event={event} setShowModal={setShowModal} />
+                                <EditEventForm event={event} setShowModal={setShowModal} refreshEvents={loadEventDetails} />
                             </Modal.Body>
                         </Modal>
                         {

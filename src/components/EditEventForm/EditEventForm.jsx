@@ -6,7 +6,7 @@ import { AGE_GROUP, EVENT_TYPE } from './../../consts/event-consts'
 import eventServices from "../../services/event.services"
 import FormError from "../Error-handling/ErrorHandling"
 
-const EditEventForm = ({ event, setShowModal }) => {
+const EditEventForm = ({ event, setShowModal, refreshEvents }) => {
     const { loggedUser } = useContext(AuthContext)
 
     const [errors, setErrors] = useState([])
@@ -15,15 +15,9 @@ const EditEventForm = ({ event, setShowModal }) => {
         name: event.name,
         type: event.type,
         description: event.description,
-        location: {
-            coordinates: [
-                {
-                    latitude: event.location.coordinates[1],
-                    longitude: event.location.coordinates[0]
-                }
-            ]
-        },
-        ageGroup: event.description,
+        latitude: event.location.coordinates[1],
+        longitude: event.location.coordinates[0],
+        ageGroup: event.ageGroup,
 
     })
 
@@ -32,17 +26,7 @@ const EditEventForm = ({ event, setShowModal }) => {
 
     const handleInputChange = e => {
         const { value, name } = e.currentTarget
-        setEventData({ ...event, [name]: value })
-    }
-
-    const handleCoordinatesChange = e => {
-        const { value, name } = e.currentTarget
-        setEventData(prevState => ({
-            ...prevState,
-            location: {
-                coordinates: [latitude.value, longitude.value],
-            }
-        }))
+        setEventData({ ...newData, [name]: value })
     }
 
     const navigate = useNavigate()
@@ -56,7 +40,7 @@ const EditEventForm = ({ event, setShowModal }) => {
                 console.log(newData)
                 setShowModal(false)
                 refreshEvents()
-                navigate('/eventos')
+                navigate(`/eventos/${_id}`)
             })
             .catch(err => { setErrors(err.response.data.errorMessages) })
     }
@@ -95,12 +79,12 @@ const EditEventForm = ({ event, setShowModal }) => {
                     <Col>
                         <Form.Group className="mb-3" controlId='latitude'>
                             <Form.Label>Latitud</Form.Label>
-                            <Form.Control type="text" name="latitude" value={newData.location.coordinates.latitude} onChange={handleCoordinatesChange} />
+                            <Form.Control type="text" name="latitude" value={newData.latitude} onChange={handleInputChange} />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId='longitude'>
                             <Form.Label>Longitude</Form.Label>
-                            <Form.Control type="text" name="longitude" value={newData.location.coordinates.longitude} onChange={handleCoordinatesChange} />
+                            <Form.Control type="text" name="longitude" value={newData.longitude} onChange={handleInputChange} />
                         </Form.Group>
                     </Col>
 
