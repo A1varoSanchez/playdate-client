@@ -49,23 +49,26 @@ const ProfileFriendsTab4 = ({ profile, loadUser }) => {
             ) : (
                 <div>
                     <p><b>peticiones de amistad:</b></p>
+
                     <ul>
-                        {
-                            profile.friendAdd.map(elm => {
-                                return (
-                                    <div key={elm._id} className="rounded-container" style={{ background: `url(${elm.photo}) center/cover no-repeat` }}>
-
-                                        <Button
-                                            onClick={() => handleFriendSubmit(elm._id)}
-                                            className="boton-add"
-
-                                        >{elm.username}
-                                        </Button>
-                                    </div>
-                                )
-                            })
-                        }
+                        <Row >
+                            {
+                                profile.friendAdd.map(elm => (
+                                    <Col key={elm._id}>
+                                        <div className="rounded-container" style={{ background: `url(${elm.photo}) center/cover no-repeat` }}>
+                                            <Button
+                                                onClick={() => handleFriendSubmit(elm._id)}
+                                                className="boton-add"
+                                            >
+                                                {elm.username}
+                                            </Button>
+                                        </div>
+                                    </Col>
+                                ))
+                            }
+                        </Row>
                     </ul>
+
                 </div>
             )}
             <p><b>Amigos:</b></p>
@@ -75,16 +78,18 @@ const ProfileFriendsTab4 = ({ profile, loadUser }) => {
                         profile.friends.map(elm => {
                             return (
 
-                                <Col key={elm._id}>
-                                    <Card style={{ width: '14rem', backgroundColor: 'rgba(255, 255, 255, 0.3)', marginBottom: '10px' }}>
-                                        <Card.Img variant="top" src={elm.photo} />
+                                <Col key={elm._id} className="custom-col">
+                                    <Card className="custom-card">
+                                        <Card.Img variant="top" src={elm.photo} className="custom-card-img" />
                                         <Card.Body>
-                                            <Card.Title>{elm.username}</Card.Title>
+                                            <Card.Title className="custom-card-title">{elm.username}</Card.Title>
                                             <Chat profile={profile} onlyOne={elm} />
                                             <Button
                                                 onClick={() => handledeleteSubmit(elm._id)}
                                                 className="button-deleted"
-                                            >Borrar amigo</Button>
+                                            >
+                                                Borrar amigo
+                                            </Button>
                                         </Card.Body>
                                     </Card>
                                 </Col>

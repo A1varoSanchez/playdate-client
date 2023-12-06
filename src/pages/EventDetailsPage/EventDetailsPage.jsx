@@ -72,9 +72,6 @@ const EventDetailsPage = () => {
             .catch(err => console.log(err))
     }
 
-
-
-
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);

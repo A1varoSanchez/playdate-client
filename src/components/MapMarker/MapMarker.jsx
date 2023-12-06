@@ -52,7 +52,7 @@ const MapMarker = () => {
                             onClick={() => handleMarkerClick(event._id)}
                         >
                             { }
-                            {event?.name}xxx
+                            {event.name}
                         </Marker>
                     ))}
                 </Map>

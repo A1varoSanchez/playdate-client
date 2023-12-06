@@ -8,7 +8,8 @@
     border-radius: 5px !important;
     font-size: 12px !important;
     border: none !important;
-    margin-top: 10px !important
+    margin-top: 10px !important;
+    margin-top: auto !important
 }
 
 .boton-add {
@@ -23,17 +24,34 @@
 }
 
 .rounded-container {
-    width: 100px;
-    /* Ajusta el ancho según tus necesidades */
-    height: 100px;
-    /* Ajusta la altura según tus necesidades */
-    border-radius: 50%;
-    /* Esto hace que el contenedor sea un círculo */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(255, 255, 255, 0.3);
-    /* Puedes cambiar el color de fondo si es necesario */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.custom-col {
+    width: 14rem !important;
+    margin-bottom: 10px !important;
+}
+
+.custom-card {
+    width: 200px !important;
+    height: 400px !important;
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    overflow-y: auto !important;
+}
+
+.custom-card-img {
+    width: 100% !important;
+    height: 180px !important;
+    object-fit: cover !important;
+}
+
+.custom-card-title {
+    margin-bottom: 0.5rem !important;
 }
