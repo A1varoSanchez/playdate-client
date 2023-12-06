@@ -85,7 +85,6 @@ const EditEventForm = ({ event, setShowModal, refreshEvents }) => {
                             <Form.Control type="text" name="longitude" value={newData.longitude} onChange={handleInputChange} />
                         </Form.Group>
                     </Col>
-
                 </Row>
                 <div className="d-grid">
                     {errors.length > 0 && <FormError>{errors.map((elm, i) => <p key={i}>{elm}</p>)}</FormError>}

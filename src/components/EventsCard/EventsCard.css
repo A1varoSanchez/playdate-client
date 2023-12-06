@@ -1,0 +1,41 @@
+.card-container {
+    width: 14rem !important;
+    height: 400px !important;
+    margin-bottom: 10px !important;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    overflow-y: auto !important;
+}
+
+.card-header {
+    font-size: 25px !important;
+    font-family: 'Times New Roman', Times, serif !important;
+}
+
+.card-title {
+    margin-bottom: 0.5rem !important;
+}
+
+.card-content {
+    max-height: 200px !important;
+    overflow-y: auto !important;
+}
+
+.card-img {
+    width: 100% !important;
+    height: 180px !important;
+    object-fit: cover;
+}
+
+.button- {
+    background-color: #7cdacd !important;
+    color: #000000 !important;
+    font-family: 'Comic Sans MS', cursive !important;
+    padding: 4px 16px !important;
+    border: none !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    margin-top: 10px !important;
+}
