@@ -29,7 +29,7 @@ const SearchBar = ({ refreshEvents, handleFilteredEvents }) => {
 
     return (
         <div className="search-bar">
-            <input type="text" placeholder="Buscar..." value={searchValue} onChange={handleInputChange} />
+            <input type="text" placeholder="Busqueda tu tematica...ej: Parques" value={searchValue} onChange={handleInputChange} />
         </div>
 
     )

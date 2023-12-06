@@ -1,5 +1,8 @@
+.Navbar {
+    z-index: 20 !important;
+}
+
 .my-navlink {
-    color: black !important;
     text-transform: uppercase;
     font-weight: bold;
 }
@@ -7,7 +10,6 @@
 .navbar-text {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    color: black !important;
 
     margin-right: 10px;
     ;

@@ -1,5 +1,5 @@
 import { Navbar, Nav, Container } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { AuthContext } from './../../contexts/auth.context'
 import { useContext } from 'react'
 import logo from './../../assets/playdate-logo2.png'
@@ -9,9 +9,14 @@ const Navigation = () => {
 
     const { loggedUser, logout, isAdmin } = useContext(AuthContext)
 
+    const location = useLocation();
+
+    const isHomePage = location.pathname === '/'
+
+
     return (
 
-        <Navbar data-bs-theme="dark" expand="lg" style={{ background: 'rgba(0, 0, 0, 0)' }}>
+        <Navbar data-bs-theme="dark" expand="lg" style={{ background: 'rgba(0, 0, 0, 0)', zIndex: '20', color: isHomePage ? 'white' : 'black' }}>
 
             <Navbar.Brand href="/">
                 <img

@@ -17,7 +17,8 @@ const EditEventForm = ({ event, setShowModal, refreshEvents }) => {
         description: event.description,
         latitude: event.location.coordinates[1],
         longitude: event.location.coordinates[0],
-        ageGroup: event.description,
+        ageGroup: event.ageGroup,
+
     })
 
     // console.log('latitude', event.location.coordinates[1])
@@ -39,7 +40,7 @@ const EditEventForm = ({ event, setShowModal, refreshEvents }) => {
                 console.log('------------------------>EventoEditado:', newData)
                 setShowModal(false)
                 refreshEvents()
-                navigate('/eventos')
+                navigate(`/eventos/${_id}`)
             })
             .catch(err => { setErrors(err.response.data.errorMessages) })
     }
@@ -85,7 +86,6 @@ const EditEventForm = ({ event, setShowModal, refreshEvents }) => {
                             <Form.Control type="text" name="longitude" value={newData.longitude} onChange={handleInputChange} />
                         </Form.Group>
                     </Col>
-
                 </Row>
                 <div className="d-grid">
                     {errors.length > 0 && <FormError>{errors.map((elm, i) => <p key={i}>{elm}</p>)}</FormError>}

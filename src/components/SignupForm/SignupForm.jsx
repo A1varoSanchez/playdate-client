@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 import uploadServices from "../../services/upload.services"
 
 import avatar from "./../../assets/avatar.png"
+import FormError from "../Error-handling/ErrorHandling"
 
 const SignupForm = () => {
 
@@ -96,7 +97,7 @@ const SignupForm = () => {
             </Form.Group>
 
             <div className="d-grid">
-                {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
+                {errors.length > 0 && <FormError>{errors.map((elm, i) => <p key={i}>{elm}</p>)}</FormError>}
                 <Button variant="dark" type="submit">Crear usuario</Button>
             </div>
 
