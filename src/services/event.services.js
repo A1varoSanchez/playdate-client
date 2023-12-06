@@ -22,12 +22,13 @@ class EventService {
         return this.api.get("/getAllEvents")
     }
 
-    getUserEvents() {
-        return this.api.get("/userEvents")
+    getUserEvents(userId) {
+        return this.api.get(`/userEvents/${userId}`)
     }
 
-    getUserJoinedEvents() {
-        return this.api.get("/userJoinedEvents")
+
+    getUserJoinedEvents(userId) {
+        return this.api.get(`/userJoinedEvents/${userId}`)
     }
 
     getEventDetails(event_id) {

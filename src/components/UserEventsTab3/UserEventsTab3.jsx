@@ -1,11 +1,10 @@
-import ProfileAttendingEvents from "../ProfileAttendingEvents/ProfileAttendingEvents"
+import UserAttendingEvents from '../UserAttendingEvents/UserAttendingEvents'
 
-const UserEventsTab3 = () => {
+const UserEventsTab3 = ({ userId }) => {
 
     return (
-        <ProfileAttendingEvents />
+        <UserAttendingEvents userId={userId} />
     )
-
 }
 
 export default UserEventsTab3
