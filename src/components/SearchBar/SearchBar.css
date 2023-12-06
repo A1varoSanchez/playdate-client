@@ -5,6 +5,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     overflow: hidden;
+    background-color: #f8ab8f;
 }
 
 input[type="text"] {
@@ -14,12 +15,6 @@ input[type="text"] {
     outline: none;
     background-color: #f8ab8f;
 }
-
-.small-image {
-    max-width: 100px;
-    height: auto;
-}
-
 
 button:hover {
     background-color: #0056b3;

@@ -40,9 +40,11 @@ const EventsPage = () => {
                     <h1 className='title'>Eventos</h1>
                     {
                         loggedUser ?
-                            <Button variant='warning' onClick={() => setShowModal(true)}> Crea Tu Propio Evento</Button>
+                            <Button className='botoncito' variant='warning' onClick={() => setShowModal(true)}> Crea Tu Propio Evento</Button>
                             :
-                            <Link to={'/inicio-sesion'} className='btn btn-warning'>Crea Tu Propio Evento</Link>
+                            <Link to={'/inicio-sesion'}>
+                                <Button className='botoncito' variant='warning'> Crea Tu Propio Evento</Button>
+                            </Link>
                     }
                     <div className='searchBar'>
                         <SearchBar refreshEvents={loadEvents} handleFilteredEvents={handleFilteredEvents} />

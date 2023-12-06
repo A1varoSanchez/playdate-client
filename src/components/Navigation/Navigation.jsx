@@ -16,7 +16,7 @@ const Navigation = () => {
 
     return (
 
-        <Navbar data-bs-theme="dark" expand="lg" style={{ background: 'rgba(0, 0, 0, 0)', zIndex: '20', color: isHomePage ? 'white' : 'black' }}>
+        <Navbar data-bs-theme="dark" expand="lg" style={{ background: 'rgba(0, 0, 0, 0)', zIndex: '20' }}>
 
             <Navbar.Brand href="/">
                 <img
@@ -29,28 +29,26 @@ const Navigation = () => {
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto">
-                    <Link to={'/'} className='nav-link my-navlink'>Inicio</Link>
-
-                    <Link to={'/eventos'} className='nav-link my-navlink'>Eventos</Link>
-                    <Link to={'/mapa'} className='nav-link my-navlink'>Mapa</Link>
-                    <Link to={'/usuarios'} className='nav-link my-navlink'>usuarios</Link>
+                <Nav className={`me-auto ${isHomePage ? 'white-text' : ''}`}>
+                    <Link to={'/eventos'} className='nav-link '>Eventos</Link>
+                    <Link to={'/mapa'} className='nav-link '>Mapa</Link>
+                    <Link to={'/usuarios'} className='nav-link '>usuarios</Link>
                     {
                         loggedUser
                             ?
                             <>
-                                <Link to={`/perfil`} className='nav-link my-navlink'>Mi perfil</Link>
-                                <span className='nav-link my-navlink' onClick={logout}>Cerrar sesión</span>
+                                <Link to={`/perfil`} className='nav-link '>Mi perfil</Link>
+                                <span className='nav-link ' onClick={logout}>Cerrar sesión</span>
                             </>
                             :
                             <>
-                                <Link to={'/inicio-sesion'} className='nav-link my-navlink'>Inicio sesión</Link>
-                                <Link to={'/registro'} className='nav-link my-navlink'>Registro</Link>
+                                <Link to={'/inicio-sesion'} className='nav-link '>Inicio sesión</Link>
+                                <Link to={'/registro'} className='nav-link '>Registro</Link>
                             </>
                     }
 
                 </Nav>
-                <Navbar.Text className='justify-content-end my-link'>
+                <Navbar.Text className='justify-content-end my-link' >
                     {loggedUser && <Navbar.Text>Bienvenido {loggedUser.username}</Navbar.Text>}
                 </Navbar.Text>
             </Navbar.Collapse>
