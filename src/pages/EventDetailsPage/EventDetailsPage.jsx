@@ -21,7 +21,7 @@ const EventDetailsPage = () => {
         loadEventDetails()
     }, [])
 
-    const loadEventDetails = (e) => {
+    const loadEventDetails = () => {
 
         eventServices
             .getEventDetails(event_id)
@@ -87,10 +87,6 @@ const EventDetailsPage = () => {
             text: ''
         }
     })
-
-
-
-
 
 
 
@@ -182,7 +178,7 @@ const EventDetailsPage = () => {
                                 <Modal.Title>Editar Evento</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
-                                <EditEventForm event={event} setShowModal={setShowModal} />
+                                <EditEventForm event={event} setShowModal={setShowModal} refreshEvents={loadEventDetails} />
                             </Modal.Body>
                         </Modal>
                         {
@@ -231,6 +227,5 @@ const EventDetailsPage = () => {
             </Container >
     )
 }
-
 
 export default EventDetailsPage
