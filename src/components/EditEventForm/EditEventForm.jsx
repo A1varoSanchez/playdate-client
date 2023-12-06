@@ -37,7 +37,7 @@ const EditEventForm = ({ event, setShowModal, refreshEvents }) => {
         eventServices
             .editEvent(event._id, newData)
             .then(() => {
-                console.log(newData)
+                console.log('------------------------>EventoEditado:', newData)
                 setShowModal(false)
                 refreshEvents()
                 navigate(`/eventos/${_id}`)
@@ -81,7 +81,6 @@ const EditEventForm = ({ event, setShowModal, refreshEvents }) => {
                             <Form.Label>Latitud</Form.Label>
                             <Form.Control type="text" name="latitude" value={newData.latitude} onChange={handleInputChange} />
                         </Form.Group>
-
                         <Form.Group className="mb-3" controlId='longitude'>
                             <Form.Label>Longitude</Form.Label>
                             <Form.Control type="text" name="longitude" value={newData.longitude} onChange={handleInputChange} />

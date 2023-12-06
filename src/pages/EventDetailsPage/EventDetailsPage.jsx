@@ -21,7 +21,7 @@ const EventDetailsPage = () => {
         loadEventDetails()
     }, [])
 
-    const loadEventDetails = (e) => {
+    const loadEventDetails = () => {
 
         eventServices
             .getEventDetails(event_id)
@@ -87,10 +87,6 @@ const EventDetailsPage = () => {
             text: ''
         }
     })
-
-
-
-
 
 
 
@@ -231,6 +227,5 @@ const EventDetailsPage = () => {
             </Container >
     )
 }
-
 
 export default EventDetailsPage
