@@ -1,12 +1,13 @@
 import { Card, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import museo from './../../assets/museo.jpg'
-import cocina from './../../assets/cocina.jpg'
-import musica from './../../assets/musica.jpg'
-import teatro from './../../assets/teatro.jpg'
-import natacion from './../../assets/natacion.jpg'
-import futbol from './../../assets/futbol.jpg'
-import parque from './../../assets/parque.jpg'
+import museo from './../../assets/dinosaurio.jpg'
+import deporte from './../../assets/nadar.jpg'
+import musica from './../../assets/concierto.jpg'
+import parque from './../../assets/aire-libre.jpg'
+import cumple from './../../assets/cumple.jpg'
+import taller from './../../assets/talleres.jpg'
+import otros from './../../assets/deporte.jpg'
+
 import './EventsCard.css'
 
 const EventsCard = ({ event }) => {
@@ -20,12 +21,12 @@ const EventsCard = ({ event }) => {
                     <Card border="warning" className="d-flex flex-column h-100">
                         <Card.Header className='text-center'>{event.type}</Card.Header>
                         {event.type === 'Cultura' ? <Card.Img variant="top" src={museo} /> : ''}
-                        {event.type === 'Deportes' ? <Card.Img variant="top" src={futbol} /> : ''}
+                        {event.type === 'Deportes' ? <Card.Img variant="top" src={deporte} /> : ''}
                         {event.type === 'Música' ? <Card.Img variant="top" src={musica} /> : ''}
                         {event.type === 'Aire libre' ? <Card.Img variant="top" src={parque} /> : ''}
-                        {event.type === 'Cumpleaños' ? <Card.Img variant="top" src={teatro} /> : ''}
-                        {event.type === 'Talleres' ? <Card.Img variant="top" src={cocina} /> : ''}
-                        {event.type === 'Otros' ? <Card.Img variant="top" src={natacion} /> : ''}
+                        {event.type === 'Cumpleaños' ? <Card.Img variant="top" src={cumple} /> : ''}
+                        {event.type === 'Talleres' ? <Card.Img variant="top" src={taller} /> : ''}
+                        {event.type === 'Otros' ? <Card.Img variant="top" src={otros} /> : ''}
                         <Card.Body className="d-flex flex-column">
                             <Card.Title>{event.name} </Card.Title>
                             <Card.Text>Edad recomendada: {event.ageGroup}</Card.Text>

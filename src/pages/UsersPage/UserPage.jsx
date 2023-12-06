@@ -93,6 +93,7 @@ import { Button, Container, Form, Col, Card, Row } from 'react-bootstrap'
 import userservices from '../../services/user.services'
 import { AuthContext } from '../../contexts/auth.context'
 import './UserPage.css'
+import { Link } from 'react-router-dom'
 
 const UsersPage = () => {
 
@@ -151,7 +152,7 @@ const UsersPage = () => {
                             <Card className="card-container">
                                 <Card.Img variant="top" src={elm.photo} className="card-img" />
                                 <Card.Body className="card">
-                                    <Card.Title className="card-title">{elm.username}</Card.Title>
+                                    <Card.Title className="card-title"><Link to={`/perfil/${elm._id}`}>{elm.username}</Link></Card.Title>
                                     <p className="card-content">{elm.aboutUs}</p>
                                 </Card.Body>
                                 <div className="card-buttons">

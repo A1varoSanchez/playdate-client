@@ -1,9 +1,9 @@
-import ProfileEventsList from "../ProfileEventsList/ProfileEventsList"
+import UserEventsList from "../UserEventsList/UserEventsList"
 
-const UserEventsTab2 = () => {
+const UserEventsTab2 = ({ userId }) => {
 
     return (
-        <ProfileEventsList />
+        <UserEventsList userId={userId} />
     )
 
 }
