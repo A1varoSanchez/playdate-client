@@ -17,7 +17,8 @@ const EditEventForm = ({ event, setShowModal, refreshEvents }) => {
         description: event.description,
         latitude: event.location.coordinates[1],
         longitude: event.location.coordinates[0],
-        ageGroup: event.description,
+        ageGroup: event.ageGroup,
+
     })
 
     // console.log('latitude', event.location.coordinates[1])
@@ -39,7 +40,7 @@ const EditEventForm = ({ event, setShowModal, refreshEvents }) => {
                 console.log('------------------------>EventoEditado:', newData)
                 setShowModal(false)
                 refreshEvents()
-                navigate('/eventos')
+                navigate(`/eventos/${_id}`)
             })
             .catch(err => { setErrors(err.response.data.errorMessages) })
     }
