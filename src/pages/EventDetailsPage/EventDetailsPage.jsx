@@ -6,12 +6,18 @@ import logo from './../../assets/playdate-logo.png'
 import { AuthContext } from "../../contexts/auth.context"
 import EditEventForm from "../../components/EditEventForm/EditEventForm"
 import MapMarkerDetails from './../../components/MapMarkerDetails/MapMarkerDetails.jsx'
+import museo from './../../assets/dinosaurio.jpg'
+import deporte from './../../assets/nadar.jpg'
+import musica from './../../assets/concierto.jpg'
+import parque from './../../assets/aire-libre.jpg'
+import cumple from './../../assets/cumple.jpg'
+import taller from './../../assets/talleres.jpg'
+import otros from './../../assets/deporte.jpg'
 
 
 const EventDetailsPage = () => {
-
     const { event_id } = useParams()
-    const { loggedUser } = useContext(AuthContext)
+    const { loggedUser, isAdmin } = useContext(AuthContext)
 
     const [event, setEvent] = useState({})
 
@@ -135,7 +141,7 @@ const EventDetailsPage = () => {
                 </Button>
                 <Offcanvas show={show} onHide={handleClose}>
                     <Offcanvas.Header closeButton>
-                        <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+                        <Offcanvas.Title>Comentarios</Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Body>
 
@@ -198,11 +204,16 @@ const EventDetailsPage = () => {
                                 <br />
                         }
                         <hr />
-                        <Link to="/eventos" className="btn btn-dark">Volver a los eventos</Link>
+                        {isAdmin ? <Link to="/eventos" className="btn btn-dark">Volver a los eventos</Link> : <h1>no</h1>}
                     </Col>
                     <Col md={{ span: 4 }}>
-                        <img src={logo} style={{ width: '100%' }} />
-
+                        {event.type === 'Cultura' ? <img src={museo} style={{ width: '100%' }} /> : ''}
+                        {event.type === 'Deportes' ? <img src={deporte} style={{ width: '100%' }} /> : ''}
+                        {event.type === 'Música' ? <img src={musica} style={{ width: '100%' }} /> : ''}
+                        {event.type === 'Aire libre' ? <img src={parque} style={{ width: '100%' }} /> : ''}
+                        {event.type === 'Cumpleaños' ? <img src={cumple} style={{ width: '100%' }} /> : ''}
+                        {event.type === 'Talleres' ? <img src={taller} style={{ width: '100%' }} /> : ''}
+                        {event.type === 'Otros' ? <img src={otros} style={{ width: '100%' }} /> : ''}
                         <div className="particpants mt-5">
 
                             <h2>Participantes:</h2>

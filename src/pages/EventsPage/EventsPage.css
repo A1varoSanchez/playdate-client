@@ -11,3 +11,12 @@
 .searchBar {
     margin-left: auto;
 }
+
+.crear-evento {
+    border: 1px solid black;
+}
+
+.botoncito {
+    background-color: #FFB54A !important;
+    border: 1px solid #211d1d !important;
+}

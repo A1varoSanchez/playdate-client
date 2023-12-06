@@ -56,11 +56,11 @@ const UserProfile = () => {
                                 </Tab>
 
                                 <Tab eventKey="eventos" title="Sus eventos">
-                                    <UserEventsTab2 />
+                                    <UserEventsTab2 userId={userId} />
                                 </Tab>
 
                                 <Tab eventKey="eventos2" title="Sus planes">
-                                    <UserEventsTab3 />
+                                    <UserEventsTab3 userId={userId} />
                                 </Tab>
 
 

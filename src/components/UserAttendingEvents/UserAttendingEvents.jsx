@@ -3,7 +3,7 @@ import eventServices from '../../services/event.services'
 import { Row } from 'react-bootstrap'
 import EventsCard from '../EventsCard/EventsCard'
 
-const ProfileEventsList = () => {
+const UserAttendingEvents = ({ userId }) => {
 
     const [events, setEvents] = useState()
 
@@ -13,25 +13,25 @@ const ProfileEventsList = () => {
 
     const loadEvents = () => {
         eventServices
-            .getUserEvents()
+            .getUserJoinedEvents(userId)
             .then(({ data }) => {
                 setEvents(data)
+
             })
             .catch(err => console.log(err))
     }
 
     return (
-
         !events
             ?
             <h1>Cargando...</h1>
             :
             <Row>
                 {
-                    events.map(event => <EventsCard event={event} key={event.name} />)
+                    events.map(event => <EventsCard event={event} />)
                 }
             </Row>
     )
 }
 
-export default ProfileEventsList
+export default UserAttendingEvents

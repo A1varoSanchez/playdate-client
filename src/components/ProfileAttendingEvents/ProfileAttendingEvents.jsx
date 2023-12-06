@@ -3,7 +3,7 @@ import eventServices from '../../services/event.services'
 import { Row } from 'react-bootstrap'
 import EventsCard from '../EventsCard/EventsCard'
 
-const ProfileAttendingEvents = () => {
+const UserAttendingEvents = () => {
 
     const [events, setEvents] = useState()
 
@@ -34,4 +34,4 @@ const ProfileAttendingEvents = () => {
     )
 }
 
-export default ProfileAttendingEvents
+export default UserAttendingEvents
