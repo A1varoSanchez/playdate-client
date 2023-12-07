@@ -38,26 +38,32 @@ const EventsPage = () => {
             <Container>
                 <div className='header mb-4 mt-4'>
                     <h1 className='title'>Eventos</h1>
-                    {
-                        loggedUser ?
-                            <Button className='botoncito' variant='warning' onClick={() => setShowModal(true)}> Crea Tu Propio Evento</Button>
-                            :
-                            <Link to={'/inicio-sesion'}>
-                                <Button className='botoncito' variant='warning'> Crea Tu Propio Evento</Button>
-                            </Link>
-                    }
                     <div className='searchBar'>
                         <SearchBar refreshEvents={loadEvents} handleFilteredEvents={handleFilteredEvents} />
                     </div>
                 </div>
                 <hr />
 
+                <div>
+
+                    {
+                        loggedUser ?
+                            <Button className='mb-3 botoncito' variant='warning' onClick={() => setShowModal(true)}> Crea un evento</Button>
+                            :
+                            <Link to={'/inicio-sesion'}>
+                                <Button className='mb-3 botoncito' variant='warning'> Crea un evento</Button>
+                            </Link>
+                    }
+
+                </div>
+
+
                 <EventsList events={events} refreshEvents={loadEvents} handleFilteredEvents={handleFilteredEvents} />
             </Container>
 
             <Modal show={showModal} onHide={() => setShowModal(false)}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Crear Nuevo Evento</Modal.Title>
+                    <Modal.Title>Nuevo Evento</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <NewEventForm setShowModal={setShowModal} refreshEvents={loadEvents} />

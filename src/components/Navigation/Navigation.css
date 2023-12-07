@@ -10,10 +10,13 @@
 .navbar-text {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    color: white !important;
     margin-right: 10px;
 }
 
 .white-text .nav-link {
     color: white !important;
+}
+
+.black-text .nav-link {
+    color: rgb(255, 255, 255) !important
 }

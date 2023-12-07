@@ -85,7 +85,7 @@ const NewEventForm = ({ setShowModal, refreshEvents }) => {
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId='longitude'>
-                        <Form.Label>Longitude</Form.Label>
+                        <Form.Label>Longitud   </Form.Label>
                         <Form.Control type="text" name="longitude" value={newData.location.longitude} onChange={handleInputChange} />
                     </Form.Group>
                 </Col>

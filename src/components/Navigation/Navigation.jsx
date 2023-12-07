@@ -2,7 +2,7 @@ import { Navbar, Nav, Container } from 'react-bootstrap'
 import { Link, useLocation } from 'react-router-dom'
 import { AuthContext } from './../../contexts/auth.context'
 import { useContext } from 'react'
-import logo from './../../assets/playdate-logo2.png'
+import logo2 from './../../assets/playdate-logo4.png'
 import "./Navigation.css"
 
 const Navigation = () => {
@@ -18,7 +18,7 @@ const Navigation = () => {
 
             <Navbar.Brand href="/">
                 <img
-                    src={logo}
+                    src={logo2}
                     height="35"
                     className="d-inline-block align-top"
                     alt="Company Logo"
@@ -49,7 +49,7 @@ const Navigation = () => {
                 </Nav>
 
                 <Navbar.Text className='justify-content-end my-link' >
-                    {loggedUser && <Navbar.Text>Bienvenido {loggedUser.username}</Navbar.Text>}
+                    {loggedUser && <Navbar.Text style={{ color: '#60BFB2' }}  >Bienvenido {loggedUser.username}</Navbar.Text>}
                 </Navbar.Text>
             </Navbar.Collapse>
         </Navbar>

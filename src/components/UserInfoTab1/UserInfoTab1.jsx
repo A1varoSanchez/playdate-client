@@ -19,11 +19,14 @@ const UserInfoTab1 = ({ profile, loadUser }) => {
                             marginLeft: '-13px'
                         }} />
                 </Col>
-                <Col>
+                <Col md={{ span: 4 }}>
                     <p>
                         <b>Conoce a mi familia: </b>
                         {profile.aboutUs}
                     </p>
+                </Col>
+                <Col>
+
                     <p>
                         <b>Peques: </b>{' '}
                     </p>
@@ -35,7 +38,14 @@ const UserInfoTab1 = ({ profile, loadUser }) => {
                             </li>
                         ))}
                     </ul>
+
+
+
+
                 </Col>
+
+
+
             </Row>
         </Container >
     )

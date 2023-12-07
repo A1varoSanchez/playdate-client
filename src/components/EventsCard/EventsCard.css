@@ -10,8 +10,9 @@
 }
 
 .card-header {
-    font-size: 25px !important;
+    font-size: 15px !important;
     font-family: 'Raleway', sans-serif !important;
+    text-align: left;
 }
 
 .card-title {

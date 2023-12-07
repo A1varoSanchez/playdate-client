@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
-import { Button, Card, Col, Container, Row } from "react-bootstrap"
+import { Button, ButtonGroup, Card, Col, Container, Row } from "react-bootstrap"
 import Chat from "../Chat/Chats"
 import userservices from "../../services/user.services"
 import './ProfileFriendsTab4.css'
+import { Link } from "react-router-dom"
 
 
 const ProfileFriendsTab4 = ({ profile, loadUser }) => {
@@ -43,10 +44,10 @@ const ProfileFriendsTab4 = ({ profile, loadUser }) => {
 
         <Container >
             {profile.friendAdd.length === 0 ? (
-                <p>No tienes ninguna solicitud de amistad pendiente</p>
+                <p>No tienes ninguna petición de amistad pendiente</p>
             ) : (
                 <div>
-                    <p><b>peticiones de amistad:</b></p>
+                    <p><b>Peticiones de amistad:</b></p>
 
                     <ul>
                         <Row >
@@ -81,14 +82,18 @@ const ProfileFriendsTab4 = ({ profile, loadUser }) => {
                                         <Card.Img variant="top" src={elm.photo} className="custom-card-img" />
                                         <Card.Body>
                                             <Card.Title className="custom-card-title">{elm.username}</Card.Title>
-                                            <Chat profile={profile} onlyOne={elm} />
-                                            <Button
-                                                onClick={() => handledeleteSubmit(elm._id)}
-                                                className="button-deleted"
-                                            >
-                                                Borrar amigo
-                                            </Button>
+                                            <ButtonGroup>
+                                                <Chat profile={profile} onlyOne={elm} />
+                                                <Button
+                                                    onClick={() => handledeleteSubmit(elm._id)}
+                                                    className="button-deleted"
+                                                    variant="link"
+                                                >
+                                                    Borrar amigo
+                                                </Button>
+                                            </ButtonGroup>
                                         </Card.Body>
+
                                     </Card>
                                 </Col>
 

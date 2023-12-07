@@ -28,11 +28,13 @@ const ProfileInfoTab1 = ({ profile, loadUser }) => {
                             marginLeft: '-13px'
                         }} />
                 </Col>
-                <Col>
+                <Col md={{ span: 4 }}>
                     <p>
                         <b>Conoce a mi familia: </b>
                         {profile.aboutUs}
                     </p>
+                </Col>
+                <Col>
 
                     <p>
                         <b>Peques: </b>{' '}
@@ -77,35 +79,37 @@ const ProfileInfoTab1 = ({ profile, loadUser }) => {
                 </Col>
 
                 <Col className='text-end'>
-                    <Button
-                        variant="link"
-                        size="sm"
-                        style={{
-                            textDecoration: 'underline',
-                            color: '#60BFB2',
-                            cursor: 'pointer',
-                            border: 'none',
-                            padding: '0',
-                            marginLeft: '5px',
-                        }}
-                        onClick={() => setShowModal2(true)}
-                    >
-                        Editar perfil
-                    </Button>
+                    <div>
+                        <Button
+                            variant="link"
+                            size="sm"
+                            style={{
+                                textDecoration: 'underline',
+                                color: '#60BFB2',
+                                cursor: 'pointer',
+                                border: 'none',
+                                padding: '0',
+                                marginLeft: '5px',
+                            }}
+                            onClick={() => setShowModal2(true)}
+                        >
+                            Editar perfil
+                        </Button>
 
-
-                    <Modal show={showModal2} onHide={() => setShowModal2(false)}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Editar perfil</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <EditProfileForm profile={profile} loadUser={loadUser} setShowModal2={setShowModal2} />
-                        </Modal.Body>
-                    </Modal>
-
+                        <Modal show={showModal2} onHide={() => setShowModal2(false)}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>Editar perfil</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <EditProfileForm profile={profile} loadUser={loadUser} setShowModal2={setShowModal2} />
+                            </Modal.Body>
+                        </Modal>
+                    </div>
                 </Col>
 
                 <Col className='text-end'>
+                    <span style={{ marginLeft: '5px', marginRight: '5px', color: '#60BFB2' }}>||</span>
+
                     <Button
                         variant="link"
                         size="sm"
@@ -122,7 +126,6 @@ const ProfileInfoTab1 = ({ profile, loadUser }) => {
                         Editar hijos/as
                     </Button>
 
-
                     <Modal show={showModal3} onHide={() => setShowModal3(false)}>
                         <Modal.Header closeButton>
                             <Modal.Title>Editar hijos/as</Modal.Title>
@@ -133,6 +136,7 @@ const ProfileInfoTab1 = ({ profile, loadUser }) => {
                         </Modal.Body>
                     </Modal>
                 </Col>
+
             </Row>
         </Container >
     )

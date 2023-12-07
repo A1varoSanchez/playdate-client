@@ -8,8 +8,34 @@
     background-position-y: bottom;
     color: black;
 
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Raleway', sans-serif !important;
 }
+
+h1 {
+    font-family: 'Raleway', sans-serif !important;
+}
+
+h2 {
+    font-family: 'Raleway', sans-serif !important;
+}
+
+h3 {
+    font-family: 'Raleway', sans-serif !important;
+}
+
+h4 {
+    font-family: 'Raleway', sans-serif !important;
+}
+
+h5 {
+    font-family: 'Raleway', sans-serif !important;
+}
+
+p {
+    font-family: 'Raleway', sans-serif !important;
+}
+
+
 
 .nav-link {
     background-color: transparent !important;
@@ -32,11 +58,5 @@
 .modal-title {
     font-family: 'Raleway', sans-serif;
     letter-spacing: 2px;
-    text-transform: uppercase !important;
 
-}
-
-.my-modal-button {
-    background-color: #60BFB2 !important;
-    color: white;
 }

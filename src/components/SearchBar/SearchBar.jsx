@@ -28,9 +28,9 @@ const SearchBar = ({ refreshEvents, handleFilteredEvents }) => {
     }
 
     return (
-        <div className="search-bar">
-            <img src={lupa} alt="" style={{ with: '20px', height: '20px', paddingLeft: '10px' }} />
-            <input type="text" placeholder="Busca tu tematica...ej: Parques" value={searchValue} onChange={handleInputChange} />
+        <div className="search-bar" style={{ width: '250px' }}>
+            <img src={lupa} alt="" style={{ height: '20px', paddingLeft: '10px' }} />
+            <input type="text" value={searchValue} onChange={handleInputChange} />
         </div>
     )
 }

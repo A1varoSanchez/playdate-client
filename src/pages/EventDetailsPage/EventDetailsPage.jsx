@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import eventServices from "../../services/event.services"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { Col, Container, Row, Button, Modal, Offcanvas, Form, Toast } from "react-bootstrap"
-import logo from './../../assets/playdate-logo.png'
+import "./EventDetailsPage.css"
 import { AuthContext } from "../../contexts/auth.context"
 import EditEventForm from "../../components/EditEventForm/EditEventForm"
 import MapMarkerDetails from './../../components/MapMarkerDetails/MapMarkerDetails.jsx'
@@ -120,20 +120,26 @@ const EventDetailsPage = () => {
             <h1>Cargando...</h1>
             :
             <Container >
-                <h1 className="mb-4">Detalles de {event.name}</h1>
-                <Button variant="primary" onClick={() => {
-                    handleShow()
-                    loadEventDetails()
-                }} >
+                <Link to="/eventos" className="volver-link "> ← Volver a listado </Link>
+
+                <h1 className="mb-2 mt-3">Detalles de {event.name}</h1>
+                <Button
+                    variant="primary"
+                    onClick={() => {
+                        handleShow();
+                        loadEventDetails();
+                    }}
+                    className="button-"
+                >
                     Comentarios del Evento
                 </Button>
 
-                <Offcanvas show={show} onHide={handleClose}>
+                <Offcanvas show={show} onHide={handleClose} className="offcanvas">
                     <Offcanvas.Header closeButton>
                         <Offcanvas.Title>Comentarios</Offcanvas.Title>
                     </Offcanvas.Header>
 
-                    <Offcanvas.Body>
+                    <Offcanvas.Body className="force-scroll">
                         {event.messages?.slice().reverse().map((elm, i) => (
                             <Toast key={i} className="custom-toast">
                                 <Toast.Header>
@@ -160,11 +166,34 @@ const EventDetailsPage = () => {
                 </Offcanvas>
                 <hr />
                 <Row >
-                    <Col md={{ span: 6, offset: 1 }}>
-                        <h3 ><strong>Organizadores: </strong> {event.organizer?.username}</h3>
-                        <h4><strong>Tipo de evento: </strong> {event.type}</h4>
-                        <h4><strong>Edad recomendada: </strong> {event.ageGroup} años</h4>
+
+                    <Col md={{ span: 4 }}>
+                        {event.type === 'Cultura' ? <img src={museo} style={{ width: '100%' }} /> : ''}
+                        {event.type === 'Deportes' ? <img src={deporte} style={{ width: '100%' }} /> : ''}
+                        {event.type === 'Música' ? <img src={musica} style={{ width: '100%' }} /> : ''}
+                        {event.type === 'Aire libre' ? <img src={parque} style={{ width: '100%' }} /> : ''}
+                        {event.type === 'Cumpleaños' ? <img src={cumple} style={{ width: '100%' }} /> : ''}
+                        {event.type === 'Talleres' ? <img src={taller} style={{ width: '100%' }} /> : ''}
+                        {event.type === 'Otros' ? <img src={otros} style={{ width: '100%' }} /> : ''}
+
+                    </Col>
+
+
+                    <Col md={{ span: 6, offset: 1 }} style={{ marginTop: '10px' }} >
                         <h4><strong>Plan: </strong> {event.description}</h4>
+                        <br />
+                        <h5 ><strong>Organizadores: </strong> {event.organizer?.username}</h5>
+                        <h5><strong>Tipo de evento: </strong> {event.type}</h5>
+                        <h5><strong>Edad recomendada: </strong> {event.ageGroup} años</h5>
+                        <h5><b>Participantes:</b> {
+                            event.participants?.map((elm, i) => (
+                                <span key={i}>
+                                    <Link to={`/perfil/${elm._id}`} className="my-link" >{elm.username}</Link>
+                                    {i < event.participants.length - 1 && ", "}
+                                </span>
+                            ))
+                        }</h5>
+
                         <br />
 
                         <Modal show={showModal} onHide={() => setShowModal(false)}>
@@ -180,9 +209,9 @@ const EventDetailsPage = () => {
                             event.participants?.find((participant) => participant._id === loggedUser._id)
 
                                 ?
-                                <span className='btn btn-primary mb-3' onClick={() => handleDeleteSubmit()}> Abandonar evento </span>
+                                <span className='link-evento' onClick={() => handleDeleteSubmit()}> Abandonar evento </span>
                                 :
-                                <span className='btn btn-primary mb-3' onClick={() => handleJoinSubmit()}> Apuntarme al evento </span>
+                                <span className='link-evento' onClick={() => handleJoinSubmit()}> ¡Me apunto! </span>
                         }
                         {
                             (loggedUser._id === event.organizer?._id)
@@ -196,31 +225,10 @@ const EventDetailsPage = () => {
                                 <br />
                         }
                         <hr />
-                        <Link to="/eventos" className="btn btn-dark">Volver a los eventos</Link>
+
                     </Col>
 
-                    <Col md={{ span: 4 }}>
-                        {event.type === 'Cultura' ? <img src={museo} style={{ width: '100%' }} /> : ''}
-                        {event.type === 'Deportes' ? <img src={deporte} style={{ width: '100%' }} /> : ''}
-                        {event.type === 'Música' ? <img src={musica} style={{ width: '100%' }} /> : ''}
-                        {event.type === 'Aire libre' ? <img src={parque} style={{ width: '100%' }} /> : ''}
-                        {event.type === 'Cumpleaños' ? <img src={cumple} style={{ width: '100%' }} /> : ''}
-                        {event.type === 'Talleres' ? <img src={taller} style={{ width: '100%' }} /> : ''}
-                        {event.type === 'Otros' ? <img src={otros} style={{ width: '100%' }} /> : ''}
-                        <div className="particpants mt-5">
 
-                            <h2>Participantes:</h2>
-                            {
-                                event.participants?.map((elm, i) => {
-                                    return (
-                                        <div key={i}>
-                                            <Link to={`/perfil/${elm._id}`} >{elm.username}</Link>
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div>
-                    </Col>
                 </Row>
                 <div>
                     <MapMarkerDetails />

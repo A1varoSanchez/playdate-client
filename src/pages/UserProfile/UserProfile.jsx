@@ -41,7 +41,7 @@ const UserProfile = () => {
                 <Row>
                     <Col>
                         <div>
-                            <h1>El perfil de {profile.username}</h1>
+                            <h1 className='mb-4'>El perfil de {profile.username}</h1>
 
                             <Tabs
                                 defaultActiveKey="home"

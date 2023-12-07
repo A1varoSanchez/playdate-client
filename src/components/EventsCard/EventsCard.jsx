@@ -20,7 +20,7 @@ const EventsCard = ({ type, name, ageGroup, _id }) => {
         <Col className='mb-5' lg={{ span: 3 }} md={{ span: 6 }}>
             <article className="h-100 d-flex flex-column">
                 <Card border="warning" className="d-flex flex-column h-100">
-                    <Card.Header className='text-center'>{type}</Card.Header>
+                    <Card.Header className='text-start'>{type}</Card.Header>
                     {type === 'Cultura' ? <Card.Img variant="top" src={museo} /> : ''}
                     {type === 'Deportes' ? <Card.Img variant="top" src={deporte} /> : ''}
                     {type === 'Música' ? <Card.Img variant="top" src={musica} /> : ''}
