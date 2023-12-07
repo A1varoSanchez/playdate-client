@@ -13,7 +13,7 @@ const ProfileEventsList = () => {
 
     const loadEvents = () => {
         eventServices
-            .getUserEvents()
+            .getMyEvents()
             .then(({ data }) => {
                 setEvents(data)
             })
@@ -28,7 +28,7 @@ const ProfileEventsList = () => {
             :
             <Row>
                 {
-                    events.map(event => <EventsCard event={event} key={event.name} />)
+                    events.map(event => <EventsCard {...event} key={event.name} />)
                 }
             </Row>
     )

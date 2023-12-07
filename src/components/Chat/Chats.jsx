@@ -57,19 +57,17 @@ const Chat = ({ profile, onlyOne }) => {
 
     //send messages
     const handleInputChange = e => {
-        const { value, name } = e.currentTarget
+        const { value: content, name } = e.currentTarget
         setChatInfo(prevState => ({
             ...prevState,
-            messages: {
-                content: value,
-            }
+            messages: { content }
         }))
     }
 
     const handleChatSubmit = (e, chatId) => {
         e.preventDefault()
         const dataToSend = {
-            ...chatInfo.messages,
+            ...chatInfo.messages
         }
 
         chatService
@@ -83,14 +81,13 @@ const Chat = ({ profile, onlyOne }) => {
                     },
                 })
                 loadChat()
-                loadChatDetails(e, chatId)
+                loadChatDetails(chatId)
             })
             .catch(err => console.log(err))
     }
 
     //get one chat
-    const loadChatDetails = (e, chatId) => {
-        e.preventDefault()
+    const loadChatDetails = (chatId) => {
 
         chatService
             .getOneChats(chatId)
@@ -101,72 +98,67 @@ const Chat = ({ profile, onlyOne }) => {
     }
 
     return (
-        <>
-            <div key={onlyOne._id}>
-                {chat.find((el) =>
-                    (el.participantOne === loggedUser._id && el.participantTwo === onlyOne._id) ||
-                    (el.participantTwo === loggedUser._id && el.participantOne === onlyOne._id))
-                    ? (
-                        <>
-                            <Button
-                                variant="primary"
-                                onClick={(e) => {
-                                    handleShow()
-                                    const selectedChat = chat.find((el) =>
-                                        (el.participantOne === loggedUser._id && el.participantTwo === onlyOne._id) ||
-                                        (el.participantTwo === loggedUser._id && el.participantOne === onlyOne._id)
-                                    )
-                                    if (selectedChat) {
-                                        loadChatDetails(e, selectedChat._id)
-                                    }
-                                }}
-                                className="button-"
-                            >
-                                iniciar
-                            </Button>
+        chat.find((el) =>
+            (el.participantOne === loggedUser._id && el.participantTwo === onlyOne._id)
+            ||
+            (el.participantTwo === loggedUser._id && el.participantOne === onlyOne._id))
+            ? (
+                <>
+                    <Button
+                        variant="primary"
+                        onClick={(e) => {
+                            handleShow()
+                            const selectedChat = chat.find((el) =>
+                                (el.participantOne === loggedUser._id && el.participantTwo === onlyOne._id) ||
+                                (el.participantTwo === loggedUser._id && el.participantOne === onlyOne._id)
+                            )
+                            if (selectedChat) {
+                                loadChatDetails(selectedChat._id)
+                            }
+                        }}
+                        className="button-"
+                    >
+                        iniciar
+                    </Button>
 
-                            <Offcanvas show={show} onHide={handleClose} placement="end" closeButton={false}>
-                                <Offcanvas.Header closeButton={false} />
+                    <Offcanvas show={show} onHide={handleClose} placement="end" closeButton={false}>
+                        <Offcanvas.Header closeButton={false} />
 
-                                <Offcanvas.Body  >
-                                    {loadMyChat?.messages.slice().reverse().map((elm, i) => (
-                                        <Toast key={i} className="custom-toast" style={{ marginBottom: '10px' }}>
-                                            <Toast.Header>
-                                                <strong className="me-auto">{elm.owner}</strong>
-                                            </Toast.Header>
-                                            <Toast.Body>{elm.content}</Toast.Body>
-                                        </Toast>
-                                    ))}
-                                </Offcanvas.Body>
+                        <Offcanvas.Body  >
+                            {loadMyChat?.messages.slice().reverse().map((elm, i) => (
+                                <Toast key={i} className="custom-toast" style={{ marginBottom: '10px' }}>
+                                    <Toast.Header>
+                                        <strong className="me-auto">{elm.owner}</strong>
+                                    </Toast.Header>
+                                    <Toast.Body>{elm.content}</Toast.Body>
+                                </Toast>
+                            ))}
+                        </Offcanvas.Body>
 
-                                <Form onSubmit={(e) => handleChatSubmit(e, loadMyChat._id)}>
-                                    <Form.Group className="mb-3" controlId="content">
-                                        <Form.Control
-                                            as="textarea"
-                                            rows={3}
-                                            name="content"
-                                            value={chatInfo.messages.content}
-                                            onChange={handleInputChange}
-                                        />
-                                        <Button className="button-" type="submit">Enviar</Button>
-                                    </Form.Group>
-                                </Form>
-
-                            </Offcanvas>
-                        </>
-                    ) : (
-
-                        <Form key={onlyOne._id} onSubmit={(e) => handleInitSubmit(e, onlyOne._id)}>
-                            <Form.Group className="mb-3" controlId="participantTwo">
-                                <Form.Label>Name</Form.Label>
-                                <Button className="button-" type="submit">Iniciar Chat</Button>
+                        <Form onSubmit={(e) => handleChatSubmit(e, loadMyChat._id)}>
+                            <Form.Group className="mb-3" controlId="content">
+                                <Form.Control
+                                    as="textarea"
+                                    rows={3}
+                                    name="content"
+                                    value={chatInfo.messages.content}
+                                    onChange={handleInputChange}
+                                />
+                                <Button className="button-" type="submit">Enviar</Button>
                             </Form.Group>
                         </Form>
+                    </Offcanvas>
+                </>
+            ) : (
 
-                    )
-                }
-            </div >
-        </>
+                <Form key={onlyOne._id} onSubmit={(e) => handleInitSubmit(e, onlyOne._id)}>
+                    <Form.Group className="mb-3" controlId="participantTwo">
+                        <Form.Label>Name</Form.Label>
+                        <Button className="button-" type="submit">Iniciar Chat</Button>
+                    </Form.Group>
+                </Form>
+
+            )
     )
 }
 

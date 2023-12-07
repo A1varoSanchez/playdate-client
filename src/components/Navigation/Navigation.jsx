@@ -29,18 +29,19 @@ const Navigation = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className={`me-auto ${isHomePage ? 'white-text' : ''}`}>
-                    <Link to={'/eventos'} className='nav-link '>Eventos</Link>
-                    <Link to={'/mapa'} className='nav-link '>Mapa</Link>
-                    <Link to={'/usuarios'} className='nav-link '>usuarios</Link>
                     {
                         loggedUser
                             ?
                             <>
+                                <Link to={'/eventos'} className='nav-link '>Eventos</Link>
+                                <Link to={'/mapa'} className='nav-link '>Mapa</Link>
+                                <Link to={'/usuarios'} className='nav-link '>usuarios</Link>
                                 <Link to={`/perfil`} className='nav-link '>Mi perfil</Link>
                                 <span className='nav-link ' onClick={logout}>Cerrar sesión</span>
                             </>
                             :
                             <>
+                                <Link to={'/eventos'} className='nav-link '>Eventos</Link>
                                 <Link to={'/inicio-sesion'} className='nav-link '>Inicio sesión</Link>
                                 <Link to={'/registro'} className='nav-link '>Registro</Link>
                             </>

@@ -1,8 +1,7 @@
 import { Row } from 'react-bootstrap'
 import EventsCard from '../EventsCard/EventsCard.jsx'
-import SearchBar from '../SearchBar/SearchBar.jsx'
 
-const EventsList = ({ events, refreshEvents, handleFilteredEvents }) => {
+const EventsList = ({ events }) => {
 
     return (
 
@@ -13,7 +12,7 @@ const EventsList = ({ events, refreshEvents, handleFilteredEvents }) => {
             <>
                 <Row>
                     {
-                        events.map(elm => <EventsCard key={elm._id} event={elm} refreshEvents={refreshEvents} handleFilteredEvents={handleFilteredEvents} />)
+                        events.map(elm => <EventsCard key={elm._id} {...elm} />)
                     }
                 </Row>
             </>
