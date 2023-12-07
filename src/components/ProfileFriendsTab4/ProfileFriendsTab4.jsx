@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { Button, Card, Col, Container, Row } from "react-bootstrap"
-import Chat from "../Chat/chat"
 import userservices from "../../services/user.services"
 import './ProfileFriendsTab4.css'
 

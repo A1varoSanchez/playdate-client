@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Form, Button, Col, Row } from "react-bootstrap"
+import { Form, Button } from "react-bootstrap"
 import userServices from "../../services/user.services"
 import uploadServices from "../../services/upload.services"
 

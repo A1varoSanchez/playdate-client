@@ -12,7 +12,6 @@ import ProfileFriendsTab4 from '../../components/ProfileFriendsTab4/ProfileFrien
 
 const Profile = () => {
 
-    const { loggedUser } = useContext(AuthContext)
     const [profile, setProfile] = useState(null)
 
     useEffect(() => {
