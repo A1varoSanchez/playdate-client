@@ -21,10 +21,7 @@ const AppRoutes = () => {
 
             <Route path={'/registro'} element={<SignUp />} />
             <Route path={'/inicio-sesion'} element={<LoginPage />} />
-
             <Route path={'/eventos'} element={<EventsPage />} />
-
-            <Route path={'/mapa'} element={<Map />} />
 
             <Route element={<PrivateRoute />}>
                 <Route path={'/usuarios'} element={<UsersPage />} />
@@ -32,6 +29,7 @@ const AppRoutes = () => {
                 <Route path={'/perfil'} element={<Profile />} />
                 <Route path={'/eventos/:event_id'} element={<EventDetailsPage />} />
                 <Route path={'/perfil/:userId'} element={<UserProfile />} />
+                <Route path={'/mapa'} element={<Map />} />
             </Route>
 
             <Route path={'*'} element={<p>EL ERROR</p>} />

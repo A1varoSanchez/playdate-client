@@ -8,32 +8,39 @@ import cumple from './../../assets/cumple.jpg'
 import taller from './../../assets/talleres.jpg'
 import otros from './../../assets/deporte.jpg'
 import './EventsCard.css'
+import { AuthContext } from '../../contexts/auth.context'
+import { useContext } from 'react'
 
-const EventsCard = ({ event }) => {
+const EventsCard = ({ type, name, ageGroup, _id }) => {
+
+    const { loggedUser, } = useContext(AuthContext)
+
 
     return (
-        !event ?
-            <h1>Cargando...</h1>
-            :
-            <Col className='mb-5' lg={{ span: 3 }} md={{ span: 6 }}>
-                <article className="h-100 d-flex flex-column">
-                    <Card border="warning" className="d-flex flex-column h-100">
-                        <Card.Header className='text-center'>{event.type}</Card.Header>
-                        {event.type === 'Cultura' ? <Card.Img variant="top" src={museo} /> : ''}
-                        {event.type === 'Deportes' ? <Card.Img variant="top" src={deporte} /> : ''}
-                        {event.type === 'Música' ? <Card.Img variant="top" src={musica} /> : ''}
-                        {event.type === 'Aire libre' ? <Card.Img variant="top" src={parque} /> : ''}
-                        {event.type === 'Cumpleaños' ? <Card.Img variant="top" src={cumple} /> : ''}
-                        {event.type === 'Talleres' ? <Card.Img variant="top" src={taller} /> : ''}
-                        {event.type === 'Otros' ? <Card.Img variant="top" src={otros} /> : ''}
-                        <Card.Body className="d-flex flex-column">
-                            <Card.Title>{event.name} </Card.Title>
-                            <Card.Text>Edad recomendada: {event.ageGroup}</Card.Text>
-                        </Card.Body>
-                        <Link to={`/eventos/${event._id}`} className="button text-center" >ver detalles</Link>
-                    </Card >
-                </article>
-            </Col>
+        <Col className='mb-5' lg={{ span: 3 }} md={{ span: 6 }}>
+            <article className="h-100 d-flex flex-column">
+                <Card border="warning" className="d-flex flex-column h-100">
+                    <Card.Header className='text-center'>{type}</Card.Header>
+                    {type === 'Cultura' ? <Card.Img variant="top" src={museo} /> : ''}
+                    {type === 'Deportes' ? <Card.Img variant="top" src={deporte} /> : ''}
+                    {type === 'Música' ? <Card.Img variant="top" src={musica} /> : ''}
+                    {type === 'Aire libre' ? <Card.Img variant="top" src={parque} /> : ''}
+                    {type === 'Cumpleaños' ? <Card.Img variant="top" src={cumple} /> : ''}
+                    {type === 'Talleres' ? <Card.Img variant="top" src={taller} /> : ''}
+                    {type === 'Otros' ? <Card.Img variant="top" src={otros} /> : ''}
+                    <Card.Body className="d-flex flex-column">
+                        <Card.Title>{name} </Card.Title>
+                        <Card.Text>Edad recomendada: {ageGroup}</Card.Text>
+                    </Card.Body>
+                    {
+                        loggedUser ?
+                            <Link to={`/eventos/${_id}`} className="button text-center" >ver detalles</Link>
+                            :
+                            <Link to={'/registro'} className="button text-center" >ver detalles</Link>
+                    }
+                </Card >
+            </article>
+        </Col>
     )
 }
 

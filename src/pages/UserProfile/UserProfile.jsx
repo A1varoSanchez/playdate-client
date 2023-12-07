@@ -7,8 +7,8 @@ import userservices from '../../services/user.services.js'
 import { useParams } from 'react-router-dom'
 
 import UserInfoTab1 from '../../components/UserInfoTab1/UserInfoTab1.jsx'
-import UserEventsTab2 from '../../components/UserEventsTabs2/UserEventsTabs2.jsx'
-import UserEventsTab3 from '../../components/UserEventsTab3/UserEventsTab3.jsx'
+import UserEventsList from '../../components/UserEventsList/UserEventsList.jsx'
+import UserAttendingEvents from '../../components/ProfileAttendingEvents/ProfileAttendingEvents.jsx'
 
 const UserProfile = () => {
 
@@ -54,11 +54,11 @@ const UserProfile = () => {
                                 </Tab>
 
                                 <Tab eventKey="eventos" title="Sus eventos">
-                                    <UserEventsTab2 userId={userId} />
+                                    <UserEventsList userId={userId} />
                                 </Tab>
 
                                 <Tab eventKey="eventos2" title="Sus planes">
-                                    <UserEventsTab3 userId={userId} />
+                                    <UserAttendingEvents userId={userId} />
                                 </Tab>
 
 

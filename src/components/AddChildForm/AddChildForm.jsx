@@ -34,10 +34,10 @@ const AddChildForm = ({ setShowModal1, loadUser }) => {
         <Form onSubmit={handleEventSubmit}>
             <Form.Group className="mb-3" controlId="birthday">
                 <Form.Label>Fecha de nacimiento</Form.Label>
-                <Form.Control type="date" name="birthday" value={childInfo.children.birthday} onChange={handleInputChange} />
+                <Form.Control type="date" name="birthday" value={childInfo.children?.birthday} onChange={handleInputChange} />
             </Form.Group>
 
-            <Form.Select className="mb-3" aria-label="Default select example" name="gender" value={childInfo.children.gender} onChange={handleInputChange}>
+            <Form.Select className="mb-3" aria-label="Default select example" name="gender" value={childInfo.children?.gender} onChange={handleInputChange}>
                 <option type="text">Selecciona género</option>
                 <option type="text" value="niño">Niño</option>
                 <option type="text" value="niña">Niña</option>

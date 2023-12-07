@@ -6,9 +6,9 @@ import { AuthContext } from '../../contexts/auth.context.jsx'
 import userservices from '../../services/user.services'
 
 import ProfileInfoTab1 from '../../components/ProfileInfoTab1/ProfileInfoTab1'
-import ProfileEventsTab2 from '../../components/ProfileEventsTab2/ProfileEventsTab2'
-import ProfileEventsTab3 from '../../components/ProfileEventsTab3/ProfileEventsTab3'
 import ProfileFriendsTab4 from '../../components/ProfileFriendsTab4/ProfileFriendsTab4.jsx'
+import ProfileEventsList from '../../components/ProfileEventsList/ProfileEventsList.jsx'
+import ProfileAttendingEvents from '../../components/ProfileAttendingEvents/ProfileAttendingEvents.jsx'
 
 const Profile = () => {
 
@@ -50,11 +50,11 @@ const Profile = () => {
                                 </Tab>
 
                                 <Tab eventKey="eventos" title="Mis eventos">
-                                    <ProfileEventsTab2 />
+                                    <ProfileEventsList />
                                 </Tab>
 
                                 <Tab eventKey="eventos2" title="Mis planes">
-                                    <ProfileEventsTab3 />
+                                    <ProfileAttendingEvents />
                                 </Tab>
 
                                 <Tab eventKey="amigos" title="Amigos">

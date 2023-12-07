@@ -28,7 +28,7 @@ const UserEventsList = ({ userId }) => {
             :
             <Row>
                 {
-                    events.map(event => <EventsCard event={event} key={event.name} />)
+                    events.map(event => <EventsCard {...event} key={event.name} />)
                 }
             </Row>
     )

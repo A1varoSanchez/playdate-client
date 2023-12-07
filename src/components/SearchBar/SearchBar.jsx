@@ -8,22 +8,20 @@ const SearchBar = ({ refreshEvents, handleFilteredEvents }) => {
     const [searchValue, setSearchValue] = useState('')
 
     const handleInputChange = (event) => {
-        const { value } = event.target
-        setSearchValue(value)
+        const { value: searchQuery } = event.target
+        setSearchValue(searchQuery)
 
-        const searchQuery = value
 
-        if (searchQuery.trim() === '') {
+        if (searchQuery.length === 0) {
             refreshEvents()
         } else {
+
+            const sanitizedQuery = searchQuery.trim()
+
             eventServices
-                .searchByType(searchQuery)
+                .searchByType(sanitizedQuery)
                 .then(response => {
-                    if (response && response.data) {
-                        handleFilteredEvents(response.data)
-                    } else {
-                        console.log('No hay eventos')
-                    }
+                    response?.data ? handleFilteredEvents(response.data) : console.log('No hay eventos')
                 })
                 .catch(err => console.log(err))
         }

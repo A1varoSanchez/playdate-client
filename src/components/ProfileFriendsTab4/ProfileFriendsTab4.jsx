@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Button, Card, Col, Container, Row } from "react-bootstrap"
+import Chat from "../Chat/Chats"
 import userservices from "../../services/user.services"
 import './ProfileFriendsTab4.css'
 
@@ -42,7 +43,7 @@ const ProfileFriendsTab4 = ({ profile, loadUser }) => {
 
         <Container >
             {profile.friendAdd.length === 0 ? (
-                <div></div>
+                <p>No tienes ninguna solicitud de amistad pendiente</p>
             ) : (
                 <div>
                     <p><b>peticiones de amistad:</b></p>

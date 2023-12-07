@@ -28,7 +28,7 @@ const UserAttendingEvents = () => {
             :
             <Row>
                 {
-                    events.map(event => <EventsCard event={event} />)
+                    events.map(event => <EventsCard {...event} />)
                 }
             </Row>
     )

@@ -30,7 +30,6 @@ const MapMarker = () => {
         eventServices
             .getEvents()
             .then(({ data }) => {
-                console.log('Eventos cargados:', data)
                 setEvents(data)
             })
             .catch(err => console.log(err))

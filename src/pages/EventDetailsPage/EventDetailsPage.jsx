@@ -86,12 +86,10 @@ const EventDetailsPage = () => {
     }
 
     const handleInputChange = e => {
-        const { value, name } = e.currentTarget
+        const { value: text, name } = e.currentTarget
         setEventInfo(prevState => ({
             ...prevState,
-            messages: {
-                text: value,
-            }
+            messages: { text }
         }))
     }
 
@@ -112,7 +110,6 @@ const EventDetailsPage = () => {
                     },
                 })
                 loadEventDetails()
-                console.log('------------------------------>EventDetailsPage', data)
             })
             .catch(err => console.log(err))
     }
@@ -199,7 +196,7 @@ const EventDetailsPage = () => {
                                 <br />
                         }
                         <hr />
-                        {isAdmin ? <Link to="/eventos" className="btn btn-dark">Volver a los eventos</Link> : <h1>no</h1>}
+                        <Link to="/eventos" className="btn btn-dark">Volver a los eventos</Link>
                     </Col>
 
                     <Col md={{ span: 4 }}>

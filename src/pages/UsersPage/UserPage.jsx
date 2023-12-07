@@ -137,6 +137,7 @@ const UsersPage = () => {
             .catch(err => console.log(err))
     }
 
+
     return (
 
         !user ?
@@ -156,13 +157,17 @@ const UsersPage = () => {
                                     <p className="card-content">{elm.aboutUs}</p>
                                 </Card.Body>
                                 <div className="card-buttons">
-                                    {elm.friends.includes(loggedUser._id) ? (
-                                        <Button onClick={() => handledeleteSubmit(elm._id)} className="button-deleted">Borrar amigo</Button>
-                                    ) : elm.friendAdd.includes(loggedUser._id) ? (
-                                        <div></div>
-                                    ) : (
-                                        <Button onClick={() => handlePetitionSubmit(elm._id)} className="boton-add">Agregar amigo</Button>
-                                    )}
+                                    {
+                                        elm.friends.includes(loggedUser._id)
+                                            ?
+                                            (
+                                                <Button onClick={() => handledeleteSubmit(elm._id)} className="button-deleted">Borrar amigo</Button>
+                                            ) : elm.friendAdd.includes(loggedUser._id) ? (
+                                                <></>
+                                            ) : (
+                                                <Button onClick={() => handlePetitionSubmit(elm._id)} className="boton-add">Agregar amigo</Button>
+                                            )
+                                    }
                                 </div>
                             </Card>
                         </Col>
