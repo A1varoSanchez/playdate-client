@@ -13,7 +13,6 @@ import UserEventsTab3 from '../../components/UserEventsTab3/UserEventsTab3.jsx'
 const UserProfile = () => {
 
 
-
     const { loggedUser } = useContext(AuthContext)
     const [profile, setProfile] = useState(null)
 
