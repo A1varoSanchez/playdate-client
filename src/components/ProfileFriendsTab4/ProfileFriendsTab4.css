@@ -5,11 +5,14 @@
     border-radius: 5px !important;
     font-size: 12px !important;
     border: none !important;
-    border-radius: 5px !important;
-    font-size: 12px !important;
-    border: none !important;
+    max-width: 100px !important;
+    width: 100% !important;
     margin-top: 10px !important;
-    margin-top: auto !important
+    margin-top: auto !important;
+    text-decoration: none !important;
+    display: block !important;
+    float: left !important;
+    clear: both !important;
 }
 
 .boton-add {
@@ -20,6 +23,16 @@
     border-radius: 5px !important;
     cursor: pointer !important;
     margin-top: 10px !important;
+    max-width: 100px !important;
+    width: 100% !important;
+    margin-top: 10px !important;
+    margin-top: auto !important;
+    text-decoration: none !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+    clear: both;
 }
 
 .rounded-container {
@@ -40,7 +53,7 @@
 
 .custom-card {
     width: 200px !important;
-    height: 400px !important;
+    height: 350px !important;
     background-color: rgba(255, 255, 255, 0.3) !important;
     overflow-y: auto !important;
 }

@@ -13,6 +13,7 @@
     font-size: 15px !important;
     font-family: 'Raleway', sans-serif !important;
     text-align: left;
+
 }
 
 .card-title {
@@ -27,7 +28,7 @@
 .card-img {
     width: 100% !important;
     height: 180px !important;
-    object-fit: cover;
+
 }
 
 .button {

@@ -153,14 +153,13 @@ const Chat = ({ profile, onlyOne }) => {
 
                 <Form key={onlyOne._id} onSubmit={(e) => handleInitSubmit(e, onlyOne._id)}>
                     <Form.Group className="mb-3" controlId="participantTwo">
-                        <Form.Label>Name</Form.Label>
                         <Button className="button-" type="submit">Iniciar Chat</Button>
                     </Form.Group>
                 </Form>
-
             )
     )
 }
+
 
 
 export default Chat

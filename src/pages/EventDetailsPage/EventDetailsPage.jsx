@@ -152,7 +152,6 @@ const EventDetailsPage = () => {
 
                     <Form onSubmit={(e) => handleEventSubmit(e, event._id)}>
                         <Form.Group className="mb-3" controlId="text">
-                            <p>{event?._id}</p>
                             <Form.Control
                                 as="textarea"
                                 rows={3}

@@ -50,9 +50,10 @@ const EventsPage = () => {
                         loggedUser ?
                             <Button className='mb-3 botoncito' variant='warning' onClick={() => setShowModal(true)}> Crea un evento</Button>
                             :
-                            <Link to={'/inicio-sesion'}>
-                                <Button className='mb-3 botoncito' variant='warning'> Crea un evento</Button>
-                            </Link>
+                            <></>
+                        // <Link to={'/inicio-sesion'}>
+                        //     <Button className='mb-3 botoncito' variant='warning'> Crea un evento</Button>
+                        // </Link>
                     }
 
                 </div>

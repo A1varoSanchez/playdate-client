@@ -71,39 +71,37 @@ const ProfileFriendsTab4 = ({ profile, loadUser }) => {
                 </div>
             )}
             <p><b>Amigos:</b></p>
-            <Container>
-                <Row>
-                    {
-                        profile.friends.map(elm => {
-                            return (
 
-                                <Col key={elm._id} className="custom-col">
-                                    <Card className="custom-card">
-                                        <Card.Img variant="top" src={elm.photo} className="custom-card-img" />
-                                        <Card.Body>
-                                            <Card.Title className="custom-card-title">{elm.username}</Card.Title>
-                                            <ButtonGroup>
-                                                <Chat profile={profile} onlyOne={elm} />
-                                                <Button
-                                                    onClick={() => handledeleteSubmit(elm._id)}
-                                                    className="button-deleted"
-                                                    variant="link"
-                                                >
-                                                    Borrar amigo
-                                                </Button>
-                                            </ButtonGroup>
-                                        </Card.Body>
+            <Row>
+                {profile.friends.map(elm => (
+                    <Col key={elm._id} className="custom-col">
+                        <Card className="custom-card">
+                            <Card.Img variant="top" src={elm.photo} className="custom-card-img" />
+                            <Card.Body>
+                                <Card.Title className="custom-card-title">{elm.username}</Card.Title>
 
-                                    </Card>
-                                </Col>
 
-                            )
-                        })
-                    }
-                </Row >
-            </Container >
+                                <Chat profile={profile} onlyOne={elm} />
 
-        </Container >
+
+
+
+                            </Card.Body>
+                            <Button
+                                onClick={() => handledeleteSubmit(elm._id)}
+                                className="button-deleted"
+                                variant="link"
+                            >
+                                Borrar amigo
+                            </Button>
+                        </Card>
+                    </Col>
+                ))}
+            </Row>
+        </Container>
+
+
+
     )
 }
 
