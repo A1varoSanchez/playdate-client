@@ -18,7 +18,6 @@ const AddChildForm = ({ setShowModal1, loadUser }) => {
     }
 
     const handleEventSubmit = e => {
-
         e.preventDefault()
 
         userservices
@@ -32,7 +31,6 @@ const AddChildForm = ({ setShowModal1, loadUser }) => {
     }
 
     return (
-
         <Form onSubmit={handleEventSubmit}>
             <Form.Group className="mb-3" controlId="birthday">
                 <Form.Label>Fecha de nacimiento</Form.Label>
@@ -51,6 +49,7 @@ const AddChildForm = ({ setShowModal1, loadUser }) => {
         </Form>
     )
 }
+
 
 export default AddChildForm
 

@@ -53,10 +53,6 @@ class UserService {
     deletedFriend(friendId) {
         return this.api.post('/deletFriend', { friendId })
     }
-    // body objet 
-    //query : req.query
-    // : req.params
-
 }
 
 

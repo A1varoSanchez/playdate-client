@@ -8,9 +8,7 @@ import "./Navigation.css"
 const Navigation = () => {
 
     const { loggedUser, logout, isAdmin } = useContext(AuthContext)
-
     const location = useLocation();
-
     const isHomePage = location.pathname === '/'
 
 
@@ -27,6 +25,7 @@ const Navigation = () => {
                     style={{ marginLeft: '15px' }}
                 />
             </Navbar.Brand>
+
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className={`me-auto ${isHomePage ? 'white-text' : ''}`}>
@@ -46,8 +45,8 @@ const Navigation = () => {
                                 <Link to={'/registro'} className='nav-link '>Registro</Link>
                             </>
                     }
-
                 </Nav>
+
                 <Navbar.Text className='justify-content-end my-link' >
                     {loggedUser && <Navbar.Text>Bienvenido {loggedUser.username}</Navbar.Text>}
                 </Navbar.Text>

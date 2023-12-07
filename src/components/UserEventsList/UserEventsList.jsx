@@ -34,4 +34,5 @@ const UserEventsList = ({ userId }) => {
     )
 }
 
+
 export default UserEventsList

@@ -47,9 +47,7 @@ const EditChildForm = ({ profile, loadUser, setShowModal3 }) => {
 
     return (
 
-
         <Form onSubmit={handleFormSubmit}>
-
             <Form.Group className="mb-3" controlId="children">
                 <Form.Label>Hijos</Form.Label>
                 <ul style={{ padding: '0' }}>
@@ -76,17 +74,14 @@ const EditChildForm = ({ profile, loadUser, setShowModal3 }) => {
                         </li>
                     ))}
                 </ul>
-
-
             </Form.Group>
 
             <div className="d-grid">
                 <Button variant="dark" type="submit" className="my-modal-button">Aceptar</Button>
             </div>
-
         </Form>
-
     )
 }
+
 
 export default EditChildForm

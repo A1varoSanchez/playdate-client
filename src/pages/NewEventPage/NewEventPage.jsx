@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap'
 
 const NewEventPage = () => {
 
+
     return (
 
         <Container>

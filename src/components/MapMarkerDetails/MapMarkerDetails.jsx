@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom'
 import eventServices from '../../services/event.services'
 
 const MapMarker = () => {
-    const { event_id } = useParams()
 
+    const { event_id } = useParams()
     const [event, setEvent] = useState({})
 
     useEffect(() => {
@@ -22,8 +22,8 @@ const MapMarker = () => {
     const mapStyle = {
         height: '500px',
         width: '80%',
-
     }
+
     const mapContainerStyle = {
         display: 'flex',
         justifyContent: 'center',
@@ -32,6 +32,7 @@ const MapMarker = () => {
     }
 
     return (
+
         !event.location
             ?
             <h1>cargando...</h1>
@@ -50,8 +51,8 @@ const MapMarker = () => {
                     </Map>
                 </APIProvider>
             </div>
-
     )
 }
+
 
 export default MapMarker

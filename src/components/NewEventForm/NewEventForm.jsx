@@ -10,9 +10,7 @@ import FormError from '../Error-handling/ErrorHandling'
 const NewEventForm = ({ setShowModal, refreshEvents }) => {
 
     const { loggedUser } = useContext(AuthContext)
-
     const [errors, setErrors] = useState([])
-
     const [newData, setEventData] = useState({
         name: '',
         type: 'Otros',
@@ -28,6 +26,7 @@ const NewEventForm = ({ setShowModal, refreshEvents }) => {
         ageGroup: 'todas las edades',
 
     })
+    const navigate = useNavigate()
 
 
     const handleInputChange = e => {
@@ -35,11 +34,9 @@ const NewEventForm = ({ setShowModal, refreshEvents }) => {
         setEventData({ ...newData, [name]: value })
     }
 
-    const navigate = useNavigate()
-
     const handleEventSubmit = e => {
-
         e.preventDefault()
+
         eventServices
             .createEvent(newData)
             .then(() => {

@@ -16,10 +16,26 @@ import otros from './../../assets/deporte.jpg'
 
 
 const EventDetailsPage = () => {
+
     const { event_id } = useParams()
     const { loggedUser, isAdmin } = useContext(AuthContext)
-
     const [event, setEvent] = useState({})
+    const [joinEvent, setJoinEvent] = useState({
+        participants: [],
+    })
+    const [eventInfo, setEventInfo] = useState({
+        messages: {
+            text: ''
+        }
+    })
+    const [deleteEvent, setDeleteEvent] = useState({
+        participants: [],
+    })
+    const [showModal, setShowModal] = useState(false)
+    const [show, setShow] = useState(false)
+
+    const handleClose = () => setShow(false)
+    const handleShow = () => setShow(true)
 
     const navigate = useNavigate()
 
@@ -38,17 +54,8 @@ const EventDetailsPage = () => {
             .catch(err => console.log(err))
     }
 
-    const [joinEvent, setJoinEvent] = useState({
-        participants: [],
-    })
-
-    const [deleteEvent, setDeleteEvent] = useState({
-        participants: [],
-    })
-
-    const [showModal, setShowModal] = useState(false)
-
     const handleJoinSubmit = () => {
+
         eventServices
             .joinEvent(event._id)
             .then(({ data }) => {
@@ -78,21 +85,6 @@ const EventDetailsPage = () => {
             .catch(err => console.log(err))
     }
 
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-
-
-    const [eventInfo, setEventInfo] = useState({
-        messages: {
-            text: ''
-        }
-    })
-
-
-
     const handleInputChange = e => {
         const { value, name } = e.currentTarget
         setEventInfo(prevState => ({
@@ -103,13 +95,12 @@ const EventDetailsPage = () => {
         }))
     }
 
-
     const handleEventSubmit = (e, eventId) => {
         e.preventDefault()
         const dataToSend = {
             ...eventInfo.messages,
         }
-        console.log('------------------------------>EventDetailsPage', eventId, dataToSend)
+
         eventServices
             .sendComments(eventId, dataToSend)
             .then(({ data }) => {
@@ -139,12 +130,13 @@ const EventDetailsPage = () => {
                 }} >
                     Comentarios del Evento
                 </Button>
+
                 <Offcanvas show={show} onHide={handleClose}>
                     <Offcanvas.Header closeButton>
                         <Offcanvas.Title>Comentarios</Offcanvas.Title>
                     </Offcanvas.Header>
-                    <Offcanvas.Body>
 
+                    <Offcanvas.Body>
                         {event.messages?.slice().reverse().map((elm, i) => (
                             <Toast key={i} className="custom-toast">
                                 <Toast.Header>
@@ -154,6 +146,7 @@ const EventDetailsPage = () => {
                             </Toast>
                         ))}
                     </Offcanvas.Body>
+
                     <Form onSubmit={(e) => handleEventSubmit(e, event._id)}>
                         <Form.Group className="mb-3" controlId="text">
                             <p>{event?._id}</p>
@@ -176,6 +169,7 @@ const EventDetailsPage = () => {
                         <h4><strong>Edad recomendada: </strong> {event.ageGroup} años</h4>
                         <h4><strong>Plan: </strong> {event.description}</h4>
                         <br />
+
                         <Modal show={showModal} onHide={() => setShowModal(false)}>
                             <Modal.Header closeButton>
                                 <Modal.Title>Editar Evento</Modal.Title>
@@ -184,6 +178,7 @@ const EventDetailsPage = () => {
                                 <EditEventForm event={event} setShowModal={setShowModal} refreshEvents={loadEventDetails} />
                             </Modal.Body>
                         </Modal>
+
                         {
                             event.participants?.find((participant) => participant._id === loggedUser._id)
 
@@ -206,6 +201,7 @@ const EventDetailsPage = () => {
                         <hr />
                         {isAdmin ? <Link to="/eventos" className="btn btn-dark">Volver a los eventos</Link> : <h1>no</h1>}
                     </Col>
+
                     <Col md={{ span: 4 }}>
                         {event.type === 'Cultura' ? <img src={museo} style={{ width: '100%' }} /> : ''}
                         {event.type === 'Deportes' ? <img src={deporte} style={{ width: '100%' }} /> : ''}
@@ -235,5 +231,6 @@ const EventDetailsPage = () => {
             </Container >
     )
 }
+
 
 export default EventDetailsPage
