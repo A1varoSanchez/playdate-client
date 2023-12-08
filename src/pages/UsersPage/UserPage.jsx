@@ -165,7 +165,7 @@ const UsersPage = () => {
                                             ) : elm.friendAdd.includes(loggedUser._id) ? (
                                                 <></>
                                             ) : (
-                                                <Button onClick={() => handlePetitionSubmit(elm._id)} className="boton-add">Agregar amigo</Button>
+                                                <Button onClick={() => handlePetitionSubmit(elm._id)} className="boton-add">Agregar</Button>
                                             )
                                     }
                                 </div>

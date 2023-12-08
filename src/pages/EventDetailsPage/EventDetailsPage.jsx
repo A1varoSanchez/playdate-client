@@ -143,7 +143,7 @@ const EventDetailsPage = () => {
                         {event.messages?.slice().reverse().map((elm, i) => (
                             <Toast key={i} className="custom-toast">
                                 <Toast.Header>
-                                    <strong className="me-auto">{elm.sender.username}</strong>
+                                    <strong className="me-auto">{elm.sender?.username}</strong>
                                 </Toast.Header>
                                 <Toast.Body>{elm.text}</Toast.Body>
                             </Toast>
